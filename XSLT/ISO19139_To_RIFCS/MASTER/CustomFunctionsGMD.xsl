@@ -209,4 +209,61 @@
               </xsl:choose>
               
     </xsl:function>
+    
+    <xsl:function name="customGMD:replaceOWS_specificProtocol">
+        <xsl:param name="url"/>
+        <xsl:param name="protocol"/>
+        
+        <!-- The following is case insensitive - replaces 'ows' with specific protocol, so that:
+                    http://geoserver.domain.org.au/geoserver/OWS?request=GetCapabilities&service=WxS
+             is replaced by:
+                    http://geoserver.domain.org.au/geoserver/WxS?request=GetCapabilities&service=WxS
+        -->
+        <xsl:choose>
+            <xsl:when test="matches($url,'OWS')">
+                <xsl:value-of select="replace($url, 'OWS', upper-case($protocol), 'i')"/>
+            </xsl:when>
+            <xsl:when test="matches($url,'ows')">
+                <xsl:value-of select="replace($url, 'ows', lower-case($protocol), 'i')"/>
+            </xsl:when>
+            <xsl:when test="matches($url,'ows', 'i')"> <!-- for combination case -->
+                <xsl:value-of select="replace($url, 'ows', upper-case($protocol), 'i')"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$url"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+    
+    <xsl:function name="customGMD:extractSpecific_OWS_protocol_maintainCase">
+        <xsl:param name="protocol"/>
+        
+        <xsl:if test="contains(lower-case($protocol),'ogc:')">
+            
+            <xsl:variable name="indexAfterOGC" select="string-length(substring-before(lower-case($protocol), 'ogc:')) + string-length('ogc:')" as="xs:integer"/>
+            <xsl:message select="concat('protocol : ', $protocol)"/>
+            <xsl:message select="concat('index after ''ogc'' : ', $indexAfterOGC)"/>
+            <xsl:variable name="protocolAfter_ogc" select="substring($protocol, ($indexAfterOGC + 1), string-length($protocol))"/>
+            <xsl:message select="concat('protocolAfter ogc : ', $protocolAfter_ogc)"/>
+            <xsl:choose>
+                <xsl:when test="contains($protocolAfter_ogc,'-')">
+                    <xsl:value-of select="substring-before($protocolAfter_ogc, '-')"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:choose>
+                        <!-- If contains non alpha characters, take all alpha before the non-alpha -->
+                        <xsl:when test="matches($protocolAfter_ogc,'[^A-Za-z]')">
+                            <xsl:value-of select="tokenize($protocolAfter_ogc, '[^A-Za-z]')[1]"/>
+                        </xsl:when>
+                        <!-- Does not contain non alpha, so if contains alpha, return this value -->
+                        <xsl:otherwise>
+                            <xsl:if test="matches($protocolAfter_ogc,'[A-Za-z]')">
+                                <xsl:value-of select="$protocolAfter_ogc"/>
+                            </xsl:if>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:if>
+    </xsl:function>
 </xsl:stylesheet>

@@ -14,6 +14,6 @@
     <xsl:param name="global_acronym" select="'BOND_PURE'"/>
     <xsl:param name="global_group" select="'BOND University'"/>
     <xsl:param name="global_publisherName" select="'BOND University'"/>
-    <xsl:param name="global_validateWorkflow" select="false()"/>
+    <xsl:param name="global_validateWorkflow" select="true()"/>
     
 </xsl:stylesheet>

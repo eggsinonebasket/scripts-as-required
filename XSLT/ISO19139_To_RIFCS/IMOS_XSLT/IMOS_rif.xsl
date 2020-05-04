@@ -726,6 +726,9 @@
     <xsl:template match="gmd:CI_OnlineResource" mode="IMOS_relatedInfo_service">       
       
         <xsl:variable name="identifierValue" select="normalize-space(gmd:linkage/gmd:URL)"/>
+        <xsl:variable name="specificOWS_protocol" select="customGMD:extractSpecific_OWS_protocol_maintainCase(gmd:protocol)"/>
+        
+        
         
         <relatedInfo>
         <xsl:attribute name="type" select="'service'"/>   
@@ -736,7 +739,14 @@
              </xsl:attribute>
              <xsl:if test="(contains($identifierValue, '?')) or (contains($identifierValue, '.nc'))">
                     <url>
-                        <xsl:value-of select="$identifierValue"/>
+                        <xsl:choose>
+                         <xsl:when test="contains(lower-case($identifierValue), 'ows') and (string-length($specificOWS_protocol) > 0)">
+                             <xsl:value-of select="customGMD:replaceOWS_specificProtocol($identifierValue, $specificOWS_protocol)"/>
+                         </xsl:when>
+                         <xsl:otherwise>
+                             <xsl:value-of select="$identifierValue"/>
+                         </xsl:otherwise>
+                        </xsl:choose>
                     </url>
              </xsl:if>
          </relation>
@@ -765,8 +775,11 @@
         
     <xsl:template match="gmd:CI_OnlineResource" mode="IMOS_relatedInfo_all">     
             
-            <xsl:variable name="identifierValue" select="normalize-space(gmd:linkage/gmd:URL)"/>
-            
+        <xsl:variable name="identifierValue" select="normalize-space(gmd:linkage/gmd:URL)"/>
+        <xsl:variable name="protocol" select="normalize-space(gmd:protocol)"/>
+        
+        <xsl:variable name="specificOWS_protocol" select="customGMD:extractSpecific_OWS_protocol_maintainCase($protocol)"/>
+        
             <identifier>
                 <xsl:attribute name="type">
                     <xsl:choose>
@@ -778,12 +791,22 @@
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:attribute>
+                <xsl:variable name="identifier">
+                    <xsl:choose>
+                        <xsl:when test="contains($identifierValue, '?')">
+                            <xsl:value-of select="substring-before(., '?')"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="$identifierValue"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:variable>
                 <xsl:choose>
-                    <xsl:when test="contains($identifierValue, '?')">
-                        <xsl:value-of select="substring-before(., '?')"/>
+                    <xsl:when test="contains(lower-case($identifier), 'ows') and (string-length($specificOWS_protocol) > 0)">
+                        <xsl:value-of select="customGMD:replaceOWS_specificProtocol($identifier, $specificOWS_protocol)"/>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:value-of select="$identifierValue"/>
+                        <xsl:value-of select="$identifier"/>
                     </xsl:otherwise>
                 </xsl:choose>
                 

@@ -37,7 +37,6 @@
     </xsl:template>
     
    <xsl:template match="*:codeBook" mode="collection">
-        <xsl:message select="concat('match', 'codeBook')"/>
         <registryObject>
             <xsl:attribute name="group" select="$global_group"/>
             <key>
@@ -159,7 +158,23 @@
             <xsl:if test="string-length(@URI) > 0">
                 <xsl:attribute name="termIdentifier" select="@URI"/>
             </xsl:if>
-            <xsl:value-of select="normalize-space(.)"/>
+            <xsl:variable name="anzsrcForVocabPrefix" select="'http(s*)://purl.org/au-research/vocabulary/anzsrc-for/[^/]*/'"/>
+            <xsl:choose>
+                <!-- extract the code at the end -->
+                <xsl:when test="matches(@URI, $anzsrcForVocabPrefix)">
+                    <xsl:analyze-string select="@URI" regex="{$anzsrcForVocabPrefix}">
+                        <xsl:non-matching-substring>
+                            <xsl:if test="matches(., '\d+')">
+                                <xsl:value-of select="normalize-space(.)"/>
+                             </xsl:if>
+                        </xsl:non-matching-substring>
+                    </xsl:analyze-string>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="normalize-space(.)"/>
+                </xsl:otherwise>
+            </xsl:choose>
+            
         </subject>
     </xsl:template>
     

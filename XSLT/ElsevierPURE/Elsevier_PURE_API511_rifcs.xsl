@@ -33,8 +33,15 @@
     </xsl:template>
 
     <xsl:template match="*:dataSet">
-        <xsl:message select="concat('workflow: ', *:workflow)"/>
-        <xsl:if test="($global_validateWorkflow = false()) or lower-case(*:workflow) = 'validated'">
+        <xsl:message select="concat('$global_validateWorkflow ', $global_validateWorkflow)"/>
+        <xsl:message select="concat('lower-case(*:workflow): ', lower-case(*:workflow))"/>
+        <xsl:if test=" (string-length(*:workflow) > 0)">
+            <xsl:message select="concat('lower-case(*:workflow) = ''validated'': ', (lower-case(normalize-space(*:workflow)) = 'validated'))"/>
+        </xsl:if>
+        <xsl:if test="
+            (string-length(*:workflow) = 0) or
+            ($global_validateWorkflow = false()) or 
+            (lower-case(normalize-space(*:workflow)) = 'validated')">
             <xsl:apply-templates select="." mode="registryObject">
                 <xsl:with-param name="type" select="'dataset'"/>
                 <xsl:with-param name="class" select="'collection'"/>
@@ -47,8 +54,15 @@
     <xsl:template match="*:equipment">
 
         <!-- Create equipment record only if approved -->
-        <xsl:message select="concat('workflow: ', *:workflow)"/>
-        <xsl:if test="($global_validateWorkflow = false()) or lower-case(*:workflow) = 'approved'">
+        <xsl:message select="concat('$global_validateWorkflow ', $global_validateWorkflow)"/>
+        <xsl:message select="concat('lower-case(*:workflow): ', lower-case(*:workflow))"/>
+        <xsl:if test=" (string-length(*:workflow) > 0)">
+            <xsl:message select="concat('lower-case(*:workflow) = ''approved'': ', (lower-case(normalize-space(*:workflow)) = 'approved'))"/>
+        </xsl:if>
+         <xsl:if test="
+            (string-length(*:workflow) = 0) or
+            ($global_validateWorkflow = false()) or 
+            (lower-case(normalize-space(*:workflow)) = 'approved')">
             <xsl:apply-templates select="." mode="registryObject">
                 <xsl:with-param name="type" select="'create'"/>
                 <xsl:with-param name="class" select="'service'"/>
@@ -247,7 +261,7 @@
         <identifier type="doi">
             <xsl:choose>
                 <xsl:when test="starts-with(. , '10.')">
-                    <xsl:value-of select="concat('http://doi.org/', normalize-space(.))"/>
+                    <xsl:value-of select="normalize-space(.)"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:value-of select="normalize-space(.)"/>
@@ -454,7 +468,7 @@
     <xsl:template match="*:personRole" mode="relation">
         <relation>
             <xsl:attribute name="type">
-                <xsl:value-of select="."/>
+                <xsl:value-of select="normalize-space(.)"/>
             </xsl:attribute>
         </relation>
     </xsl:template>
@@ -504,7 +518,7 @@
                     select="*:personAssociation[((count(*:externalPerson) = 0) and (count(*:person) = 0)) and ((string-length(*:name/*:firstName) > 0) or (string-length(*:name/*:lastName) > 0))]">
                     <xsl:variable name="fullName"
                         select="concat(*:name/*:firstName, ' ', *:name/*:lastName)"/>
-                    <xsl:variable name="role" select="*:personRole"/>
+                    <xsl:variable name="role" select="normalize-space(*:personRole)"/>
                     <xsl:message
                         select="concat('Associated Persons - External?Internal private: ', $fullName)"/>
                     <xsl:if test="string-length($fullName) > 0">
@@ -521,7 +535,7 @@
                     select="*:personAssociation[(string-length(*:externalPerson/@uuid) > 0)]">
                     <xsl:variable name="fullName"
                         select="concat(*:name/*:firstName, ' ', *:name/*:lastName)"/>
-                    <xsl:variable name="role" select="*:personRole"/>
+                    <xsl:variable name="role" select="normalize-space(*:personRole)"/>
                     <xsl:message
                         select="concat('More Associated Persons - external, public: ', $fullName)"/>
                     <xsl:if test="string-length($fullName) > 0">
@@ -642,7 +656,7 @@
 
     <xsl:template match="*:description" mode="collection_description_full">
         <description type="full">
-            <xsl:value-of select="."/>
+            <xsl:value-of select="*:value"/>
         </description>
     </xsl:template>
 
@@ -655,14 +669,14 @@
 
     <xsl:template match="*:link" mode="collection_relatedInfo">
         <relatedInfo type="website">
-            <xsl:if test="string-length(*:url) > 0">
+            <xsl:if test="string-length(normalize-space(*:url)) > 0">
                 <identifier type="url">
-                    <xsl:value-of select="*:url"/>
+                    <xsl:value-of select="normalize-space(*:url)"/>
                 </identifier>
             </xsl:if>
-            <xsl:if test="string-length(*:description) > 0">
+            <xsl:if test="string-length(normalize-space(*:description)) > 0">
                 <title>
-                    <xsl:value-of select="*:description"/>
+                    <xsl:value-of select="normalize-space(*:description)"/>
                 </title>
             </xsl:if>
         </relatedInfo>
@@ -695,7 +709,7 @@
                         <xsl:text>publication</xsl:text>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:value-of select="*:type"/>
+                        <xsl:value-of select="normalize-space(*:type)"/>
                     </xsl:otherwise>
 
                 </xsl:choose>
@@ -718,12 +732,12 @@
 
             <xsl:if test="string-length(*:name) > 0">
                 <title>
-                    <xsl:value-of select="*:name"/>
+                    <xsl:value-of select="normalize-space(*:name)"/>
                 </title>
             </xsl:if>
 
             <notes>
-                <xsl:value-of select="*:type"/>
+                <xsl:value-of select="normalize-space(*:type)"/>
             </notes>
         </relatedInfo>
     </xsl:template>
@@ -1143,9 +1157,10 @@
             <xsl:message select="concat('Contact personName (party_people): ', *:name)"/>
         </xsl:if>
 
-        <xsl:variable name="allNames_sequence" select="tokenize( *:name, ' ')" as="xs:string*"/>
+        <xsl:variable name="allNames_sequence" select="tokenize(normalize-space(*:name), ' ')" as="xs:string*"/>
+        <xsl:message select="concat('count(allNames_sequence): ', count($allNames_sequence))"/>
 
-        <xsl:if test="(string-length( *:name) > 0)">
+        <xsl:if test="(string-length( normalize-space(*:name)) > 0)">
 
             <registryObject group="{$global_group}">
                 <key>

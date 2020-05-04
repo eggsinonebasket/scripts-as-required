@@ -135,6 +135,12 @@ params = options.params
 ###############################################################################################################################
 
 if os.path.exists(outputDirectory):
+    print("Backup existing directory if it contains files (that's the only check - not comparing with possible existing back up directory or anything) " + outputDirectory)
+    if os.listdir(outputDirectory): #contains files
+        if os.path.exists(outputDirectory+'_BAK'):
+            shutil.rmtree(outputDirectory+'_BAK') #remove BAK directory if exists
+        shutil.copytree(outputDirectory, outputDirectory+'_BAK') #copy to BAK directory
+        print("Back up created in " + outputDirectory+'_BAK')
     print("Removing existing directory " + outputDirectory)
     shutil.rmtree(outputDirectory)
 
