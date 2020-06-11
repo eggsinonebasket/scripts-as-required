@@ -9,12 +9,12 @@
     exclude-result-prefixes="mdb mcc">
     
     
-    <xsl:import href="ISO19115-3_To_RIFCS.xsl"/>
+    <xsl:import href="ISO19115-3_Common_MiddleFilter.xsl"/>
     
     <xsl:param name="global_debug" select="false()" as="xs:boolean"/>
     <xsl:param name="global_debugExceptions" select="true()" as="xs:boolean"/>
     <xsl:param name="global_originatingSource" select="'Integrated Marine Observing System'"/>
-    <xsl:param name="global_acronym" select="'GA'"/>
+    <xsl:param name="global_acronym" select="'IMOS'"/>
     <xsl:param name="global_baseURI" select="'catalogue-imos.dev.aodn.org.au'"/>
     <xsl:param name="global_baseURI_PID" select="''"/>
     <xsl:param name="global_path_PID" select="''"/>
@@ -23,6 +23,18 @@
     <xsl:param name="global_publisherName" select="'Integrated Marine Observing System'"/>
     <xsl:param name="global_publisherPlace" select="''"/>
     
+    
+    <!--xsl:template match="/">
+        <registryObjects>
+            <xsl:attribute name="xsi:schemaLocation">
+                <xsl:text>http://ands.org.au/standards/rif-cs/registryObjects http://services.ands.org.au/documentation/rifcs/schema/registryObjects.xsd</xsl:text>
+            </xsl:attribute>
+            
+            <xsl:for-each select="//mdb:MD_Metadata[count(mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode[contains(lower-case(@codeListValue), 'document') or contains(lower-case(@codeListValue), 'nongeographicdataset')]) = 0]">
+                <xsl:apply-templates select="." mode="registryObjects"/>
+            </xsl:for-each>
+        </registryObjects>
+    </xsl:template-->
     
     <!--Copy this file and rename it as for example ISO19115-3_IMOS_TopLevel.xsl for whichever contributor (IMOS in this case)
         as this file contains processing specific to the contributor of ISO19115-3 (overriding templates of imported xsl files)
@@ -39,13 +51,11 @@
             multiple providers may have but that is not handled in ISO19115-3_Common_Base.xsl
     -->
     
-    <xsl:import href="ISO19115-3_Common_MiddleFilter.xsl"/>
-    
     <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
     <xsl:strip-space elements="*"/>
     
     <xsl:template match="/">
-        <xsl:apply-templates mode="middleFilter"/>
+        <xsl:apply-templates select="copy-of(.)" mode="middleFilter"/>
     </xsl:template>
       
 </xsl:stylesheet>
