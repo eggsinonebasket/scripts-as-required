@@ -53,7 +53,7 @@
         </xsl:choose>
         
     </xsl:function>
-
+    
     <xsl:function name="custom:sequenceContainsExact" as="xs:boolean">
         <xsl:param name="sequence" as="xs:string*"/>
         <xsl:param name="str" as="xs:string"/>
@@ -77,7 +77,7 @@
         
     </xsl:function>
     
-     <xsl:function name="custom:convertLongitude">
+    <xsl:function name="custom:convertLongitude">
         <xsl:param name="input" as="xs:decimal"/>
         <!--Convert Longitude 0-360 to -180 to 180 or 180W-180E -->
         <xsl:value-of select="(($input+180) mod 360)-180"/>
@@ -124,7 +124,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-   
+    
     
     <xsl:function name="custom:getDomainFromURL" as="xs:string">
         <xsl:param name="url"/>
