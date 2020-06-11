@@ -2,38 +2,38 @@
 <xsl:stylesheet version="2.0" 
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:csw="http://www.opengis.net/cat/csw/2.0.2"
-    xmlns:mdb="http://standards.iso.org/iso/19115/-3/mdb/1.0" 
+    xmlns:csw="http://www.opengis.net/cat/csw"
+    xmlns:mdb="http://standards.iso.org/iso/19115/-3/mdb" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xmlns:cat="http://standards.iso.org/iso/19115/-3/cat/1.0" 
-    xmlns:cit="http://standards.iso.org/iso/19115/-3/cit/1.0" 
-    xmlns:gcx="http://standards.iso.org/iso/19115/-3/gcx/1.0" 
-    xmlns:gex="http://standards.iso.org/iso/19115/-3/gex/1.0" 
-    xmlns:lan="http://standards.iso.org/iso/19115/-3/lan/1.0" 
-    xmlns:srv="http://standards.iso.org/iso/19115/-3/srv/2.0" 
-    xmlns:mas="http://standards.iso.org/iso/19115/-3/mas/1.0" 
-    xmlns:mcc="http://standards.iso.org/iso/19115/-3/mcc/1.0" 
-    xmlns:mco="http://standards.iso.org/iso/19115/-3/mco/1.0" 
-    xmlns:mda="http://standards.iso.org/iso/19115/-3/mda/1.0" 
-    xmlns:mds="http://standards.iso.org/iso/19115/-3/mds/1.0" 
-    xmlns:mdt="http://standards.iso.org/iso/19115/-3/mdt/1.0" 
-    xmlns:mex="http://standards.iso.org/iso/19115/-3/mex/1.0" 
-    xmlns:mmi="http://standards.iso.org/iso/19115/-3/mmi/1.0" 
-    xmlns:mpc="http://standards.iso.org/iso/19115/-3/mpc/1.0" 
-    xmlns:mrc="http://standards.iso.org/iso/19115/-3/mrc/1.0" 
-    xmlns:mrd="http://standards.iso.org/iso/19115/-3/mrd/1.0" 
-    xmlns:mri="http://standards.iso.org/iso/19115/-3/mri/1.0" 
-    xmlns:mrl="http://standards.iso.org/iso/19115/-3/mrl/1.0" 
-    xmlns:mrs="http://standards.iso.org/iso/19115/-3/mrs/1.0" 
-    xmlns:msr="http://standards.iso.org/iso/19115/-3/msr/1.0" 
-    xmlns:mdq="http://standards.iso.org/iso/19157/-2/mdq/1.0" 
-    xmlns:mac="http://standards.iso.org/iso/19115/-3/mac/1.0" 
-    xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0" 
+    xmlns:cat="http://standards.iso.org/iso/19115/-3/cat" 
+    xmlns:cit="http://standards.iso.org/iso/19115/-3/cit" 
+    xmlns:gcx="http://standards.iso.org/iso/19115/-3/gcx" 
+    xmlns:gex="http://standards.iso.org/iso/19115/-3/gex" 
+    xmlns:lan="http://standards.iso.org/iso/19115/-3/lan" 
+    xmlns:srv="http://standards.iso.org/iso/19115/-3/srv" 
+    xmlns:mas="http://standards.iso.org/iso/19115/-3/mas" 
+    xmlns:mcc="http://standards.iso.org/iso/19115/-3/mcc" 
+    xmlns:mco="http://standards.iso.org/iso/19115/-3/mco" 
+    xmlns:mda="http://standards.iso.org/iso/19115/-3/mda" 
+    xmlns:mds="http://standards.iso.org/iso/19115/-3/mds" 
+    xmlns:mdt="http://standards.iso.org/iso/19115/-3/mdt" 
+    xmlns:mex="http://standards.iso.org/iso/19115/-3/mex" 
+    xmlns:mmi="http://standards.iso.org/iso/19115/-3/mmi" 
+    xmlns:mpc="http://standards.iso.org/iso/19115/-3/mpc" 
+    xmlns:mrc="http://standards.iso.org/iso/19115/-3/mrc" 
+    xmlns:mrd="http://standards.iso.org/iso/19115/-3/mrd" 
+    xmlns:mri="http://standards.iso.org/iso/19115/-3/mri" 
+    xmlns:mrl="http://standards.iso.org/iso/19115/-3/mrl" 
+    xmlns:mrs="http://standards.iso.org/iso/19115/-3/mrs" 
+    xmlns:msr="http://standards.iso.org/iso/19115/-3/msr" 
+    xmlns:mdq="http://standards.iso.org/iso/19157/-2/mdq" 
+    xmlns:mac="http://standards.iso.org/iso/19115/-3/mac" 
+    xmlns:gco="http://standards.iso.org/iso/19115/-3/gco" 
     xmlns:gmx="http://www.isotc211.org/2005/gmx"
-    xmlns:gml="http://www.opengis.net/gml/3.2" 
+    xmlns:gml="http://www.opengis.net/gml" 
     xmlns:xlink="http://www.w3.org/1999/xlink" 
     xmlns:geonet="http://www.fao.org/geonetwork" 
-    xmlns:oai="http://www.openarchives.org/OAI/2.0/"
+    xmlns:oai="http://www.openarchives.org/OAI"
     xmlns:custom="http://custom.nowhere.yet"
     xmlns:gaFunc="http://gafunc.nowhere.yet"
     xmlns="http://ands.org.au/standards/rif-cs/registryObjects"
@@ -60,28 +60,27 @@
     <xsl:param name="global_spatialProjection" select="''"/>
     <xsl:variable name="licenseCodelist" select="document('license-codelist.xml')"/>
     <xsl:variable name="codelists" select="document('codelists_ISO19115-1.xml')"/>
-    <xsl:variable name="anzsrcCodelist" select="document('anzsrc-for-2008.rdf')"/>
     
     <!-- =========================================== -->
     <!-- RegistryObjects (root) Template             -->
     <!-- =========================================== -->
     
-    <xsl:template match="/">
+    <!--xsl:template match="/">
         <registryObjects>
             <xsl:attribute name="xsi:schemaLocation">
                 <xsl:text>http://ands.org.au/standards/rif-cs/registryObjects http://services.ands.org.au/documentation/rifcs/schema/registryObjects.xsd</xsl:text>
             </xsl:attribute>
             <xsl:apply-templates select="//mdb:MD_Metadata" mode="registryObjects"/>
         </registryObjects>
-    </xsl:template>
+    </xsl:template-->
     
-    <xsl:template match="node()"/>
+    <!--xsl:template match="node()"/-->
 
     <!-- =========================================== -->
     <!-- RegistryObject RegistryObject Template          -->
     <!-- =========================================== -->
     
-    <xsl:template match="mdb:MD_Metadata" mode="registryObjects">
+    <xsl:template match="mdb:MD_Metadata" mode="process">
         
         <xsl:variable name="originatingSource">
             <xsl:choose>
