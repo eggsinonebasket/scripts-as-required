@@ -620,7 +620,7 @@
                              unless the organisation is related elsewhere with a role -->
                             <xsl:choose>
                                 <xsl:when test="count($partyNode/*/cit:individual/cit:CI_Individual) > 0">
-                                    <xsl:if test="count($orgNamesOnly_sequence[. = current-grouping-key()]) = 0">
+                                    <xsl:if test="count($orgNamesOnly_sequence[. = $name]) = 0">
                                         <xsl:attribute name="type">
                                             <xsl:text>hasAssociationWith</xsl:text>
                                         </xsl:attribute>
