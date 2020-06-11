@@ -20,7 +20,7 @@
                 multiple providers may have 
     -->
     
-    <!--xsl:import href="ISO19115_1_Common_Base.xsl"/-->
+    <xsl:import href="ISO19115-3_To_RIFCS.xsl"/>
     
     <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
     <!--xsl:strip-space elements="*"/-->
@@ -33,10 +33,10 @@
         
         <!--xsl:variable name="documentReplacedNamespace" select="fn:parse-xml($identity)"/-->
         
-        <xsl:copy-of select="$identity"/>
+        <!--xsl:copy-of select="$identity"/-->
         
         <xsl:for-each select="$identity//*:MD_Metadata">
-            <!--xsl:apply-templates select="copy-of(.)" mode="process"/-->
+            <xsl:apply-templates select="copy-of(.)" mode="process"/>
         </xsl:for-each>
         
     </xsl:template>
@@ -50,7 +50,7 @@
         </xsl:copy>
     </xsl:template>
     
-    <xsl:template match="node()[string-length(namespace-uri()) > 0]">
+    <xsl:template match="node()[string-length(namespace-uri()) > 0]" mode="middleFilter">
         <xsl:variable name="namespaceNoVersionPostfix_sequence" as="xs:string*">
             <xsl:variable name="namespaceUri_sequence" select="tokenize(namespace-uri(), '/')" as="xs:string*"/>
             <xsl:for-each select="$namespaceUri_sequence">
