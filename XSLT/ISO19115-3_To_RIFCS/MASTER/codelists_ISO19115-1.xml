@@ -12,7 +12,7 @@
 		<entry>
 			<code>publication</code>
 			<label>Publication</label>
-			<description>issued</description>
+			<description>publicationDate</description>
 		</entry>
 		<entry>
 			<code>revision</code>
@@ -22,7 +22,7 @@
 		<entry>
 			<code>expiry</code>
 			<label>Expiry</label>
-			<description>expired</description>
+			<description></description>
 		</entry>
 		<entry>
 			<code>lastUpdate</code>
@@ -82,138 +82,6 @@
 		<entry>
 			<code>distribution</code>
 			<label>Distribution</label>
-			<description></description>
-		</entry>
-	</codelist>
-	<codelist name="MD_ScopeCode">
-		<entry>
-			<code>attribute</code>
-			<label>attribute</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>attributeType</code>
-			<label>attributeType</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>collectionHardware</code>
-			<label>collectionHardware</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>collectionSession</code>
-			<label>collectionSession</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>dataset</code>
-			<label>dataset</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>series</code>
-			<label>series</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>nonGeographicDataset</code>
-			<label>nonGeographicDataset</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>dimensionGroup</code>
-			<label>dimensionGroup</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>feature</code>
-			<label>feature</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>featureType</code>
-			<label>featureType</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>propertyType</code>
-			<label>propertyType</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>fieldSession</code>
-			<label>fieldSession</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>software</code>
-			<label>software</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>service</code>
-			<label>service</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>model</code>
-			<label>model</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>tile</code>
-			<label>tile</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>metadata</code>
-			<label>metadata</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>initiative</code>
-			<label>initiative</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>sample</code>
-			<label>sample</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>document</code>
-			<label>document</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>repository</code>
-			<label>repository</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>aggregate</code>
-			<label>aggregate</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>product</code>
-			<label>product</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>collection</code>
-			<label>collection</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>coverage</code>
-			<label>coverage</label>
-			<description></description>
-		</entry>
-		<entry>
-			<code>application</code>
-			<label>application</label>
 			<description></description>
 		</entry>
 	</codelist>
