@@ -48,7 +48,7 @@
   <xsl:strip-space elements="*"/>
   
   <xsl:template match="/">
-    <xsl:apply-templates select="copy-of(.)" mode="middleFilter"/>
+    <xsl:apply-templates select="." mode="middleFilter"/>
   </xsl:template>
     
   </xsl:stylesheet>
