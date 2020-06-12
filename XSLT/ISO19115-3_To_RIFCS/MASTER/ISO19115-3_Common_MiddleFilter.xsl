@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" 
+    xmlns:mdb="http://standards.iso.org/iso/19115/-3/mdb" 
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
-    exclude-result-prefixes="">
+    xmlns="http://ands.org.au/standards/rif-cs/registryObjects"
+    exclude-result-prefixes="fn xs mdb">
     
     
     <!-- 
@@ -33,11 +35,14 @@
         
         <!--xsl:variable name="documentReplacedNamespace" select="fn:parse-xml($identity)"/-->
         
-        <!--xsl:copy-of select="$identity"/-->
-        
-        <xsl:for-each select="$identity//*:MD_Metadata">
-            <xsl:apply-templates select="copy-of(.)" mode="process"/>
-        </xsl:for-each>
+        <registryObjects xmlns="http://ands.org.au/standards/rif-cs/registryObjects"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://ands.org.au/standards/rif-cs/registryObjects http://services.ands.org.au/documentation/rifcs/schema/registryObjects.xsd">
+            
+            <xsl:for-each select="$identity//mdb:MD_Metadata">
+                <xsl:apply-templates select="." mode="process"/>
+            </xsl:for-each>
+        </registryObjects>
         
     </xsl:template>
     
