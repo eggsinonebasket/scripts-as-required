@@ -39,11 +39,17 @@
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="http://ands.org.au/standards/rif-cs/registryObjects http://services.ands.org.au/documentation/rifcs/schema/registryObjects.xsd">
             
-            <xsl:for-each select="$identity//mdb:MD_Metadata">
-                <xsl:apply-templates select="." mode="process"/>
-            </xsl:for-each>
+            <xsl:apply-templates select="$identity" mode="filter"/>
         </registryObjects>
         
+    </xsl:template>
+    
+    <!-- override this in top-level xsl that call this, if you want to filter on anything,
+        for example, MD_Metadata objects with a certain scopecode -->
+    <xsl:template match="@*|node()" mode="filter">
+        <xsl:for-each select="//mdb:MD_Metadata">
+            <xsl:apply-templates select="." mode="process"/>
+        </xsl:for-each>
     </xsl:template>
     
     

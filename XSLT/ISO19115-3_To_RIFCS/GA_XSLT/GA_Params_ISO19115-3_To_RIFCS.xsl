@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" 
+    xmlns:mdb="http://standards.iso.org/iso/19115/-3/mdb" 
+    xmlns:mcc="http://standards.iso.org/iso/19115/-3/mcc" 
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"> 
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    exclude-result-prefixes="xs mdb mcc"> 
     
     <xsl:import href="ISO19115-3_Common_MiddleFilter.xsl"/>
     
@@ -17,7 +20,8 @@
     <xsl:param name="global_group" select="'Geoscience Australia'"/>
     <xsl:param name="global_publisherName" select="'Geoscience Australia'"/>
     <xsl:param name="global_publisherPlace" select="'Canberra'"/>
-     
+    
+    
     <!--xsl:template match="/">
         <registryObjects>
             <xsl:attribute name="xsi:schemaLocation">
@@ -49,7 +53,14 @@
     <xsl:strip-space elements="*"/>
     
     <xsl:template match="/">
-        <xsl:apply-templates select="copy-of(.)" mode="middleFilter"/>
+        <xsl:apply-templates select="." mode="middleFilter"/>
+    </xsl:template>
+    
+    <xsl:template match="@*|node()" mode="filter">
+        <xsl:message select="'Override filter for GA'"/>
+        <xsl:for-each select="//mdb:MD_Metadata[not(contains(lower-case(mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode/@codeListValue), 'document')) and not(contains(lower-case(mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode/@codeListValue), 'nongeographicdataset'))]">
+            <xsl:apply-templates select="." mode="process"/>
+        </xsl:for-each>
     </xsl:template>
     
 </xsl:stylesheet>

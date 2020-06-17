@@ -112,6 +112,7 @@
                 <xsl:variable name="scopeCode" select="mdb:metadataScope[1]/mdb:MD_MetadataScope[1]/mdb:resourceScope[1]/mcc:MD_ScopeCode[1]/@codeListValue[1]"/>
                 <xsl:choose>
                     <xsl:when test="string-length($scopeCode) > 0">
+                        <xsl:message select="concat('Scopecode : ', $scopeCode)"/>
                         <xsl:choose>
                             <xsl:when test="substring(lower-case($scopeCode), 0, 8) = 'service'">
                                 <xsl:text>service</xsl:text>
@@ -130,6 +131,10 @@
                                 <xsl:text>software</xsl:text>
                             </xsl:when>
                             <xsl:when test="substring(lower-case($scopeCode), 0, 21) = 'nongeographicdataset'">
+                                <xsl:text>collection</xsl:text>
+                                <xsl:text>publication</xsl:text>
+                            </xsl:when>
+                            <xsl:when test="substring(lower-case($scopeCode), 0, 9) = 'document'">
                                 <xsl:text>collection</xsl:text>
                                 <xsl:text>publication</xsl:text>
                             </xsl:when>

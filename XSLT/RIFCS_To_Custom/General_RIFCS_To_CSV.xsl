@@ -17,7 +17,8 @@
     
     <xsl:param name="compareWithDemo" select="true()"/>
     <!-- change the following the the correct demo content for the contributor that you are working with and set $compareWithDemo to true()-->
-    <xsl:variable name="demoRifCs" select="document('/home/ada168/projects/UniversityOfCanberra/PURE-at-University-of-Canberra-RIF-CS-Export_demo_Collections.xml')"/>
+    <!--xsl:variable name="demoRifCs" select="document('/home/ada168/projects/UniversityOfCanberra/PURE-at-University-of-Canberra-RIF-CS-Export_demo_Collections.xml')"/-->
+    <xsl:variable name="demoRifCs" select="document('/home/ada168/projects/RMIT/RMIT-Figshare-RIF-CS-Export_DemoFigshare.xml')"/>
     
     <xsl:template match="node()|@*">
         <xsl:copy>
@@ -138,15 +139,21 @@
             
             <xsl:choose>
                 <xsl:when test="count($demoRifCs/registryObjects/registryObject[(collection|service|party|activity)/name[contains(lower-case(namePart), lower-case($objectNamePart))]]/key) > 0">
-                    <xsl:value-of select="concat('https://demo.ands.org.au/view?key=', $demoRifCs/registryObjects/registryObject[collection/name[contains(@type, 'primary') and contains(lower-case(namePart), lower-case($objectNamePart))]]/key)"/>
+                    <xsl:message select="concat('Found ', count($demoRifCs/registryObjects/registryObject[(collection|service|party|activity)/name[contains(lower-case(namePart), lower-case($objectNamePart))]]/key), ' collection(s) from demo with name: ', $objectNamePart)"/>
+                    <xsl:for-each select="$demoRifCs/registryObjects/registryObject[(collection|service|party|activity)/name[contains(lower-case(namePart), lower-case($objectNamePart))]]/key">
+                        <xsl:value-of select="concat('https://demo.ands.org.au/view?key=', ., ' ')"/>
+                    </xsl:for-each>
                 </xsl:when>
                 <xsl:when test="(string-length($handlePostFixFromKey) > 0) and count($demoRifCs/registryObjects/registryObject[(collection|service|party|activity)/identifier[contains(lower-case(.), lower-case($handlePostFixFromKey))]]/key) > 0">
+                    <xsl:message select="concat('handle found: ', $handlePostFixFromKey)"/>
                     <xsl:value-of select="concat('https://demo.ands.org.au/view?key=', $demoRifCs/registryObjects/registryObject[(collection|service|party|activity)/identifier[contains(lower-case(.), lower-case($handlePostFixFromKey))]]/key)"/>
                 </xsl:when>
                 <xsl:when test="(string-length($doiPostFixFromKey) > 0) and count($demoRifCs/registryObjects/registryObject[(collection|service|party|activity)/identifier[contains(lower-case(.), lower-case($doiPostFixFromKey))]]/key) > 0">
+                    <xsl:message select="concat('doi found: ', $doiPostFixFromKey)"/>
                     <xsl:value-of select="concat('https://demo.ands.org.au/view?key=', $demoRifCs/registryObjects/registryObject[(collection|service|party|activity)/identifier[contains(lower-case(.), lower-case($doiPostFixFromKey))]]/key)"/>
                 </xsl:when>
                 <xsl:when test="(string-length($doiPostFixFromDoi) > 0) and count($demoRifCs/registryObjects/registryObject[(collection|service|party|activity)/identifier[contains(lower-case(.), lower-case($doiPostFixFromDoi))]]/key) > 0">
+                    <xsl:message select="concat('doi found: ', $doiPostFixFromDoi)"/>
                     <xsl:value-of select="concat('https://demo.ands.org.au/view?key=', $demoRifCs/registryObjects/registryObject[(collection|service|party|activity)/identifier[contains(lower-case(.), lower-case($doiPostFixFromDoi))]]/key)"/>
                 </xsl:when>
                  <xsl:when test="(string-length($handlePostFixFromHandle) > 0) and count($demoRifCs/registryObjects/registryObject[(collection|service|party|activity)/identifier[contains(lower-case(.), lower-case($handlePostFixFromHandle))]]/key) > 0">

@@ -42,7 +42,7 @@ if len(options.outputDirectory) < 1:
 if (options.splitElement):
    splitElement = options.splitElement
 else:
-    splitElement = 'results' # default
+    splitElement = None
 
 
 dataSetUri = options.URI

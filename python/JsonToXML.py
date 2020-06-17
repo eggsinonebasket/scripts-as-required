@@ -166,15 +166,16 @@ def process(rows, start, dataSetUri, dataSetName, outputDirectory, domain, split
     print("Retrieved count %d " % count)
 
     # obj_StreamReaderWriter.write(obj_xml_Document.toprettyxml(encoding='utf-8', indent=' ')
-    print("splitElement: " + splitElement)
+
     if (splitElement != None):
+        print("splitElement: " + splitElement)
         createOneFilePerRecord(outputDirectory, domain, elem, start, splitElement)
 
     else:
         recordFilename = str.format(outputDirectory + '/' + domain + '_' + str(dataSetName) + '_' + str(start[0]) + '.xml')
         recordFile = open(recordFilename, 'w+')
 
-        recordFile.write(obj_xml_rootDocument.toprettyxml(encoding='utf-8', indent=' '))
+        recordFile.write(obj_xml_rootDocument.toprettyxml(indent=' '))
         recordFile.close()
         print("This page of output all written to %s" % recordFilename)
 
