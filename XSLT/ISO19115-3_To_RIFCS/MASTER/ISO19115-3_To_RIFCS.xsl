@@ -99,7 +99,7 @@
                 <xsl:value-of select="$global_group"/>    
             </xsl:attribute>
             
-            <xsl:apply-templates select="mdb:metadataIdentifier/mcc:MD_Identifier[contains(mcc:codeSpace, 'uuid')]/mcc:code[string-length(.) > 0]" mode="registryObject_key"/>
+            <xsl:apply-templates select="mdb:metadataIdentifier/mcc:MD_Identifier[1]/mcc:code[string-length(.) > 0][1]" mode="registryObject_key"/>
         
             <originatingSource>
                 <xsl:value-of select="$originatingSource"/>
