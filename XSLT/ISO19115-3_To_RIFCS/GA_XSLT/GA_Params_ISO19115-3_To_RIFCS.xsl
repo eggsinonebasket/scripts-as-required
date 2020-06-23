@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" 
     xmlns:mdb="http://standards.iso.org/iso/19115/-3/mdb" 
-    xmlns:mcc="http://standards.iso.org/iso/19115/-3/mcc" 
+    xmlns:mcc="http://standards.iso.org/iso/19115/-3/mcc"
+    xmlns:csw="http://www.opengis.net/cat/csw/2.0.2"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    exclude-result-prefixes="xs mdb mcc"> 
+    exclude-result-prefixes="xs mdb mcc csw"> 
     
     <xsl:import href="ISO19115-3_Common_MiddleFilter.xsl"/>
     
@@ -14,12 +15,8 @@
     <xsl:param name="global_originatingSource" select="'Geoscience Australia'"/>
     <xsl:param name="global_acronym" select="'GA'"/>
     <xsl:param name="global_baseURI" select="'ecat.ga.gov.au'"/>
-    <xsl:param name="global_baseURI_PID" select="'pid.geoscience.gov.au'"/>
-    <xsl:param name="global_path_PID" select="'/dataset/ga/'"/>
     <xsl:param name="global_path" select="'/geonetwork/srv/eng/search?uuid='"/>
     <xsl:param name="global_group" select="'Geoscience Australia'"/>
-    <xsl:param name="global_publisherName" select="'Geoscience Australia'"/>
-    <xsl:param name="global_publisherPlace" select="'Canberra'"/>
     
     
     <!--xsl:template match="/">
@@ -58,7 +55,7 @@
     
     <xsl:template match="@*|node()" mode="filter">
         <xsl:message select="'Override filter for GA'"/>
-        <xsl:for-each select="//mdb:MD_Metadata[not(contains(lower-case(mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode/@codeListValue), 'document')) and not(contains(lower-case(mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode/@codeListValue), 'nongeographicdataset'))]">
+        <xsl:for-each select="//mdb:MD_Metadata[not(contains(lower-case(mdb:metadataScope[1]/mdb:MD_MetadataScope[1]/mdb:resourceScope[1]/mcc:MD_ScopeCode[1]/@codeListValue), 'document')) and not(contains(lower-case(mdb:metadataScope[1]/mdb:MD_MetadataScope[1]/mdb:resourceScope[1]/mcc:MD_ScopeCode[1]/@codeListValue), 'nongeographicdataset'))]">
             <xsl:apply-templates select="." mode="process"/>
         </xsl:for-each>
     </xsl:template>

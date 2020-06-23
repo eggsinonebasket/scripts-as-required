@@ -47,6 +47,7 @@
     <!-- override this in top-level xsl that call this, if you want to filter on anything,
         for example, MD_Metadata objects with a certain scopecode -->
     <xsl:template match="@*|node()" mode="filter">
+        <xsl:message select="'All mdb:MD_Metadata objects processed - override in higher xsl if filter required'"/>
         <xsl:for-each select="//mdb:MD_Metadata">
             <xsl:apply-templates select="." mode="process"/>
         </xsl:for-each>

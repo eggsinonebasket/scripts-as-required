@@ -188,6 +188,7 @@ outputDirectory = options.output_directory
 ###############################################################################################################################
 
 if os.path.exists(outputDirectory):
+    shutil.copytree(outputDirectory, outputDirectory+'bak')
     shutil.rmtree(outputDirectory)
 print("Constructing directory " + outputDirectory)
 os.makedirs(outputDirectory)

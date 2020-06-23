@@ -11,7 +11,7 @@
     
     <xsl:import href="ISO19115-3_Common_MiddleFilter.xsl"/>
     
-    <xsl:param name="global_debug" select="false()" as="xs:boolean"/>
+    <xsl:param name="global_debug" select="true()" as="xs:boolean"/>
     <xsl:param name="global_debugExceptions" select="true()" as="xs:boolean"/>
     <xsl:param name="global_originatingSource" select="'Integrated Marine Observing System'"/>
     <xsl:param name="global_acronym" select="'IMOS'"/>
@@ -55,7 +55,7 @@
     <xsl:strip-space elements="*"/>
     
     <xsl:template match="/">
-        <xsl:apply-templates select="copy-of(.)" mode="middleFilter"/>
+        <xsl:apply-templates select="." mode="middleFilter"/>
     </xsl:template>
       
 </xsl:stylesheet>

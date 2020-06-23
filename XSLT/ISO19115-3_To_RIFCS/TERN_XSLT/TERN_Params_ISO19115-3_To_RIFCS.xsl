@@ -10,13 +10,9 @@
     <xsl:param name="global_originatingSource" select="'Terrestrial Ecosystem Research Network (TERN)'"/>
     <xsl:param name="global_acronym" select="'TERN'"/>
     <xsl:param name="global_baseURI" select="'geonetwork.tern.org.au'"/>
-    <xsl:param name="global_baseURI_PID" select="'pid.tern.org.au'"/>
-    <xsl:param name="global_path_PID" select="'/dataset/tern/'"/>
     <xsl:param name="global_path" select="'/geonetwork/srv/eng/catalog.search#/metadata/'"/>
     <xsl:param name="global_group" select="'Terrestrial Ecosystem Research Network'"/>
-    <xsl:param name="global_publisherName" select="'Terrestrial Ecosystem Research Network (TERN)'"/>
-    <xsl:param name="global_publisherPlace" select="'Australia'"/>
-  
+   
   <!--xsl:template match="/">
         <registryObjects>
             <xsl:attribute name="xsi:schemaLocation">

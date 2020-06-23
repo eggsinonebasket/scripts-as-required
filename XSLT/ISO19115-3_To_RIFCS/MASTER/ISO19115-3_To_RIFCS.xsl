@@ -48,16 +48,11 @@
     <xsl:param name="global_debugExceptions" select="false()" as="xs:boolean"/>
     
     <!-- Override the following by constructing a stylesheet with the params below populated appropriately, then import this stylesheet.  Run the stylesheet with the params, on your source XML -->
-    <xsl:param name="global_PID_Codespace" select="''"/>
     <xsl:param name="global_originatingSource" select="''"/>
     <xsl:param name="global_acronym" select="''"/>
     <xsl:param name="global_baseURI" select="''"/>
-    <xsl:param name="global_baseURI_PID" select="''"/>
-    <xsl:param name="global_path_PID" select="''"/>
     <xsl:param name="global_path" select="''"/>
     <xsl:param name="global_group" select="''"/>
-    <xsl:param name="global_publisherName" select="''"/>
-    <xsl:param name="global_publisherPlace" select="''"/>
     <xsl:param name="global_spatialProjection" select="''"/>
     <xsl:variable name="licenseCodelist" select="document('license-codelist.xml')"/>
     <xsl:variable name="codelists" select="document('codelists_ISO19115-1.xml')"/>
@@ -82,6 +77,8 @@
     <!-- =========================================== -->
     
     <xsl:template match="mdb:MD_Metadata" mode="process">
+        
+        <xsl:message select="concat('debug : ', $global_debug)"/>
         
         <xsl:variable name="originatingSource">
             <xsl:choose>
@@ -112,7 +109,6 @@
                 <xsl:variable name="scopeCode" select="mdb:metadataScope[1]/mdb:MD_MetadataScope[1]/mdb:resourceScope[1]/mcc:MD_ScopeCode[1]/@codeListValue[1]"/>
                 <xsl:choose>
                     <xsl:when test="string-length($scopeCode) > 0">
-                        <xsl:message select="concat('Scopecode : ', $scopeCode)"/>
                         <xsl:choose>
                             <xsl:when test="substring(lower-case($scopeCode), 0, 8) = 'service'">
                                 <xsl:text>service</xsl:text>
@@ -187,19 +183,21 @@
                 <xsl:apply-templates select="mdb:metadataIdentifier/mcc:MD_Identifier[contains(mcc:codeSpace, 'uuid')]/mcc:code"
                     mode="registryObject_identifier_global"/>
                 
+                <xsl:apply-templates select="mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier/mcc:MD_Identifier[not(contains(mcc:codeSpace, 'uuid'))]/mcc:code"
+                    mode="registryObject_identifier_remaining"/>
+                
                 <xsl:choose>
-                   <xsl:when test="string-length(mdb:metadataLinkage/cit:CI_OnlineResource
-                        [contains(lower-case(cit:description), 'point-of-truth metadata')]/cit:linkage) > 0">
+                   <xsl:when test="count(mdb:metadataLinkage/cit:CI_OnlineResource/cit:linkage) > 0">
                         <xsl:apply-templates 
                             select="mdb:metadataLinkage/cit:CI_OnlineResource[contains(lower-case(cit:description), 'point-of-truth metadata')]/cit:linkage" 
                             mode="registryObject_identifier_metadata_URL"/>
                        
                        <xsl:apply-templates 
-                           select="mdb:metadataLinkage/cit:CI_OnlineResource[contains(lower-case(cit:description), 'point-of-truth metadata')]/cit:linkage" 
+                           select="mdb:metadataLinkage/cit:CI_OnlineResource/cit:linkage" 
                            mode="registryObject_location_metadata_URL"/>
                     </xsl:when>
-                    <xsl:when test="string-length(.//mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier/mcc:MD_Identifier[contains(lower-case(mcc:codeSpace), 'persistent identifier')]/mcc:code) > 0">
-                        <xsl:apply-templates select=".//mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier/mcc:MD_Identifier[contains(lower-case(mcc:codeSpace), 'persistent identifier')]/mcc:code"
+                    <xsl:when test="count(.//mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier/mcc:MD_Identifier[contains(lower-case(mcc:codeSpace), 'persistent identifier')]/mcc:code[string-length(.) > 0]) > 0">
+                        <xsl:apply-templates select="(.//mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier/mcc:MD_Identifier[contains(lower-case(mcc:codeSpace), 'persistent identifier')]/mcc:code[string-length(.) > 0])[1]"
                             mode="registryObject_location_PID"/>
                     </xsl:when>
                     <xsl:otherwise>
@@ -297,7 +295,7 @@
             mode="registryObject_rights_license_otherConstraint"/>
        
         <xsl:apply-templates
-            select="mri:resourceConstraints/mco:MD_LegalConstraints[(string-length(mco:reference/cit:CI_Citation/cit:title) > 0) and (mco:useConstraints/mco:MD_RestrictionCode/@codeListValue = 'license')]"
+            select="mri:resourceConstraints/mco:MD_LegalConstraints[(count(mco:reference/cit:CI_Citation) > 0)]"
             mode="registryObject_rights_license_citation"/>
         
         <xsl:apply-templates
@@ -374,6 +372,24 @@
   <xsl:template match="mcc:code" mode="registryObject_identifier_global">
         <identifier type="global">
             <xsl:value-of select="."/>
+        </identifier>
+    </xsl:template>
+    
+    <xsl:template match="mcc:code" mode="registryObject_identifier_remaining">
+        <identifier type="{custom:getIdentifierType(.)}">
+            <xsl:choose>
+                <xsl:when test="contains(., 'hdl:')">
+                    <xsl:attribute name="type" select="'handle'"/>
+                    <xsl:value-of select="normalize-space(replace(.,'hdl:', ''))"/>   
+                </xsl:when>
+                <xsl:when test="contains(., 'doi:')">
+                    <xsl:attribute name="type" select="'doi'"/>
+                    <xsl:value-of select="normalize-space(replace(.,'doi:', ''))"/>   
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="."/>
+                </xsl:otherwise>
+            </xsl:choose>
         </identifier>
     </xsl:template>
     
@@ -975,18 +991,29 @@
     
     <xsl:template match="mco:MD_LegalConstraints" mode="registryObject_rights_license_otherConstraint">
         
-        <xsl:variable name="licenceText" select="mco:otherConstraints"/>
-        <xsl:call-template name="populateLicence">
-            <xsl:with-param name="licenceText" select="$licenceText"/>
-        </xsl:call-template>
+        <xsl:if test="$global_debug = true()">
+            <xsl:message select="'registryObject_rights_license_otherConstraint'"/>
+        </xsl:if>
+        <xsl:for-each select="mco:otherConstraints">
+            <xsl:variable name="licenceText" select="."/>
+            <xsl:call-template name="populateLicence">
+                <xsl:with-param name="licenceText" select="$licenceText"/>
+            </xsl:call-template>
+        </xsl:for-each>
      </xsl:template>
     
     <xsl:template match="mco:MD_LegalConstraints" mode="registryObject_rights_license_citation">
         
-        <xsl:variable name="licenceText" select="mco:reference/cit:CI_Citation/cit:title"/>
-        <xsl:call-template name="populateLicence">
-            <xsl:with-param name="licenceText" select="$licenceText"/>
-        </xsl:call-template>
+        <xsl:if test="$global_debug = true()">
+            <xsl:message select="'registryObject_rights_license_citation'"/>
+        </xsl:if>
+        
+        <xsl:for-each select="mco:reference/cit:CI_Citation">
+         <xsl:variable name="licenceText" select="cit:title"/>
+         <xsl:call-template name="populateLicence">
+             <xsl:with-param name="licenceText" select="$licenceText"/>
+         </xsl:call-template>
+        </xsl:for-each>
         
     </xsl:template>
     
@@ -1064,6 +1091,15 @@
                                     <xsl:value-of select="$licenceText"/>
                                 </licence>
                             </rights>
+                            <xsl:for-each select="cit:onlineResource/cit:CI_OnlineResource/cit:linkage">
+                                <rights>
+                                    <licence>
+                                        <xsl:attribute name="rightsUri">
+                                            <xsl:value-of select="."/>
+                                        </xsl:attribute>
+                                    </licence>
+                                </rights>
+                            </xsl:for-each>
                          </xsl:otherwise>
                     </xsl:choose>
      </xsl:template>
@@ -1145,6 +1181,10 @@
                                             <xsl:attribute name="type" select="'handle'"/>
                                             <xsl:value-of select="normalize-space(replace($identifier,'hdl:', ''))"/>   
                                         </xsl:when>
+                                       <xsl:when test="contains($identifier, 'doi:')">
+                                           <xsl:attribute name="type" select="'doi'"/>
+                                           <xsl:value-of select="normalize-space(replace($identifier,'doi:', ''))"/>   
+                                       </xsl:when>
                                         <xsl:otherwise>
                                             <xsl:attribute name="type" select="'uri'"/>
                                             <xsl:value-of select="normalize-space($identifier)"/>   
