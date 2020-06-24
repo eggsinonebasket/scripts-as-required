@@ -16,9 +16,8 @@
     <xsl:import href="CustomFunctions.xsl"/>
     <xsl:import href="OAI_DC_To_Rifcs.xsl"/>
     
-    <xsl:param name="global_collectionPath" select="'/collections/'"/>
+    <xsl:param name="global_collectionKeyBase" select="'paradisec.org.au/collection/'"/>
     
-
     <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
     <xsl:template match="/">
@@ -54,7 +53,7 @@
         <xsl:if test="string-length($collectionId) > 0"></xsl:if>
         <relatedObject>
             <key>
-                <xsl:value-of select="concat($global_baseURI, $global_collectionPath, $collectionId)"/> 
+                <xsl:value-of select="concat($global_collectionKeyBase, $collectionId)"/> 
             </key>
             <relation type="isPartOf"/>
         </relatedObject>
