@@ -7,9 +7,11 @@
     xmlns:dc="http://purl.org/dc/elements/1.1/" 
     xmlns:oai="http://www.openarchives.org/OAI/2.0/" 
     xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" 
+    xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    exclude-result-prefixes="xsl murFunc custom dc oai oai_dc dcterms fn xs xsi">
 	
 	
     <xsl:import href="CustomFunctions.xsl"/>
@@ -45,15 +47,12 @@
             <xsl:apply-templates select="oai:metadata/oai_dc:dc" mode="party"/> 
      </xsl:template>
     
-    <xsl:template match="oai_dc:dc" mode="collection">
+    <xsl:template match="*" mode="collection">
         <xsl:variable name="class" select="'collection'"/>
         
-        <xsl:variable name="key" select="concat($global_acronym, ':', fn:generate-id(.))"/>
         <registryObject>
             <xsl:attribute name="group" select="$global_group"/>
-            <key>
-                <xsl:value-of select="$key"/>
-            </key>
+            <xsl:apply-templates select="." mode="collection_key"/>
             <originatingSource>
                 <xsl:value-of select="$global_originatingSource"/>
             </originatingSource>
@@ -74,6 +73,10 @@
                 
                 <xsl:apply-templates select="../../oai:header/oai:datestamp" mode="collection_date_accessioned"/>
                 
+                <xsl:apply-templates select="dcterms:bibliographicCitation[string-length(.) > 0]" mode="collection_extract_DOI_identifier"/>  
+                
+                <xsl:apply-templates select="dcterms:bibliographicCitation[string-length(.) > 0]" mode="collection_extract_DOI_location"/>  
+                
                 <xsl:apply-templates select="dc:identifier[string-length(.) > 0]" mode="collection_identifier"/>
                 
                 <xsl:apply-templates select="dc:identifier[contains(.,'doi') or contains(.,'10.')]" mode="collection_location_doi"/>
@@ -90,11 +93,19 @@
                 
                 <!-- xsl:apply-templates select="dc:identifier.orcid" mode="collection_relatedInfo"/ -->
                 
+                <xsl:apply-templates select="dc:identifier[not(@*) or not(string-length(@*))][1]" mode="collection_relatedObject"/>
+                
+                <xsl:apply-templates select="dc:identifier[@xsi:type ='dcterms:URI']" mode="collection_location_if_no_DOI"/>
+                
                 <xsl:apply-templates select="dc:creator[string-length(.) > 0]" mode="collection_relatedObject"/>
                
-                <xsl:apply-templates select="dc:subject[string-length(.) > 0]" mode="collection_subject"/>
+                <xsl:apply-templates select="dc:contributor[string-length(.) > 0]" mode="collection_relatedObject"/>
+                
+                <xsl:apply-templates select="dc:subject" mode="collection_subject"/>
                 
                 <xsl:apply-templates select="dc:coverage[string-length(.) > 0]" mode="collection_spatial_coverage"/>
+                
+                <xsl:apply-templates select="dcterms:created[string-length(.) > 0]" mode="collection_dates_created"/>
                 
                 <xsl:apply-templates select="dc:rights[string-length(.) > 0]" mode="collection_rights_rightsStatement"/>
                 
@@ -103,9 +114,17 @@
                 <xsl:apply-templates select="dc:date[string-length(.) > 0]" mode="collection_dates_coverage"/>  
                 
                 <xsl:apply-templates select="dc:source[string-length(.) > 0]" mode="collection_citation_info"/>  
-             
+                
+                <xsl:apply-templates select="dcterms:bibliographicCitation[string-length(.) > 0]" mode="collection_citation_info"/>  
+                
             </xsl:element>
         </registryObject>
+    </xsl:template>
+    
+    <xsl:template match="*" mode="collection_key">
+        <key>
+            <xsl:value-of select="concat($global_acronym, ':', fn:generate-id(.))"/>
+        </key>
     </xsl:template>
    
     
@@ -116,6 +135,15 @@
     <xsl:template match="oai:datestamp" mode="collection_date_accessioned">
         <xsl:attribute name="dateAccessioned" select="normalize-space(.)"/>
     </xsl:template>
+    
+    <xsl:template match="dcterms:bibliographicCitation" mode="collection_extract_DOI_identifier">
+        <!-- override to extract identifier from full citation, custom per provider -->
+    </xsl:template>  
+    
+    <xsl:template match="dcterms:bibliographicCitation" mode="collection_extract_DOI_location">
+        <!-- override to extract location from full citation, custom per provider -->
+    </xsl:template>
+    
        
     <xsl:template match="dc:identifier" mode="collection_identifier">
         <identifier type="{custom:getIdentifierType(.)}">
@@ -128,6 +156,10 @@
                 </xsl:otherwise>
             </xsl:choose>
         </identifier>    
+    </xsl:template>
+    
+    <xsl:template match="dc:identifier[@xsi:type ='dcterms:URI']" mode="collection_location_if_no_DOI">
+        <!--override if required-->
     </xsl:template>
     
      <xsl:template match="dc:identifier" mode="collection_location_doi">
@@ -193,6 +225,10 @@
         </relatedInfo>
     </xsl:template>
     
+    <xsl:template match="dc:identifier" mode="collection_relatedObject">
+        <!-- Override this -->
+    </xsl:template>
+    
     <xsl:template match="dc:creator" mode="collection_relatedObject">
             <relatedObject>
                 <key>
@@ -202,10 +238,30 @@
             </relatedObject>
     </xsl:template>
     
+    <xsl:template match="dc:contributor" mode="collection_relatedObject">
+        <relatedObject>
+            <key>
+                <xsl:value-of select="murFunc:formatKey(murFunc:formatName(.))"/> 
+            </key>
+            <relation type="hasCollector"/>
+        </relatedObject>
+    </xsl:template>
+    
+    <xsl:template match="dcterms:created" mode="collection_dates_created">
+        <dates type="dc.created">
+            <date type="dateFrom" dateFormat="{@xsi:type}">
+                <xsl:value-of select="."/>
+            </date>
+        </dates>
+    </xsl:template>
+
+    
     <xsl:template match="dc:subject" mode="collection_subject">
-        <subject type="local">
-            <xsl:value-of select="normalize-space(.)"/>
-        </subject>
+        <xsl:if test="string-length(.) > 0">
+            <subject type="local">
+                <xsl:value-of select="normalize-space(.)"/>
+            </subject>
+        </xsl:if>
     </xsl:template>
    
     <xsl:template match="dc:coverage" mode="collection_spatial_coverage">
@@ -334,7 +390,7 @@
         </coverage>
     </xsl:template>  
     
-    <xsl:template match="dc:source" mode="collection_citation_info">
+    <xsl:template match="dc:source | dcterms:bibliographicCitation" mode="collection_citation_info">
         <citationInfo>
            <fullCitation>
                 <xsl:value-of select="normalize-space(.)"/>
@@ -342,9 +398,9 @@
         </citationInfo>
     </xsl:template>  
              
-     <xsl:template match="oai_dc:dc" mode="party">
+     <xsl:template match="*" mode="party">
         
-        <xsl:for-each select="dc:creator">
+        <xsl:for-each select="dc:creator | dc:contributor">
             
             <xsl:variable name="name" select="normalize-space(.)"/>
             
