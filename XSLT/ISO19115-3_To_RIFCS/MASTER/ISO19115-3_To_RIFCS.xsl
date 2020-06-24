@@ -1141,23 +1141,7 @@
         <!-- Attempt to obtain contributor names; only construct citation if we have contributor names -->
         
         <xsl:variable name="allContributorName_sequence" as="xs:string*">
-            <xsl:choose>
-                <!-- use any invidual names that are either author or coAuthor -->
-                <xsl:when test="
-                    ((count(cit:citedResponsibleParty/cit:CI_Responsibility[contains(lower-case(cit:role/cit:CI_RoleCode/@codeListValue), 'author')]/cit:party/cit:CI_Individual/cit:name[string-length(.) > 0]) > 0) or
-                    (count(cit:citedResponsibleParty/cit:CI_Responsibility[contains(lower-case(cit:role/cit:CI_RoleCode/@codeListValue), 'author')]/cit:party/cit:CI_Organisation/cit:individual/cit:CI_Individual/cit:name[string-length(.) > 0]) > 0))">
-                    <!-- note that even when no results are found, value-of constructs empty text node, so copy-of is used below instead -->
-                    <xsl:copy-of select="cit:citedResponsibleParty/cit:CI_Responsibility[cit:role/cit:CI_RoleCode/@codeListValue = 'author']/cit:party/cit:CI_Individual/cit:name[string-length(.) > 0]"/>
-                    <xsl:copy-of select="cit:citedResponsibleParty/cit:CI_Responsibility[cit:role/cit:CI_RoleCode/@codeListValue = 'author']/cit:party/cit:CI_Organisation/cit:individual/cit:CI_Individual/cit:name[string-length(.) > 0]"/>
-                    <xsl:copy-of select="cit:citedResponsibleParty/cit:CI_Responsibility[cit:role/cit:CI_RoleCode/@codeListValue = 'coAuthor']/cit:party/cit:CI_Individual/cit:name[string-length(.) > 0]"/>
-                    <xsl:copy-of select="cit:citedResponsibleParty/cit:CI_Responsibility[cit:role/cit:CI_RoleCode/@codeListValue = 'coAuthor']/cit:party/cit:CI_Organisation/cit:individual/cit:CI_Individual/cit:name[string-length(.) > 0]"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <!-- there are no invidual names that are either author or coAuthor, so use organisation names -->
-                     <xsl:copy-of select="cit:citedResponsibleParty/cit:CI_Responsibility[cit:role/cit:CI_RoleCode/@codeListValue = 'author']/cit:party/cit:CI_Organisation/cit:name[string-length(.) > 0]"/>
-                    <xsl:copy-of select="cit:citedResponsibleParty/cit:CI_Responsibility[cit:role/cit:CI_RoleCode/@codeListValue = 'coAuthor']/cit:party/cit:CI_Organisation/cit:name[string-length(.) > 0]"/>
-                </xsl:otherwise>
-             </xsl:choose>
+            <xsl:apply-templates select="." mode="selectCitationContributors"/>
         </xsl:variable>
         
        <xsl:if test="$global_debug">
@@ -1175,7 +1159,7 @@
                         <xsl:choose>
                                 <xsl:when 
                                     test="count(cit:identifier/mcc:MD_Identifier/mcc:code) and (string-length(cit:identifier[1]/mcc:MD_Identifier/mcc:code[1]) > 0)">
-                                   <xsl:variable name="identifier" select="cit:identifier[1]/mcc:MD_Identifier/mcc:code[1]"/>   
+                                   <xsl:variable name="identifier" select="cit:identifier[1]/mcc:MD_Identifier[1]/mcc:code[1]"/>   
                                    <xsl:choose>
                                        <xsl:when test="contains($identifier, 'hdl:')">
                                             <xsl:attribute name="type" select="'handle'"/>
@@ -1288,6 +1272,25 @@
                </citationMetadata>
             </citationInfo>
         </xsl:if>
+    </xsl:template>
+    
+    <xsl:template match="cit:CI_Citation" mode="selectCitationContributors">
+       <!-- override if you want to filter citation contributors-->
+        <xsl:choose>
+            <!-- use any invidual names of any role -->
+            <xsl:when test="
+                ((count(cit:citedResponsibleParty/cit:CI_Responsibility/cit:party/cit:CI_Individual/cit:name[string-length(.) > 0]) > 0) or
+                (count(cit:citedResponsibleParty/cit:CI_Responsibility/cit:party/cit:CI_Organisation/cit:individual/cit:CI_Individual/cit:name[string-length(.) > 0]) > 0))">
+                <!-- note that even when no results are found, value-of constructs empty text node, so copy-of is used below instead -->
+                <xsl:copy-of select="cit:citedResponsibleParty/cit:CI_Responsibility/cit:party/cit:CI_Individual/cit:name[string-length(.) > 0]"/>
+                <xsl:copy-of select="cit:citedResponsibleParty/cit:CI_Responsibility/cit:party/cit:CI_Organisation/cit:individual/cit:CI_Individual/cit:name[string-length(.) > 0]"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <!-- there are no invidual names that are either author or coAuthor, so use organisation names -->
+                <xsl:copy-of select="cit:citedResponsibleParty/cit:CI_Responsibility/cit:party/cit:CI_Organisation/cit:name[string-length(.) > 0]"/>
+                <xsl:copy-of select="cit:citedResponsibleParty/cit:CI_Responsibility/cit:party/cit:CI_Organisation/cit:name[string-length(.) > 0]"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
     
   
