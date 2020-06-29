@@ -117,7 +117,17 @@
                 <xsl:attribute name="type">
                     <xsl:choose>
                         <xsl:when test="string-length(@xsi:type) > 0">
-                            <xsl:value-of select="@xsi:type"/>
+                            <xsl:choose>
+                                <xsl:when test="contains(@xsi:type,'dcterms:Box')">
+                                    <xsl:text>iso19139dcmiBox</xsl:text>
+                                </xsl:when>
+                                <xsl:when test="contains(@xsi:type,'dcterms:')">
+                                    <xsl:value-of select="substring-after(@xsi:type, 'dcterms:')"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:value-of select="@xsi:type"/>
+                                </xsl:otherwise>
+                            </xsl:choose>
                         </xsl:when>    
                         <xsl:otherwise>
                             <xsl:text>text</xsl:text>
