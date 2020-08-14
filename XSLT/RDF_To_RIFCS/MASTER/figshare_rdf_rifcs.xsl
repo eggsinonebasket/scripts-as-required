@@ -103,15 +103,21 @@
                     </xsl:when>
                 </xsl:choose>
             </xsl:variable>
+          
+          <xsl:variable name="oaiFigshareIdentifier" select="oai:header/oai:identifier"/>
+          <xsl:if test="string-length($oaiFigshareIdentifier)">
             <xsl:apply-templates select="oai:metadata/rdf:RDF" mode="collection">
+                <xsl:with-param name="oaiFigshareIdentifier" select="$oaiFigshareIdentifier"/>
                 <xsl:with-param name="type" select="$type"/>
             </xsl:apply-templates>
             <!-- xsl:apply-templates select="oai:metadata/rdf:RDF/dc:funding" mode="funding_party"/ -->
             <!-- xsl:apply-templates select="oai:metadata/rdf:RDF" mode="party"/-->
+          </xsl:if>
     </xsl:if>
     </xsl:template>
     
 <xsl:template match="rdf:RDF" mode="collection">
+        <xsl:param name="oaiFigshareIdentifier" as="xs:string"/>
         <xsl:param name="type" as="xs:string"/>
         <xsl:variable name="class" select="'collection'"/>
         
@@ -119,53 +125,57 @@
     
         <xsl:variable name="doiFull" select="*/bibo:doi"/>
         <xsl:variable name="doiLastPart" select="tokenize($doiFull, '/')[count(tokenize($doiFull, '/'))]"/>
+    
         
     <xsl:message select="concat('doiLastPart: ', $doiLastPart)"/>
+    <xsl:message select="concat('key to use: ', substring(string-join(for $n in fn:reverse(fn:string-to-codepoints($oaiFigshareIdentifier)) return string($n), ''), 0, 50))"/>
     
-        <registryObject>
-            <xsl:attribute name="group" select="$global_group"/>
-            <key>
-                <xsl:value-of select="substring(string-join(for $n in fn:string-to-codepoints(reverse(concat($doiLastPart, */rdfs:label))) return string($n), ''), 0, 50)"/>
-            </key>
-            <originatingSource>
-                <xsl:value-of select="$global_originatingSource"/>
-            </originatingSource>
-            <xsl:element name="{$class}">
-                
-                <xsl:attribute name="type" select="$type"/>
-             
-                <xsl:apply-templates select="*/vivo:dateModified/@rdf:resource[string-length(.) > 0]" mode="collection_date_modified"/>
-                
-                <xsl:apply-templates select="*/bibo:doi[string-length(.) > 0]" mode="collection_identifier"/>
-                
-                <xsl:apply-templates select="*/bibo:doi[string-length(.) > 0]" mode="collection_location"/>
-                
-                <xsl:if test="string-length(*/bibo:doi) = 0">
-                    <xsl:apply-templates select="*[1]/@rdf:about[(string-length(.) > 0)]" mode="collection_location"/>
-                </xsl:if>
-                
-                <xsl:apply-templates select="*/rdfs:label[string-length(.) > 0]" mode="collection_name"/>
-                
-                <xsl:apply-templates select="vivo:Authorship/vivo:relates/vcard:Individual/obo:ARG_2000029/foaf:Person[string-length(vivo:orcidId/@rdf:resource) > 0]" mode="collection_relatedInfo_orcid"/>
-                
-                <xsl:apply-templates select="vivo:Authorship/vivo:relates/vcard:Individual[count(obo:ARG_2000029/foaf:Person/vivo:orcidId/@rdf:resource) = 0]/vcard:hasName" mode="collection_relatedInfo_noOrcid"/>
-                
-                <!--xsl:apply-templates select="vcard:Name" mode="collection_relatedObject"/-->
-               
-                <xsl:apply-templates select="*/bibo:freetextKeyword[string-length(.) > 0]" mode="collection_subject"/>
-                
-                <xsl:apply-templates select="*/dc:rights[string-length(.) > 0]" mode="collection_rights_access"/>
-                
-                <xsl:apply-templates select="ancestor::oai:record/oai:header/oai:setSpec[contains(., 'category_')]" mode="collection_subject"/>
-               
-                <xsl:apply-templates select="*/bibo:abstract[string-length(.) > 0]" mode="collection_description_full"/>
-               
-                <xsl:apply-templates select="*/vivo:datePublished/@rdf:resource[string-length(.) > 0]" mode="collection_dates_issued"/>  
-             
-                <xsl:apply-templates select="*/vivo:dateCreated/@rdf:resource[string-length(.) > 0]" mode="collection_dates_created"/>  
-             
-            </xsl:element>
-        </registryObject>
+
+    <registryObject>
+        <xsl:attribute name="group" select="$global_group"/>
+        <key>
+            <xsl:value-of select="substring(string-join(for $n in fn:reverse(fn:string-to-codepoints($oaiFigshareIdentifier)) return string($n), ''), 0, 50)"/>
+        </key>
+        <originatingSource>
+            <xsl:value-of select="$global_originatingSource"/>
+        </originatingSource>
+        <xsl:element name="{$class}">
+            
+            <xsl:attribute name="type" select="$type"/>
+         
+            <xsl:apply-templates select="*/vivo:dateModified/@rdf:resource[string-length(.) > 0]" mode="collection_date_modified"/>
+            
+            <xsl:apply-templates select="*/bibo:doi[string-length(.) > 0]" mode="collection_identifier"/>
+            
+            <xsl:apply-templates select="*/bibo:doi[string-length(.) > 0]" mode="collection_location"/>
+            
+            <xsl:if test="string-length(*/bibo:doi) = 0">
+                <xsl:apply-templates select="*[1]/@rdf:about[(string-length(.) > 0)]" mode="collection_location"/>
+            </xsl:if>
+            
+            <xsl:apply-templates select="*/rdfs:label[string-length(.) > 0]" mode="collection_name"/>
+            
+            <xsl:apply-templates select="vivo:Authorship/vivo:relates/vcard:Individual/obo:ARG_2000029/foaf:Person[string-length(vivo:orcidId/@rdf:resource) > 0]" mode="collection_relatedInfo_orcid"/>
+            
+            <xsl:apply-templates select="vivo:Authorship/vivo:relates/vcard:Individual[count(obo:ARG_2000029/foaf:Person/vivo:orcidId/@rdf:resource) = 0]/vcard:hasName" mode="collection_relatedInfo_noOrcid"/>
+            
+            <!--xsl:apply-templates select="vcard:Name" mode="collection_relatedObject"/-->
+           
+            <xsl:apply-templates select="*/bibo:freetextKeyword[string-length(.) > 0]" mode="collection_subject"/>
+            
+            <xsl:apply-templates select="*/dc:rights[string-length(.) > 0]" mode="collection_rights_access"/>
+            
+            <xsl:apply-templates select="ancestor::oai:record/oai:header/oai:setSpec[contains(., 'category_')]" mode="collection_subject"/>
+           
+            <xsl:apply-templates select="*/bibo:abstract[string-length(.) > 0]" mode="collection_description_full"/>
+           
+            <xsl:apply-templates select="*/vivo:datePublished/@rdf:resource[string-length(.) > 0]" mode="collection_dates_issued"/>  
+         
+            <xsl:apply-templates select="*/vivo:dateCreated/@rdf:resource[string-length(.) > 0]" mode="collection_dates_created"/>  
+         
+        </xsl:element>
+    </registryObject>
+    
     </xsl:template>
    
     

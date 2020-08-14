@@ -19,6 +19,7 @@
     <!-- change the following the the correct demo content for the contributor that you are working with and set $compareWithDemo to true()-->
     <!--xsl:variable name="demoRifCs" select="document('/home/ada168/projects/UniversityOfCanberra/PURE-at-University-of-Canberra-RIF-CS-Export_demo_Collections.xml')"/-->
     <xsl:variable name="demoRifCs" select="document('/home/ada168/projects/RMIT/RMIT-Figshare-RIF-CS-Export_DemoFigshare.xml')"/>
+    <!--xsl:variable name="demoRifCs" select="document('/home/ada168/projects/UNE_Project/FromRDA/university-of-new-england-une-dspace-RIF-CS-Export_demo.xml')"/-->
     
     <xsl:template match="node()|@*">
         <xsl:copy>

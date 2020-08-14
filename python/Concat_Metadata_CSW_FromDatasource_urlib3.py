@@ -188,7 +188,11 @@ outputDirectory = options.output_directory
 ###############################################################################################################################
 
 if os.path.exists(outputDirectory):
-    shutil.copytree(outputDirectory, outputDirectory+'bak')
+    print("Backing up directory " + outputDirectory + " to " + outputDirectory+'_bak')
+    if os.path.exists(outputDirectory+'_bak'):
+        shutil.rmtree(outputDirectory+'_bak')
+    shutil.copytree(outputDirectory, outputDirectory+'_bak')
+    print("Removing directory " + outputDirectory + " (already backed up)")
     shutil.rmtree(outputDirectory)
 print("Constructing directory " + outputDirectory)
 os.makedirs(outputDirectory)

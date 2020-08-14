@@ -22,7 +22,8 @@
     <xsl:param name="global_publisherName" select="''"/>
     <xsl:param name="global_baseURI" select="''"/>
     <xsl:param name="global_path" select="''"/>
-    
+    <xsl:param name="global_rightsStatement" select="''"/>
+      
     <xsl:variable name="licenseCodelist" select="document('license-codelist.xml')"/>
     
 

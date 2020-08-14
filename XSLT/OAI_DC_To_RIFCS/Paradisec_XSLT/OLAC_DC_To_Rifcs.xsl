@@ -17,6 +17,11 @@
     <xsl:import href="OAI_DC_To_Rifcs.xsl"/>
     
     <xsl:param name="global_collectionKeyBase" select="'paradisec.org.au/collection/'"/>
+    <xsl:param name="global_language_resolution_iso636-3" select="'https://iso639-3.sil.org/code/'"/>
+    <xsl:param name="global_language_resolution_glottolog" select="'https://glottolog.org/glottolog?iso='"/>
+    <xsl:param name="global_language_resolution_archive" select="'http://www.language-archives.org/language/'"/>
+    <xsl:param name="global_access_conditions" select="''"/>
+    <xsl:param name="global_rightsStatement" select="''"/>
     
     <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
@@ -105,10 +110,64 @@
     
     <xsl:template match="dc:subject" mode="collection_subject">
         <xsl:if test="(string-length(@xsi:type) > 0) and (string-length(@olac:code) > 0)">
-            <subject type="{@xsi:type}">
-                <xsl:value-of select="normalize-space(@olac:code)"/>
-            </subject>
+            <xsl:choose>
+                <xsl:when test="@xsi:type = 'olac:language'">
+                    <subject>
+                        <xsl:attribute name="type">
+                            <xsl:value-of select="@xsi:type"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="termIdentifier">
+                            <xsl:value-of select="concat($global_language_resolution_iso636-3, @olac:code)"/>
+                        </xsl:attribute>
+                        <xsl:value-of select="normalize-space(@olac:code)"/>
+                    </subject>
+                    <relatedInfo type="reuseInformation">
+                        <identifier type="uri">
+                            <xsl:value-of select="concat($global_language_resolution_iso636-3, @olac:code)"/>
+                        </identifier>
+                    </relatedInfo>
+                    <relatedInfo type="reuseInformation">
+                        <identifier type="uri">
+                            <xsl:value-of select="concat($global_language_resolution_glottolog, @olac:code)"/>
+                        </identifier>
+                    </relatedInfo>
+                    <relatedInfo type="reuseInformation">
+                        <identifier type="uri">
+                            <xsl:value-of select="concat($global_language_resolution_archive, @olac:code)"/>
+                        </identifier>
+                    </relatedInfo>
+                </xsl:when>
+                <xsl:otherwise>
+                    <subject type="{@xsi:type}">
+                        <xsl:value-of select="normalize-space(@olac:code)"/>
+                    </subject>
+                </xsl:otherwise>
+            </xsl:choose>
+            
         </xsl:if>
+    </xsl:template>
+    
+    <xsl:template match="dc:rights" mode="collection_rights_rightsStatement">
+            <rights>
+                <accessRights>
+                    <xsl:attribute name="type">
+                        <xsl:if test="contains(lower-case(.), 'open')">
+                            <xsl:text>open</xsl:text>
+                        </xsl:if>
+                    </xsl:attribute>
+                    <xsl:if test="string-length($global_access_conditions) > 0">
+                     <xsl:attribute name="rightsUri">
+                         <xsl:value-of select="$global_access_conditions"/>
+                     </xsl:attribute>
+                    </xsl:if>
+                </accessRights>
+                <xsl:if test="string-length($global_rightsStatement) > 0">
+                    <rightsStatement>
+                        <xsl:value-of select="$global_rightsStatement"/>
+                    </rightsStatement>
+                </xsl:if>
+            </rights>
+        
     </xsl:template>
     
     <xsl:template match="dc:coverage" mode="collection_spatial_coverage">

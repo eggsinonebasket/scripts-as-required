@@ -57,5 +57,7 @@
     <xsl:template match="/">
         <xsl:apply-templates select="." mode="middleFilter"/>
     </xsl:template>
+    
+    
       
 </xsl:stylesheet>

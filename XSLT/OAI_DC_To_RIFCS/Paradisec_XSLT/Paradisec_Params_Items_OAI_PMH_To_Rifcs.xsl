@@ -14,9 +14,9 @@
     <xsl:param name="global_publisherName" select="'PARADISEC'"/>
     <xsl:param name="global_baseURI" select="'http://catalog.paradisec.org.au'"/>
     <xsl:param name="global_path" select="'/repository/'"/>
+    <xsl:param name="global_access_conditions" select="'https://www.paradisec.org.au/deposit/access-conditions'"/>
+    <xsl:param name="global_rightsStatement" select="'Access to the catalog entry is open, but access to records is only open to registered users'"/>
     
-    
-   
     
 </xsl:stylesheet>
     

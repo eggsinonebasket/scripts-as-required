@@ -117,12 +117,16 @@
                                         <xsl:value-of select="normalize-space(mdb:identificationInfo/srv:SV_ServiceIdentification/srv:serviceType)"/>
                                     </xsl:when>
                                     <xsl:otherwise>
-                                        <xsl:text>software</xsl:text>
+                                        <xsl:text>report</xsl:text>
                                     </xsl:otherwise>
                                 </xsl:choose>
                                 
                             </xsl:when>
                             <xsl:when test="substring(lower-case($scopeCode), 0, 9) = 'software'">
+                                <xsl:text>collection</xsl:text>
+                                <xsl:text>software</xsl:text>
+                            </xsl:when>
+                            <xsl:when test="substring(lower-case($scopeCode), 0, 6) = 'model'">
                                 <xsl:text>collection</xsl:text>
                                 <xsl:text>software</xsl:text>
                             </xsl:when>
@@ -137,6 +141,14 @@
                             <xsl:when test="substring(lower-case($scopeCode), 0, 8) = 'dataset'">
                                 <xsl:text>collection</xsl:text>
                                 <xsl:text>dataset</xsl:text>
+                            </xsl:when>
+                            <xsl:when test="substring(lower-case($scopeCode), 0, 19) = 'collectionhardware'">
+                                <xsl:text>activity</xsl:text>
+                                <xsl:text>project</xsl:text>
+                            </xsl:when>
+                            <xsl:when test="substring(lower-case($scopeCode), 0, 7) = 'series'">
+                                <xsl:text>activity</xsl:text>
+                                <xsl:text>program</xsl:text>
                             </xsl:when>
                             <xsl:otherwise>
                                 <xsl:text>collection</xsl:text>
@@ -166,17 +178,20 @@
                 <xsl:for-each select=".//mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource">
                     <!-- Test for service (then call relatedService but only if current registry object is a collection); otherwise, handle as non service for all objects -->
                     <xsl:choose>
-                        <xsl:when test="contains(lower-case(cit:linkage), 'thredds') or contains(lower-case(cit:linkage), '.nc')">
-                            <!-- Not sure what to do with many thredds and .nc links just yet - download link maybe later -->
+                        <xsl:when test="contains(lower-case(cit:linkage), 'thredds')">
+                            <xsl:if test="$registryObjectTypeSubType_sequence[1] = 'collection'">
+                                <xsl:apply-templates select="." mode="registryObject_relatedInfo_service"/>
+                            </xsl:if>
                         </xsl:when>
                         <xsl:when test="contains(cit:protocol, 'ESRI') or contains(cit:protocol, 'OGC') or contains(lower-case(cit:linkage), '?')">
                                 <xsl:if test="$registryObjectTypeSubType_sequence[1] = 'collection'">
                                     <xsl:apply-templates select="." mode="registryObject_relatedInfo_service"/>
                                 </xsl:if>
-                          </xsl:when>
-                        <xsl:when test="not(contains(lower-case(cit:description), 'point-of-truth'))">
+                        </xsl:when>
+                        <xsl:when test="not(contains(lower-case(cit:protocol), 'metadata-URL'))">
                             <xsl:apply-templates select="." mode="registryObject_relatedInfo_nonService"/>
                         </xsl:when>
+                        
                     </xsl:choose>
                 </xsl:for-each>
                 
@@ -283,7 +298,7 @@
             mode="registryObject_description_brief"/>
         
         <xsl:apply-templates select="mri:extent/gex:EX_Extent/gex:geographicElement/gex:EX_GeographicBoundingBox" mode="registryObject_coverage_spatial"/>
-        <xsl:apply-templates select="mri:extent/gex:EX_Extent/gex:geographicElement/gex:EX_BoundingPolygon" mode="registryObject_coverage_spatial"/>
+        <xsl:apply-templates select="mri:extent/gex:EX_Extent/gex:geographicElement/gex:EX_BoundingPolygon/gex:polygon/gml:Polygon" mode="registryObject_coverage_spatial"/>
        
        
         <xsl:apply-templates
@@ -811,6 +826,25 @@
             </description>
         </xsl:if>
     </xsl:template>
+    
+    <xsl:template match="gml:Polygon" mode="registryObject_coverage_spatial">
+        
+        <coverage>
+            <spatial>
+                <xsl:attribute name="type">
+                    <xsl:text>gmlKmlPolyCoords</xsl:text>
+                </xsl:attribute>
+                <xsl:value-of select="."/>
+            </spatial>
+            <spatial>
+                <xsl:attribute name="type">
+                    <xsl:text>text</xsl:text>
+                </xsl:attribute>
+                <xsl:value-of select="."/>
+            </spatial>
+        </coverage>
+    </xsl:template>
+    
     
    <!-- RegistryObject - Coverage Spatial Element -->
     <xsl:template match="gex:EX_GeographicBoundingBox" mode="registryObject_coverage_spatial">
@@ -1475,42 +1509,49 @@
     
                      
     <xsl:template match="cit:CI_Address">
-       <location>
-        <address>
-            <physical type="streetAddress">
-               
-                <xsl:for-each select="cit:deliveryPoint">
-                     <addressPart type="addressLine">
-                         <xsl:value-of select="normalize-space(.)"/>
-                     </addressPart>
-                </xsl:for-each>
-                
-                 <xsl:for-each select="cit:city">
-                      <addressPart type="suburbOrPlaceLocality">
-                          <xsl:value-of select="normalize-space(.)"/>
-                      </addressPart>
-                </xsl:for-each>
-                
-                 <xsl:for-each select="cit:administrativeArea">
-                     <addressPart type="stateOrTerritory">
-                         <xsl:value-of select="normalize-space(.)"/>
-                     </addressPart>
-                 </xsl:for-each>
-                    
-                 <xsl:for-each select="cit:postalCode">
-                     <addressPart type="postCode">
-                         <xsl:value-of select="normalize-space(.)"/>
-                     </addressPart>
-                 </xsl:for-each>
-                 
-                  <xsl:for-each select="cit:country">
-                     <addressPart type="country">
-                         <xsl:value-of select="normalize-space(.)"/>
-                     </addressPart>
-                </xsl:for-each>
-            </physical>
-        </address>
-    </location>
+        <xsl:if test="
+            (count(cit:deliveryPoint[string-length(.) > 0]) > 0) or
+            (count(cit:city[string-length(.) > 0]) > 0) or
+            (count(cit:administrativeArea[string-length(.) > 0]) > 0) or
+            (count(cit:postalCode[string-length(.) > 0]) > 0) or
+            (count(cit:country[string-length(.) > 0]) > 0)">
+            <location>
+                <address>
+                    <physical type="streetAddress">
+                       
+                        <xsl:for-each select="cit:deliveryPoint">
+                             <addressPart type="addressLine">
+                                 <xsl:value-of select="normalize-space(.)"/>
+                             </addressPart>
+                        </xsl:for-each>
+                        
+                         <xsl:for-each select="cit:city">
+                              <addressPart type="suburbOrPlaceLocality">
+                                  <xsl:value-of select="normalize-space(.)"/>
+                              </addressPart>
+                        </xsl:for-each>
+                        
+                         <xsl:for-each select="cit:administrativeArea">
+                             <addressPart type="stateOrTerritory">
+                                 <xsl:value-of select="normalize-space(.)"/>
+                             </addressPart>
+                         </xsl:for-each>
+                            
+                         <xsl:for-each select="cit:postalCode">
+                             <addressPart type="postCode">
+                                 <xsl:value-of select="normalize-space(.)"/>
+                             </addressPart>
+                         </xsl:for-each>
+                         
+                          <xsl:for-each select="cit:country">
+                             <addressPart type="country">
+                                 <xsl:value-of select="normalize-space(.)"/>
+                             </addressPart>
+                        </xsl:for-each>
+                    </physical>
+                </address>
+            </location>
+        </xsl:if>
     </xsl:template>
     
     <xsl:template match="cit:electronicMailAddress">

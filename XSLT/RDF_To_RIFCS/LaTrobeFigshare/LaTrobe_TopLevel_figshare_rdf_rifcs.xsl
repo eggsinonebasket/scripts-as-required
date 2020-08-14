@@ -24,7 +24,7 @@
     
     <xsl:param name="global_originatingSource" select="'La Trobe University Figshare'"/>
     <xsl:param name="global_baseURI" select="'latrobe.edu.au'"/>
-    <xsl:param name="global_group" select="'La Trobe University Figshare'"/>
+    <xsl:param name="global_group" select="'La Trobe University'"/>
     <xsl:param name="global_publisherName" select="'La Trobe University'"/>
 
   <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
