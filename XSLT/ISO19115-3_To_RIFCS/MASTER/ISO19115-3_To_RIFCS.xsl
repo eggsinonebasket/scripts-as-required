@@ -178,17 +178,22 @@
                 <xsl:for-each select=".//mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource">
                     <!-- Test for service (then call relatedService but only if current registry object is a collection); otherwise, handle as non service for all objects -->
                     <xsl:choose>
-                        <xsl:when test="contains(lower-case(cit:linkage), 'thredds')">
-                            <xsl:if test="$registryObjectTypeSubType_sequence[1] = 'collection'">
-                                <xsl:apply-templates select="." mode="registryObject_relatedInfo_service"/>
-                            </xsl:if>
-                        </xsl:when>
-                        <xsl:when test="contains(cit:protocol, 'ESRI') or contains(cit:protocol, 'OGC') or contains(lower-case(cit:linkage), '?')">
-                                <xsl:if test="$registryObjectTypeSubType_sequence[1] = 'collection'">
-                                    <xsl:apply-templates select="." mode="registryObject_relatedInfo_service"/>
-                                </xsl:if>
+                        <xsl:when test="($registryObjectTypeSubType_sequence[1] = 'collection') and 
+                            (contains(lower-case(cit:protocol), 'esri') or 
+                            contains(lower-case(cit:protocol), 'ogc') or 
+                            contains(cit:linkage, '?') or
+                            contains(lower-case(cit:linkage), 'thredds') or
+                            contains(lower-case(cit:linkage), 'geoserver/ows') or
+                            contains(lower-case(cit:linkage), 'geoserver/wms') or
+                            contains(lower-case(cit:linkage), 'geoserver/wmts') or
+                            contains(lower-case(cit:linkage), 'geoserver/wps') or
+                            contains(lower-case(cit:linkage), 'geoserver/wcs') or
+                            contains(lower-case(cit:linkage), 'geoserver/wfs'))">
+                            <xsl:message select="concat('cit:protocol for service', cit:protocol)"></xsl:message>
+                            <xsl:apply-templates select="." mode="registryObject_relatedInfo_service"/>
                         </xsl:when>
                         <xsl:when test="not(contains(lower-case(cit:protocol), 'metadata-URL'))">
+                            <xsl:message select="concat('cit:protocol for non-service', cit:protocol)"></xsl:message>
                             <xsl:apply-templates select="." mode="registryObject_relatedInfo_nonService"/>
                         </xsl:when>
                         
@@ -937,35 +942,52 @@
     
   <xsl:template match="cit:CI_OnlineResource" mode="registryObject_relatedInfo_service">       
         
-        <xsl:variable name="identifierValue" select="normalize-space(cit:linkage)"/>
+        <xsl:variable name="identifierToUse">
+            <xsl:choose>
+                 <xsl:when test="contains(cit:linkage, '?')">
+                    <xsl:value-of select="substring-before(., '?')"/>
+                </xsl:when>
+                <!-- if we are refering to a thredds endpoint but we are not at catalogue level but rather down in a file
+                        we can truncate up to the root catalogue -->
+                <xsl:when test="contains(cit:linkage, '/thredds/') and not(contains(cit:linkage, 'catalog.'))">
+                    <xsl:value-of select="concat(substring-before(., '/thredds/'), '/thredds/', 'catalog.html')"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="cit:linkage"/>
+                </xsl:otherwise>
+                </xsl:choose>
+        </xsl:variable> 
         
         <relatedInfo>
             <xsl:attribute name="type" select="'service'"/>   
             
-            <xsl:apply-templates select="." mode="relatedInfo_all"/>
+            <xsl:apply-templates select="." mode="relatedInfo_all">
+                <xsl:with-param name="identifierToUse" select="$identifierToUse"/>
+            </xsl:apply-templates>
             
             <relation>
                 <xsl:attribute name="type">
                     <xsl:text>supports</xsl:text>
                 </xsl:attribute>
-                <xsl:if test="(contains($identifierValue, '?')) or (contains($identifierValue, '.nc'))">
+                <xsl:if test="not(string-length($identifierToUse) = string-length(cit:linkage))">
                     <url>
-                        <xsl:value-of select="$identifierValue"/>
+                        <xsl:value-of select="cit:linkage"/>
                     </url>
                 </xsl:if>
             </relation>
-            
             
         </relatedInfo>
         
     </xsl:template>
     
-    <xsl:template match="cit:CI_OnlineResource" mode="registryObject_relatedInfo_nonService">       
+    <xsl:template match="cit:CI_OnlineResource" mode="registryObject_relatedInfo_nonService">  
         
         <relatedInfo>
             <xsl:attribute name="type" select="'relatedInformation'"/>   
             
-            <xsl:apply-templates select="." mode="relatedInfo_all"/>
+            <xsl:apply-templates select="." mode="relatedInfo_all">
+                <xsl:with-param name="identifierToUse" select="cit:linkage"/>
+            </xsl:apply-templates>
             
             <relation>
                 <xsl:attribute name="type">
@@ -980,22 +1002,13 @@
     
     
     <xsl:template match="cit:CI_OnlineResource" mode="relatedInfo_all">     
-        
-        <xsl:variable name="identifierValue" select="normalize-space(cit:linkage)"/>
+        <xsl:param name="identifierToUse" select="normalize-space(cit:linkage)"/> <!-- can be overriden -->
         
         <identifier>
             <xsl:attribute name="type">
-                <xsl:value-of select="custom:getIdentifierType($identifierValue)"/>
+                <xsl:value-of select="custom:getIdentifierType($identifierToUse)"/>
             </xsl:attribute>
-            <xsl:choose>
-                <xsl:when test="contains($identifierValue, '?')">
-                    <xsl:value-of select="substring-before(., '?')"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:value-of select="$identifierValue"/>
-                </xsl:otherwise>
-            </xsl:choose>
-            
+            <xsl:value-of select="$identifierToUse"/>
         </identifier>
         
         <xsl:choose>
