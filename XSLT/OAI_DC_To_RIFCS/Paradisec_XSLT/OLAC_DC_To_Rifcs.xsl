@@ -20,6 +20,7 @@
     <xsl:param name="global_language_resolution_iso636-3" select="'https://iso639-3.sil.org/code/'"/>
     <xsl:param name="global_language_resolution_glottolog" select="'https://glottolog.org/glottolog?iso='"/>
     <xsl:param name="global_language_resolution_archive" select="'http://www.language-archives.org/language/'"/>
+    <xsl:param name="global_access_text_open" select="''"/>
     <xsl:param name="global_access_conditions" select="''"/>
     <xsl:param name="global_rightsStatement" select="''"/>
     
@@ -108,6 +109,8 @@
         </xsl:if>
     </xsl:template>
     
+   
+    
     <xsl:template match="dc:subject" mode="collection_subject">
         <xsl:if test="(string-length(@xsi:type) > 0) and (string-length(@olac:code) > 0)">
             <xsl:choose>
@@ -150,11 +153,13 @@
     <xsl:template match="dc:rights" mode="collection_rights_rightsStatement">
             <rights>
                 <accessRights>
-                    <xsl:attribute name="type">
-                        <xsl:if test="contains(lower-case(.), 'open')">
-                            <xsl:text>open</xsl:text>
-                        </xsl:if>
-                    </xsl:attribute>
+                    <xsl:choose>
+                        <xsl:when test="(string-length($global_access_text_open) > 0) and (. = $global_access_text_open)">
+                            <xsl:attribute name="type">
+                                <xsl:text>open</xsl:text>
+                            </xsl:attribute>
+                        </xsl:when>
+                    </xsl:choose>
                     <xsl:if test="string-length($global_access_conditions) > 0">
                      <xsl:attribute name="rightsUri">
                          <xsl:value-of select="$global_access_conditions"/>
