@@ -1,0 +1,5308 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+  <row>
+    <parent_id>48</parent_id>
+    <id>1</id>
+    <title>Biophysics</title>
+  </row>
+  <row>
+    <parent_id>30</parent_id>
+    <id>2</id>
+    <title>Uncategorized</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>4</id>
+    <title>Biochemistry</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>7</id>
+    <title>Medicine</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>8</id>
+    <title>Microbiology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>10</id>
+    <title>Anatomy</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>11</id>
+    <title>Behavioral Neuroscience</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>12</id>
+    <title>Cell Biology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>13</id>
+    <title>Genetics</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>14</id>
+    <title>Molecular Biology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>15</id>
+    <title>Neuroscience</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>16</id>
+    <title>Physiology</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>17</id>
+    <title>Geography</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>19</id>
+    <title>Pharmacology</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>20</id>
+    <title>Computer Engineering</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>21</id>
+    <title>Biotechnology</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>23</id>
+    <title>Software Engineering</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>24</id>
+    <title>Evolutionary Biology</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>25</id>
+    <title>Anthropology</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>27</id>
+    <title>Economics</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>28</id>
+    <title>Paleontology</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>29</id>
+    <title>Geology</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>31</id>
+    <title>Environmental Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>32</id>
+    <title>Geochemistry</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>34</id>
+    <title>Environmental Science</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>35</id>
+    <title>Limnology</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>36</id>
+    <title>Oceanography</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>37</id>
+    <title>Organic Chemistry</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>39</id>
+    <title>Ecology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>42</id>
+    <title>Biological Engineering</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>44</id>
+    <title>Toxicology</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>45</id>
+    <title>Sociology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>46</id>
+    <title>Immunology</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>47</id>
+    <title>Stereochemistry</title>
+  </row>
+  <row>
+    <parent_id>43</parent_id>
+    <id>54</id>
+    <title>Planetary Geology</title>
+  </row>
+  <row>
+    <parent_id>43</parent_id>
+    <id>55</id>
+    <title>Stellar Astronomy</title>
+  </row>
+  <row>
+    <parent_id>43</parent_id>
+    <id>56</id>
+    <title>Galactic Astronomy</title>
+  </row>
+  <row>
+    <parent_id>43</parent_id>
+    <id>57</id>
+    <title>Cosmology</title>
+  </row>
+  <row>
+    <parent_id>43</parent_id>
+    <id>58</id>
+    <title>Astrophysics</title>
+  </row>
+  <row>
+    <parent_id>43</parent_id>
+    <id>59</id>
+    <title>Planetary Science</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>61</id>
+    <title>Developmental Biology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>62</id>
+    <title>Marine Biology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>63</id>
+    <title>Parasitology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>64</id>
+    <title>Cancer</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>65</id>
+    <title>Botany</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>66</id>
+    <title>Crystallography</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>69</id>
+    <title>Inorganic Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>70</id>
+    <title>Molecular Physics</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>71</id>
+    <title>Nuclear Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>73</id>
+    <title>Radiochemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>75</id>
+    <title>Supramolecular Chemistry</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>76</id>
+    <title>Theoretical Computer Science</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>77</id>
+    <title>Applied Computer Science</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>78</id>
+    <title>Atmospheric Sciences</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>79</id>
+    <title>Geophysics</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>80</id>
+    <title>Hydrology</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>82</id>
+    <title>Mineralogy</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>84</id>
+    <title>Paleoclimatology</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>85</id>
+    <title>Palynology</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>86</id>
+    <title>Physical Geography</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>87</id>
+    <title>Soil Science</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>88</id>
+    <title>Agricultural Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>89</id>
+    <title>Aerospace Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>90</id>
+    <title>Genetic Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>91</id>
+    <title>Mechanical Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>92</id>
+    <title>Nuclear Engineering</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>94</id>
+    <title>Art</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>95</id>
+    <title>Design</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>97</id>
+    <title>Law</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>98</id>
+    <title>Literature</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>99</id>
+    <title>Performing Arts</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>100</id>
+    <title>Philosophy</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>102</id>
+    <title>Algebra</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>103</id>
+    <title>Geometry</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>104</id>
+    <title>Probability</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>105</id>
+    <title>Statistics</title>
+  </row>
+  <row>
+    <parent_id>40</parent_id>
+    <id>106</id>
+    <title>Science Policy</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>107</id>
+    <title>Applied Physics</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>108</id>
+    <title>Atomic Physics</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>109</id>
+    <title>Computational Physics</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>110</id>
+    <title>Condensed Matter Physics</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>111</id>
+    <title>Mechanics</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>112</id>
+    <title>Particle Physics</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>113</id>
+    <title>Plasma Physics</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>114</id>
+    <title>Quantum Mechanics</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>115</id>
+    <title>Solid Mechanics</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>116</id>
+    <title>Thermodynamics</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>117</id>
+    <title>Entropy</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>118</id>
+    <title>General Relativity</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>119</id>
+    <title>M-Theory</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>120</id>
+    <title>Special Relativity</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>122</id>
+    <title>Mental Health</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>125</id>
+    <title>Bioinformatics</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>126</id>
+    <title>History</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>127</id>
+    <title>Archaeology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>128</id>
+    <title>Hematology</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>129</id>
+    <title>Education</title>
+  </row>
+  <row>
+    <parent_id>40</parent_id>
+    <id>130</id>
+    <title>Survey Results</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>131</id>
+    <title>Anesthesiology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>132</id>
+    <title>Infectious Diseases</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>133</id>
+    <title>Plant Biology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>134</id>
+    <title>Virology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>135</id>
+    <title>Computational  Biology</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>136</id>
+    <title>NMR Spectroscopy</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>137</id>
+    <title>Cheminformatics</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>138</id>
+    <title>Numerical Analysis</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>139</id>
+    <title>Pathology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>140</id>
+    <title>Cardiology</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>141</id>
+    <title>Computational Chemistry</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>143</id>
+    <title>Solid Earth Sciences</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>144</id>
+    <title>Climate Science</title>
+  </row>
+  <row>
+    <parent_id>43</parent_id>
+    <id>145</id>
+    <title>Solar System, Solar Physics, Planets and Exoplanets</title>
+  </row>
+  <row>
+    <parent_id>43</parent_id>
+    <id>146</id>
+    <title>Space Science</title>
+  </row>
+  <row>
+    <parent_id>43</parent_id>
+    <id>147</id>
+    <title>Stars, Variable Stars</title>
+  </row>
+  <row>
+    <parent_id>43</parent_id>
+    <id>148</id>
+    <title>Instrumentation, Techniques, and Astronomical Observations</title>
+  </row>
+  <row>
+    <parent_id>43</parent_id>
+    <id>149</id>
+    <title>Interstellar and Intergalactic Matter</title>
+  </row>
+  <row>
+    <parent_id>43</parent_id>
+    <id>150</id>
+    <title>Extragalactic Astronomy</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>151</id>
+    <title>Biomarkers</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>152</id>
+    <title>Pathogenesis</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>153</id>
+    <title>Health Care</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>154</id>
+    <title>Diseases</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>155</id>
+    <title>Stem Cells</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>156</id>
+    <title>Systems Biology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>157</id>
+    <title>Structural Biology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>158</id>
+    <title>Biological Techniques</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>159</id>
+    <title>Zoology</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>160</id>
+    <title>Digital Humanities</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>161</id>
+    <title>Disability Studies</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>162</id>
+    <title>Drama</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>163</id>
+    <title>Entertainment</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>164</id>
+    <title>Environmental Humanities</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>165</id>
+    <title>Ethnic Studies</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>166</id>
+    <title>Gender studies</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>167</id>
+    <title>Language</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>168</id>
+    <title>Linguistics</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>169</id>
+    <title>Media Studies</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>170</id>
+    <title>Museology</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>171</id>
+    <title>Religious Studies</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>172</id>
+    <title>Rhetoric</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>173</id>
+    <title>Applied Psychology</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>174</id>
+    <title>Clinical Psychology</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>175</id>
+    <title>Developmental and Educational Psychology</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>176</id>
+    <title>Neuroscience and Physiological Psychology</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>177</id>
+    <title>Organizational Behavioral Psychology</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>178</id>
+    <title>Personality, Social and Criminal Psychology</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>179</id>
+    <title>Artificial Intelligence and Image Processing</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>180</id>
+    <title>Computation Theory and Mathematics</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>181</id>
+    <title>Computer Software</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>182</id>
+    <title>Data Format</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>183</id>
+    <title>Distributed Computing</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>184</id>
+    <title>Information Systems</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>185</id>
+    <title>Library and Information Studies</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>186</id>
+    <title>Classical and Physical Optics</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>187</id>
+    <title>Nonlinear Optics and Spectroscopy</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>188</id>
+    <title>Photonics, Optoelectronics and Optical Communications</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>189</id>
+    <title>Optical Physics not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>190</id>
+    <title>Degenerate Quantum Gases and Atom Optics</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>191</id>
+    <title>Quantum Optics</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>201</id>
+    <title>Atmospheric Aerosols</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>202</id>
+    <title>Atmospheric Dynamics</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>203</id>
+    <title>Atmospheric Radiation</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>204</id>
+    <title>Climate Change Processes</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>205</id>
+    <title>Climatology (excl. Climate Change Processes)</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>206</id>
+    <title>Cloud Physics</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>207</id>
+    <title>Meteorology</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>208</id>
+    <title>Tropospheric and Stratospheric Physics</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>209</id>
+    <title>Atmospheric Sciences not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>210</id>
+    <title>Exploration Geochemistry</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>211</id>
+    <title>Inorganic Geochemistry</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>212</id>
+    <title>Isotope Geochemistry</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>213</id>
+    <title>Organic Geochemistry</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>214</id>
+    <title>Geochemistry not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>215</id>
+    <title>Basin Analysis</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>216</id>
+    <title>Extraterrestrial Geology</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>217</id>
+    <title>Geochronology</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>218</id>
+    <title>Igneous and Metamorphic Petrology</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>219</id>
+    <title>Marine Geoscience</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>220</id>
+    <title>Mineralogy and Crystallography</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>221</id>
+    <title>Ore Deposit Petrology</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>222</id>
+    <title>Palaeontology (incl. Palynology)</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>223</id>
+    <title>Petroleum and Coal Geology</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>224</id>
+    <title>Sedimentology</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>225</id>
+    <title>Stratigraphy (incl. Biostratigraphy and Sequence Stratigraphy)</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>226</id>
+    <title>Structural Geology</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>227</id>
+    <title>Tectonics</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>228</id>
+    <title>Volcanology</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>229</id>
+    <title>Geology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>230</id>
+    <title>Electrical and Electromagnetic Methods in Geophysics</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>231</id>
+    <title>Geodynamics</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>232</id>
+    <title>Geophysical Fluid Dynamics</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>233</id>
+    <title>Geothermics and Radiometrics</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>234</id>
+    <title>Gravimetrics</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>235</id>
+    <title>Magnetism and Palaeomagnetism</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>236</id>
+    <title>Seismology and Seismic Exploration</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>237</id>
+    <title>Geophysics not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>238</id>
+    <title>Biological Oceanography</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>239</id>
+    <title>Chemical Oceanography</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>240</id>
+    <title>Physical Oceanography</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>241</id>
+    <title>Oceanography not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>242</id>
+    <title>Geomorphology and Regolith and Landscape Evolution</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>243</id>
+    <title>Glaciology</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>244</id>
+    <title>Hydrogeology</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>245</id>
+    <title>Natural Hazards</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>246</id>
+    <title>Palaeoclimatology</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>247</id>
+    <title>Quaternary Environments</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>248</id>
+    <title>Surface Processes</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>249</id>
+    <title>Surfacewater Hydrology</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>250</id>
+    <title>Physical Geography and Environmental Geoscience not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>251</id>
+    <title>Earth Sciences not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>252</id>
+    <title>Ecological Impacts of Climate Change</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>253</id>
+    <title>Ecosystem Function</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>254</id>
+    <title>Invasive Species Ecology</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>255</id>
+    <title>Landscape Ecology</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>256</id>
+    <title>Ecological Applications not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>257</id>
+    <title>Conservation and Biodiversity</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>258</id>
+    <title>Environmental Education and Extension</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>259</id>
+    <title>Environmental Impact Assessment</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>260</id>
+    <title>Environmental Management</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>261</id>
+    <title>Environmental Monitoring</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>262</id>
+    <title>Environmental Rehabilitation (excl. Bioremediation)</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>263</id>
+    <title>Natural Resource Management</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>264</id>
+    <title>Wildlife and Habitat Management</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>265</id>
+    <title>Environmental Science and Management not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>266</id>
+    <title>Carbon Sequestration Science</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>267</id>
+    <title>Land Capability and Soil Degradation</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>268</id>
+    <title>Soil Biology</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>269</id>
+    <title>Soil Chemistry (excl. Carbon Sequestration Science)</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>270</id>
+    <title>Soil Physics</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>271</id>
+    <title>Soil Sciences not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>272</id>
+    <title>Environmental Sciences not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>289</id>
+    <title>Medical Biochemistry: Amino Acids and Metabolites</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>290</id>
+    <title>Medical Biochemistry: Carbohydrates</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>291</id>
+    <title>Medical Biochemistry: Inorganic Elements and Compounds</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>292</id>
+    <title>Medical Biochemistry: Lipids</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>293</id>
+    <title>Medical Biochemistry: Nucleic Acids</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>294</id>
+    <title>Medical Biochemistry: Proteins and Peptides (incl. Medical Proteomics)</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>295</id>
+    <title>Metabolic Medicine</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>296</id>
+    <title>Medical Biochemistry and Metabolomics not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>297</id>
+    <title>Cardiology (incl. Cardiovascular Diseases)</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>298</id>
+    <title>Haematology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>299</id>
+    <title>Respiratory Diseases</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>300</id>
+    <title>Cardiovascular Medicine and Haematology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>301</id>
+    <title>Anaesthesiology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>302</id>
+    <title>Clinical Chemistry (diagnostics)</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>303</id>
+    <title>Clinical Microbiology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>304</id>
+    <title>Dermatology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>305</id>
+    <title>Emergency Medicine</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>306</id>
+    <title>Endocrinology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>307</id>
+    <title>Gastroenterology and Hepatology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>308</id>
+    <title>Geriatrics and Gerontology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>310</id>
+    <title>Intensive Care</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>311</id>
+    <title>Medical Genetics (excl. Cancer Genetics)</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>312</id>
+    <title>Nephrology and Urology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>313</id>
+    <title>Nuclear Medicine</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>314</id>
+    <title>Orthopaedics</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>315</id>
+    <title>Otorhinolaryngology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>316</id>
+    <title>Pathology (excl. Oral Pathology)</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>317</id>
+    <title>Physiotherapy</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>318</id>
+    <title>Podiatry</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>319</id>
+    <title>Psychiatry (incl. Psychotherapy)</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>320</id>
+    <title>Radiology and Organ Imaging</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>321</id>
+    <title>Rehabilitation and Therapy (excl. Physiotherapy)</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>322</id>
+    <title>Rheumatology and Arthritis</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>323</id>
+    <title>Surgery</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>324</id>
+    <title>Venereology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>325</id>
+    <title>Clinical Sciences not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>326</id>
+    <title>Chiropractic</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>327</id>
+    <title>Naturopathy</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>328</id>
+    <title>Traditional Chinese Medicine and Treatments</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>329</id>
+    <title>Complementary and Alternative Medicine not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>330</id>
+    <title>Dental Materials and Equipment</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>331</id>
+    <title>Dental Therapeutics, Pharmacology and Toxicology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>332</id>
+    <title>Endodontics</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>333</id>
+    <title>Oral and Maxillofacial Surgery</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>334</id>
+    <title>Oral Medicine and Pathology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>335</id>
+    <title>Orthodontics and Dentofacial Orthopaedics</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>336</id>
+    <title>Paedodontics</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>337</id>
+    <title>Periodontics</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>338</id>
+    <title>Special Needs Dentistry</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>339</id>
+    <title>Dentistry not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>340</id>
+    <title>Biomechanics</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>341</id>
+    <title>Exercise Physiology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>342</id>
+    <title>Motor Control</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>343</id>
+    <title>Sports Medicine</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>344</id>
+    <title>Human Movement and Sports Science not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>345</id>
+    <title>Allergy</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>346</id>
+    <title>Applied Immunology (incl. Antibody Engineering, Xenotransplantation and T-cell Therapies)</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>347</id>
+    <title>Autoimmunity</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>348</id>
+    <title>Cellular Immunology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>349</id>
+    <title>Humoural Immunology and Immunochemistry</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>350</id>
+    <title>Immunogenetics (incl. Genetic Immunology)</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>351</id>
+    <title>Innate Immunity</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>352</id>
+    <title>Transplantation Immunology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>353</id>
+    <title>Tumour Immunology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>354</id>
+    <title>Immunology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>355</id>
+    <title>Medical Bacteriology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>356</id>
+    <title>Medical Infection Agents (incl. Prions)</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>357</id>
+    <title>Medical Parasitology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>358</id>
+    <title>Medical Virology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>359</id>
+    <title>Medical Microbiology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>360</id>
+    <title>Autonomic Nervous System</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>361</id>
+    <title>Cellular Nervous System</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>362</id>
+    <title>Central Nervous System</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>363</id>
+    <title>Neurology and Neuromuscular Diseases</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>364</id>
+    <title>Peripheral Nervous System</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>365</id>
+    <title>Sensory Systems</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>366</id>
+    <title>Neurosciences not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>367</id>
+    <title>Aged Care Nursing</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>368</id>
+    <title>Clinical Nursing: Primary (Preventative)</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>369</id>
+    <title>Clinical Nursing: Secondary (Acute Care)</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>370</id>
+    <title>Clinical Nursing: Tertiary (Rehabilitative)</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>371</id>
+    <title>Mental Health Nursing</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>372</id>
+    <title>Midwifery</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>373</id>
+    <title>Nursing not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>374</id>
+    <title>Clinical and Sports Nutrition</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>375</id>
+    <title>Dietetics and Nutrigenomics</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>376</id>
+    <title>Nutritional Physiology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>377</id>
+    <title>Public Nutrition Intervention</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>378</id>
+    <title>Nutrition and Dietetics not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>379</id>
+    <title>Cancer Cell Biology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>380</id>
+    <title>Cancer Diagnosis</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>381</id>
+    <title>Cancer Genetics</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>382</id>
+    <title>Cancer Therapy (excl. Chemotherapy and Radiation Therapy)</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>383</id>
+    <title>Chemotherapy</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>384</id>
+    <title>Haematological Tumours</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>385</id>
+    <title>Molecular Targets</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>386</id>
+    <title>Radiation Therapy</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>387</id>
+    <title>Solid Tumours</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>388</id>
+    <title>Oncology and Carcinogenesis not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>389</id>
+    <title>Ophthalmology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>390</id>
+    <title>Optical Technology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>391</id>
+    <title>Vision Science</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>392</id>
+    <title>Ophthalmology and Optometry not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>393</id>
+    <title>Foetal Development and Medicine</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>394</id>
+    <title>Obstetrics and Gynaecology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>395</id>
+    <title>Paediatrics</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>396</id>
+    <title>Reproduction</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>397</id>
+    <title>Paediatrics and Reproductive Medicine not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>398</id>
+    <title>Basic Pharmacology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>399</id>
+    <title>Clinical Pharmacology and Therapeutics</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>400</id>
+    <title>Clinical Pharmacy and Pharmacy Practice</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>401</id>
+    <title>Pharmaceutical Sciences</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>402</id>
+    <title>Pharmacogenomics</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>403</id>
+    <title>Toxicology (incl. Clinical Toxicology)</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>404</id>
+    <title>Pharmacology and Pharmaceutical Sciences not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>405</id>
+    <title>Cell Physiology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>406</id>
+    <title>Human Biophysics</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>407</id>
+    <title>Systems Physiology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>408</id>
+    <title>Medical Physiology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>409</id>
+    <title>Aboriginal and Torres Strait Islander Health</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>410</id>
+    <title>Aged Health Care</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>411</id>
+    <title>Care for Disabled</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>412</id>
+    <title>Community Child Health</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>413</id>
+    <title>Environmental and Occupational Health and Safety</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>414</id>
+    <title>Epidemiology</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>415</id>
+    <title>Family Care</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>416</id>
+    <title>Health and Community Services</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>417</id>
+    <title>Health Care Administration</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>418</id>
+    <title>Health Counselling</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>419</id>
+    <title>Health Information Systems (incl. Surveillance)</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>420</id>
+    <title>Health Promotion</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>421</id>
+    <title>Maori Health</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>423</id>
+    <title>Pacific Peoples Health</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>424</id>
+    <title>Preventive Medicine</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>425</id>
+    <title>Primary Health Care</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>426</id>
+    <title>Residential Client Care</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>427</id>
+    <title>Public Health and Health Services not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>428</id>
+    <title>Medical and Health Sciences not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>434</id>
+    <title>Biological Psychology (Neuropsychology, Psychopharmacology, Physiological Psychology)</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>435</id>
+    <title>Developmental Psychology and Ageing</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>436</id>
+    <title>Educational Psychology</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>437</id>
+    <title>Forensic Psychology</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>438</id>
+    <title>Gender Psychology</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>439</id>
+    <title>Health, Clinical and Counselling Psychology</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>440</id>
+    <title>Industrial and Organisational Psychology</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>441</id>
+    <title>Personality, Abilities and Assessment</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>442</id>
+    <title>Psychological Methodology, Design and Analysis</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>443</id>
+    <title>Psychology of Religion</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>444</id>
+    <title>Sensory Processes, Perception and Performance</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>445</id>
+    <title>Social and Community Psychology</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>446</id>
+    <title>Sport and Exercise Psychology</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>447</id>
+    <title>Psychology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>448</id>
+    <title>Computer Perception, Memory and Attention</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>449</id>
+    <title>Decision Making</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>450</id>
+    <title>Knowledge Representation and Machine Learning</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>451</id>
+    <title>Linguistic Processes (incl. Speech Production and Comprehension)</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>452</id>
+    <title>Neurocognitive Patterns and Neural Networks</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>453</id>
+    <title>Cognitive Science not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>454</id>
+    <title>Psychology and Cognitive Sciences not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>43</parent_id>
+    <id>492</id>
+    <title>Astrobiology</title>
+  </row>
+  <row>
+    <parent_id>43</parent_id>
+    <id>493</id>
+    <title>Astronomical and Space Instrumentation</title>
+  </row>
+  <row>
+    <parent_id>43</parent_id>
+    <id>494</id>
+    <title>Cosmology and Extragalactic Astronomy</title>
+  </row>
+  <row>
+    <parent_id>43</parent_id>
+    <id>496</id>
+    <title>General Relativity and Gravitational Waves</title>
+  </row>
+  <row>
+    <parent_id>43</parent_id>
+    <id>497</id>
+    <title>High Energy Astrophysics; Cosmic Rays</title>
+  </row>
+  <row>
+    <parent_id>43</parent_id>
+    <id>498</id>
+    <title>Mesospheric, Ionospheric and Magnetospheric Physics</title>
+  </row>
+  <row>
+    <parent_id>43</parent_id>
+    <id>499</id>
+    <title>Planetary Science (excl. Extraterrestrial Geology)</title>
+  </row>
+  <row>
+    <parent_id>43</parent_id>
+    <id>500</id>
+    <title>Space and Solar Physics</title>
+  </row>
+  <row>
+    <parent_id>43</parent_id>
+    <id>501</id>
+    <title>Stellar Astronomy and Planetary Systems</title>
+  </row>
+  <row>
+    <parent_id>43</parent_id>
+    <id>502</id>
+    <title>Astronomical and Space Sciences not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>516</id>
+    <title>Aerodynamics (excl. Hypersonic Aerodynamics)</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>517</id>
+    <title>Aerospace Materials</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>518</id>
+    <title>Aerospace Structures</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>519</id>
+    <title>Aircraft Performance and Flight Control Systems</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>520</id>
+    <title>Avionics</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>521</id>
+    <title>Flight Dynamics</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>522</id>
+    <title>Hypersonic Propulsion and Hypersonic Aerodynamics</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>523</id>
+    <title>Satellite, Space Vehicle and Missile Design and Testing</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>524</id>
+    <title>Aerospace Engineering not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>525</id>
+    <title>Automotive Combustion and Fuel Engineering (incl. Alternative/Renewable Fuels)</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>526</id>
+    <title>Automotive Engineering Materials</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>527</id>
+    <title>Automotive Mechatronics</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>528</id>
+    <title>Automotive Safety Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>529</id>
+    <title>Hybrid Vehicles and Powertrains</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>530</id>
+    <title>Automotive Engineering not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>531</id>
+    <title>Biomaterials</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>532</id>
+    <title>Biomechanical Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>533</id>
+    <title>Biomedical Instrumentation</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>534</id>
+    <title>Medical Devices</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>535</id>
+    <title>Rehabilitation Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>536</id>
+    <title>Biomedical Engineering not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>537</id>
+    <title>Carbon Capture Engineering (excl. Sequestration)</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>538</id>
+    <title>Catalytic Process Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>539</id>
+    <title>Chemical Engineering Design</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>540</id>
+    <title>Membrane and Separation Technologies</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>541</id>
+    <title>Non-automotive Combustion and Fuel Engineering (incl. Alternative/Renewable Fuels)</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>542</id>
+    <title>Powder and Particle Technology</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>543</id>
+    <title>Process Control and Simulation</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>544</id>
+    <title>Rheology</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>545</id>
+    <title>Wastewater Treatment Processes</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>546</id>
+    <title>Water Treatment Processes</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>547</id>
+    <title>Chemical Engineering not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>548</id>
+    <title>Civil Geotechnical Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>549</id>
+    <title>Construction Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>550</id>
+    <title>Construction Materials</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>551</id>
+    <title>Earthquake Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>552</id>
+    <title>Infrastructure Engineering and Asset Management</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>553</id>
+    <title>Structural Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>554</id>
+    <title>Transport Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>555</id>
+    <title>Water Quality Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>556</id>
+    <title>Water Resources Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>557</id>
+    <title>Civil Engineering not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>558</id>
+    <title>Circuits and Systems</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>559</id>
+    <title>Control Systems, Robotics and Automation</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>560</id>
+    <title>Industrial Electronics</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>561</id>
+    <title>Microelectronics and Integrated Circuits</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>562</id>
+    <title>Photodetectors, Optical Sensors and Solar Cells</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>563</id>
+    <title>Photonics and Electro-Optical Engineering (excl. Communications)</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>564</id>
+    <title>Power and Energy Systems Engineering (excl. Renewable Power)</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>565</id>
+    <title>Renewable Power and Energy Systems Engineering (excl. Solar Cells)</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>566</id>
+    <title>Signal Processing</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>567</id>
+    <title>Electrical and Electronic Engineering not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>568</id>
+    <title>Environmental Engineering Design</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>569</id>
+    <title>Environmental Engineering Modelling</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>570</id>
+    <title>Environmental Technologies</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>571</id>
+    <title>Environmental Engineering not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>572</id>
+    <title>Food Chemistry and Molecular Gastronomy (excl. Wine)</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>573</id>
+    <title>Food Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>574</id>
+    <title>Food Nutritional Balance</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>575</id>
+    <title>Food Packaging, Preservation and Safety</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>576</id>
+    <title>Food Processing</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>577</id>
+    <title>Wine Chemistry and Wine Sensory Science</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>578</id>
+    <title>Food Sciences not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>579</id>
+    <title>Cartography</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>580</id>
+    <title>Geodesy</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>581</id>
+    <title>Geospatial Information Systems</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>582</id>
+    <title>Navigation and Position Fixing</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>583</id>
+    <title>Photogrammetry and Remote Sensing</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>584</id>
+    <title>Surveying (incl. Hydrographic Surveying)</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>585</id>
+    <title>Geomatic Engineering not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>586</id>
+    <title>CAD/CAM Systems</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>587</id>
+    <title>Flexible Manufacturing Systems</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>588</id>
+    <title>Machine Tools</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>589</id>
+    <title>Machining</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>590</id>
+    <title>Manufacturing Management</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>591</id>
+    <title>Manufacturing Processes and Technologies (excl. Textiles)</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>592</id>
+    <title>Manufacturing Robotics and Mechatronics (excl. Automotive Mechatronics)</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>593</id>
+    <title>Manufacturing Safety and Quality</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>594</id>
+    <title>Microtechnology</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>595</id>
+    <title>Packaging, Storage and Transportation (excl. Food and Agricultural Products)</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>596</id>
+    <title>Precision Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>597</id>
+    <title>Textile Technology</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>598</id>
+    <title>Manufacturing Engineering not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>599</id>
+    <title>Marine Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>600</id>
+    <title>Naval Architecture</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>601</id>
+    <title>Ocean Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>602</id>
+    <title>Ship and Platform Hydrodynamics</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>603</id>
+    <title>Ship and Platform Structures</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>604</id>
+    <title>Special Vehicles</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>605</id>
+    <title>Maritime Engineering not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>606</id>
+    <title>Ceramics</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>607</id>
+    <title>Composite and Hybrid Materials</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>608</id>
+    <title>Compound Semiconductors</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>609</id>
+    <title>Elemental Semiconductors</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>610</id>
+    <title>Functional Materials</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>611</id>
+    <title>Glass</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>612</id>
+    <title>Metals and Alloy Materials</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>613</id>
+    <title>Organic Semiconductors</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>614</id>
+    <title>Polymers and Plastics</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>615</id>
+    <title>Timber, Pulp and Paper</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>616</id>
+    <title>Materials Engineering not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>617</id>
+    <title>Acoustics and Noise Control (excl. Architectural Acoustics)</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>618</id>
+    <title>Automation and Control Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>619</id>
+    <title>Autonomous Vehicles</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>620</id>
+    <title>Dynamics, Vibration and Vibration Control</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>621</id>
+    <title>Energy Generation, Conversion and Storage Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>622</id>
+    <title>Microelectromechanical Systems (MEMS)</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>623</id>
+    <title>Numerical Modelling and Mechanical Characterisation</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>625</id>
+    <title>Tribology</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>626</id>
+    <title>Mechanical Engineering not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>627</id>
+    <title>Electrometallurgy</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>628</id>
+    <title>Geomechanics and Resources Geotechnical Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>629</id>
+    <title>Hydrometallurgy</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>630</id>
+    <title>Mineral Processing/Beneficiation</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>631</id>
+    <title>Mining Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>632</id>
+    <title>Petroleum and Reservoir Engineering</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>633</id>
+    <title>Pyrometallurgy</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>634</id>
+    <title>Resources Engineering and Extractive Metallurgy not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>635</id>
+    <title>Computational Fluid Dynamics</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>636</id>
+    <title>Computational Heat Transfer</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>637</id>
+    <title>Engineering Practice</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>638</id>
+    <title>Fluidisation and Fluid Mechanics</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>639</id>
+    <title>Heat and Mass Transfer Operations</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>640</id>
+    <title>Nuclear Engineering (incl. Fuel Enrichment and Waste Processing and Storage)</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>641</id>
+    <title>Risk Engineering (excl. Earthquake Engineering)</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>642</id>
+    <title>Turbulent Flows</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>643</id>
+    <title>Interdisciplinary Engineering not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>645</id>
+    <title>Engineering Instrumentation</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>646</id>
+    <title>Engineering not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>655</id>
+    <title>Analytical Biochemistry</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>657</id>
+    <title>Cell Development, Proliferation and Death</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>658</id>
+    <title>Cell Metabolism</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>659</id>
+    <title>Cell Neurochemistry</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>660</id>
+    <title>Cellular Interactions (incl. Adhesion, Matrix, Cell Wall)</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>661</id>
+    <title>Enzymes</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>662</id>
+    <title>Protein Trafficking</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>663</id>
+    <title>Proteomics and Intermolecular Interactions (excl. Medical Proteomics)</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>664</id>
+    <title>Receptors and Membrane Biology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>665</id>
+    <title>Signal Transduction</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>666</id>
+    <title>Structural Biology (incl. Macromolecular Modelling)</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>667</id>
+    <title>Synthetic Biology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>669</id>
+    <title>Biochemistry and Cell Biology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>670</id>
+    <title>Behavioural Ecology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>671</id>
+    <title>Community Ecology (excl. Invasive Species Ecology)</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>672</id>
+    <title>Ecological Physiology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>673</id>
+    <title>Freshwater Ecology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>674</id>
+    <title>Marine and Estuarine Ecology (incl. Marine Ichthyology)</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>675</id>
+    <title>Palaeoecology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>676</id>
+    <title>Population Ecology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>677</id>
+    <title>Terrestrial Ecology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>678</id>
+    <title>Ecology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>679</id>
+    <title>Animal Systematics and Taxonomy</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>680</id>
+    <title>Biogeography and Phylogeography</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>681</id>
+    <title>Biological Adaptation</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>682</id>
+    <title>Ethology and Sociobiology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>683</id>
+    <title>Evolution of Developmental Systems</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>684</id>
+    <title>Evolutionary Impacts of Climate Change</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>685</id>
+    <title>Host-Parasite Interactions</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>686</id>
+    <title>Life Histories</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>687</id>
+    <title>Phylogeny and Comparative Analysis</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>688</id>
+    <title>Plant Systematics and Taxonomy</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>689</id>
+    <title>Speciation and Extinction</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>690</id>
+    <title>Evolutionary Biology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>691</id>
+    <title>Anthropological Genetics</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>692</id>
+    <title>Cell and Nuclear Division</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>693</id>
+    <title>Developmental Genetics (incl. Sex Determination)</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>694</id>
+    <title>Epigenetics (incl. Genome Methylation and Epigenomics)</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>695</id>
+    <title>Gene Expression (incl. Microarray and other genome-wide approaches)</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>696</id>
+    <title>Genetic Immunology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>697</id>
+    <title>Genome Structure and Regulation</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>698</id>
+    <title>Genomics</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>699</id>
+    <title>Molecular Evolution</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>700</id>
+    <title>Neurogenetics</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>701</id>
+    <title>Population, Ecological and Evolutionary Genetics</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>702</id>
+    <title>Quantitative Genetics (incl. Disease and Trait Mapping Genetics)</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>703</id>
+    <title>Genetics not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>704</id>
+    <title>Bacteriology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>705</id>
+    <title>Infectious Agents</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>706</id>
+    <title>Microbial Genetics</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>707</id>
+    <title>Microbial Ecology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>708</id>
+    <title>Mycology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>710</id>
+    <title>Microbiology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>711</id>
+    <title>Animal Physiology - Biophysics</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>712</id>
+    <title>Animal Physiology - Cell</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>713</id>
+    <title>Animal Physiology - Systems</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>714</id>
+    <title>Comparative Physiology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>715</id>
+    <title>Physiology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>716</id>
+    <title>Phycology (incl. Marine Grasses)</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>717</id>
+    <title>Plant Cell and Molecular Biology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>718</id>
+    <title>Plant Developmental and Reproductive Biology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>719</id>
+    <title>Plant Pathology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>720</id>
+    <title>Plant Physiology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>721</id>
+    <title>Plant Biology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>722</id>
+    <title>Animal Behaviour</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>723</id>
+    <title>Animal Cell and Molecular Biology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>724</id>
+    <title>Animal Developmental and Reproductive Biology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>725</id>
+    <title>Animal Immunology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>726</id>
+    <title>Animal Neurobiology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>727</id>
+    <title>Animal Physiological Ecology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>728</id>
+    <title>Animal Structure and Function</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>729</id>
+    <title>Invertebrate Biology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>730</id>
+    <title>Vertebrate Biology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>731</id>
+    <title>Zoology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>732</id>
+    <title>Forensic Biology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>733</id>
+    <title>Global Change Biology</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>734</id>
+    <title>Biological Sciences not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>48</parent_id>
+    <id>747</id>
+    <title>Computational Biology</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>772</id>
+    <title>Algebra and Number Theory</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>773</id>
+    <title>Algebraic and Differential Geometry</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>774</id>
+    <title>Category Theory, K Theory, Homological Algebra</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>775</id>
+    <title>Combinatorics and Discrete Mathematics (excl. Physical Combinatorics)</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>776</id>
+    <title>Group Theory and Generalisations</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>777</id>
+    <title>Lie Groups, Harmonic and Fourier Analysis</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>778</id>
+    <title>Mathematical Logic, Set Theory, Lattices and Universal Algebra</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>779</id>
+    <title>Operator Algebras and Functional Analysis</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>780</id>
+    <title>Ordinary Differential Equations, Difference Equations and Dynamical Systems</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>781</id>
+    <title>Partial Differential Equations</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>782</id>
+    <title>Real and Complex Functions (incl. Several Variables)</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>783</id>
+    <title>Topology</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>784</id>
+    <title>Pure Mathematics not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>785</id>
+    <title>Approximation Theory and Asymptotic Methods</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>786</id>
+    <title>Biological Mathematics</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>787</id>
+    <title>Calculus of Variations, Systems Theory and Control Theory</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>788</id>
+    <title>Dynamical Systems in Applications</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>789</id>
+    <title>Financial Mathematics</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>790</id>
+    <title>Operations Research</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>791</id>
+    <title>Theoretical and Applied Mechanics</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>792</id>
+    <title>Applied Mathematics not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>794</id>
+    <title>Numerical Solution of Differential and Integral Equations</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>795</id>
+    <title>Optimisation</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>796</id>
+    <title>Numerical and Computational Mathematics not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>797</id>
+    <title>Applied Statistics</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>798</id>
+    <title>Biostatistics</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>799</id>
+    <title>Forensic Statistics</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>800</id>
+    <title>Probability Theory</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>801</id>
+    <title>Statistical Theory</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>802</id>
+    <title>Stochastic Analysis and Modelling</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>803</id>
+    <title>Statistics not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>804</id>
+    <title>Algebraic Structures in Mathematical Physics</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>805</id>
+    <title>Integrable Systems (Classical and Quantum)</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>806</id>
+    <title>Mathematical Aspects of Classical Mechanics, Quantum Mechanics and Quantum Information Theory</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>807</id>
+    <title>Mathematical Aspects of General Relativity</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>808</id>
+    <title>Mathematical Aspects of Quantum and Conformal Field Theory, Quantum Gravity and String Theory</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>809</id>
+    <title>Statistical Mechanics, Physical Combinatorics and Mathematical Aspects of Condensed Matter</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>810</id>
+    <title>Mathematical Physics not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>53</parent_id>
+    <id>811</id>
+    <title>Mathematical Sciences not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>818</id>
+    <title>Analytical Spectrometry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>819</id>
+    <title>Electroanalytical Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>820</id>
+    <title>Flow Analysis</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>821</id>
+    <title>Immunological and Bioassay Methods</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>822</id>
+    <title>Instrumental Methods (excl. Immunological and Bioassay Methods)</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>823</id>
+    <title>Quality Assurance, Chemometrics, Traceability and Metrological Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>824</id>
+    <title>Sensor Technology (Chemical aspects)</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>825</id>
+    <title>Separation Science</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>826</id>
+    <title>Analytical Chemistry not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>827</id>
+    <title>Bioinorganic Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>828</id>
+    <title>f-Block Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>829</id>
+    <title>Inorganic Green Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>830</id>
+    <title>Main Group Metal Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>831</id>
+    <title>Non-metal Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>832</id>
+    <title>Solid State Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>833</id>
+    <title>Transition Metal Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>834</id>
+    <title>Inorganic Chemistry not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>835</id>
+    <title>Chemical Characterisation of Materials</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>836</id>
+    <title>Nanochemistry and Supramolecular Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>837</id>
+    <title>Optical Properties of Materials</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>838</id>
+    <title>Physical Chemistry of Materials</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>839</id>
+    <title>Polymerisation Mechanisms</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>840</id>
+    <title>Synthesis of Materials</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>841</id>
+    <title>Theory and Design of Materials</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>842</id>
+    <title>Macromolecular and Materials Chemistry not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>843</id>
+    <title>Biologically Active Molecules</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>844</id>
+    <title>Biomolecular Modelling and Design</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>845</id>
+    <title>Characterisation of Biological Macromolecules</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>846</id>
+    <title>Cheminformatics and Quantitative Structure-Activity Relationships</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>847</id>
+    <title>Molecular Medicine</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>848</id>
+    <title>Proteins and Peptides</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>849</id>
+    <title>Medicinal and Biomolecular Chemistry not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>850</id>
+    <title>Free Radical Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>851</id>
+    <title>Natural Products Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>852</id>
+    <title>Organic Chemical Synthesis</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>853</id>
+    <title>Organic Green Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>854</id>
+    <title>Physical Organic Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>855</id>
+    <title>Organic Chemistry not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>856</id>
+    <title>Catalysis and Mechanisms of Reactions</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>857</id>
+    <title>Chemical Thermodynamics and Energetics</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>858</id>
+    <title>Colloid and Surface Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>859</id>
+    <title>Electrochemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>860</id>
+    <title>Solution Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>861</id>
+    <title>Structural Chemistry and Spectroscopy</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>862</id>
+    <title>Transport Properties and Non-equilibrium Processes</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>863</id>
+    <title>Physical Chemistry not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>864</id>
+    <title>Quantum Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>865</id>
+    <title>Radiation and Matter</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>866</id>
+    <title>Reaction Kinetics and Dynamics</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>867</id>
+    <title>Statistical Mechanics in Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>868</id>
+    <title>Theoretical and Computational Chemistry not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>869</id>
+    <title>Environmental Chemistry (incl. Atmospheric Chemistry)</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>870</id>
+    <title>Forensic Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>871</id>
+    <title>Industrial Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>872</id>
+    <title>Organometallic Chemistry</title>
+  </row>
+  <row>
+    <parent_id>38</parent_id>
+    <id>873</id>
+    <title>Chemical Sciences not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>888</id>
+    <title>Atomic and Molecular Physics</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>889</id>
+    <title>Nuclear Physics</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>891</id>
+    <title>Plasma Physics; Fusion Plasmas; Electrical Discharges</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>892</id>
+    <title>Atomic, Molecular, Nuclear, Particle and Plasma Physics not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>893</id>
+    <title>Acoustics and Acoustical Devices; Waves</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>894</id>
+    <title>Electrostatics and Electrodynamics</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>895</id>
+    <title>Fluid Physics</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>896</id>
+    <title>Thermodynamics and Statistical Physics</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>897</id>
+    <title>Classical Physics not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>898</id>
+    <title>Condensed Matter Characterisation Technique Development</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>899</id>
+    <title>Condensed Matter Imaging</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>900</id>
+    <title>Condensed Matter Modelling and Density Functional Theory</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>901</id>
+    <title>Electronic and Magnetic Properties of Condensed Matter; Superconductivity</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>902</id>
+    <title>Soft Condensed Matter</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>903</id>
+    <title>Surfaces and Structural Properties of Condensed Matter</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>904</id>
+    <title>Condensed Matter Physics not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>905</id>
+    <title>Lasers and Quantum Electronics</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>908</id>
+    <title>Field Theory and String Theory</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>909</id>
+    <title>Quantum Information, Computation and Communication</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>910</id>
+    <title>Quantum Physics not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>911</id>
+    <title>Biological Physics</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>912</id>
+    <title>Complex Physical Systems</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>913</id>
+    <title>Medical Physics</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>914</id>
+    <title>Synchrotrons; Accelerators; Instruments and Techniques</title>
+  </row>
+  <row>
+    <parent_id>6</parent_id>
+    <id>915</id>
+    <title>Physical Sciences not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>931</id>
+    <title>Information Systems not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>932</id>
+    <title>Health Informatics</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>933</id>
+    <title>Human Information Behaviour</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>934</id>
+    <title>Information Retrieval and Web Search</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>935</id>
+    <title>Informetrics</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>936</id>
+    <title>Librarianship</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>937</id>
+    <title>Organisation of Information and Knowledge Resources</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>938</id>
+    <title>Records and Information Management (excl. Business Records and Information Management)</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>939</id>
+    <title>Social and Community Informatics</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>940</id>
+    <title>Library and Information Studies not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>941</id>
+    <title>Information and Computing Sciences not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>942</id>
+    <title>Adaptive Agents and Intelligent Robotics</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>943</id>
+    <title>Artificial Life</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>944</id>
+    <title>Computer Graphics</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>945</id>
+    <title>Computer Vision</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>946</id>
+    <title>Expert Systems</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>947</id>
+    <title>Image Processing</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>948</id>
+    <title>Natural Language Processing</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>949</id>
+    <title>Neural, Evolutionary and Fuzzy Computation</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>950</id>
+    <title>Pattern Recognition and Data Mining</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>951</id>
+    <title>Simulation and Modelling</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>952</id>
+    <title>Virtual Reality and Related Simulation</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>953</id>
+    <title>Artificial Intelligence and Image Processing not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>954</id>
+    <title>Analysis of Algorithms and Complexity</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>955</id>
+    <title>Applied Discrete Mathematics</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>956</id>
+    <title>Computational Logic and Formal Languages</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>957</id>
+    <title>Mathematical Software</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>958</id>
+    <title>Numerical Computation</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>959</id>
+    <title>Computation Theory and Mathematics not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>960</id>
+    <title>Bioinformatics Software</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>961</id>
+    <title>Computer System Architecture</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>962</id>
+    <title>Computer System Security</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>963</id>
+    <title>Concurrent Programming</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>964</id>
+    <title>Multimedia Programming</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>965</id>
+    <title>Open Software</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>966</id>
+    <title>Operating Systems</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>967</id>
+    <title>Programming Languages</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>969</id>
+    <title>Computer Software not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>970</id>
+    <title>Coding and Information Theory</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>971</id>
+    <title>Data Encryption</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>972</id>
+    <title>Data Structures</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>973</id>
+    <title>Markup Languages</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>974</id>
+    <title>Data Format not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>975</id>
+    <title>Distributed and Grid Systems</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>976</id>
+    <title>Mobile Technologies</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>977</id>
+    <title>Networking and Communications</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>978</id>
+    <title>Ubiquitous Computing</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>979</id>
+    <title>Web Technologies (excl. Web Search)</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>980</id>
+    <title>Distributed Computing not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>981</id>
+    <title>Aboriginal and Torres Strait Islander Information and Knowledge Systems</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>982</id>
+    <title>Computer-Human Interaction</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>983</id>
+    <title>Conceptual Modelling</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>984</id>
+    <title>Database Management</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>985</id>
+    <title>Decision Support and Group Support Systems</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>986</id>
+    <title>Global Information Systems</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>987</id>
+    <title>Information Engineering and Theory</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>988</id>
+    <title>Information Systems Development Methodologies</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>989</id>
+    <title>Information Systems Management</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>990</id>
+    <title>Information Systems Organisation</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>991</id>
+    <title>Information Systems Theory</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>992</id>
+    <title>Interorganisational Information Systems and Web Services</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>995</id>
+    <title>Aboriginal and Torres Strait Islander Performing Arts</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>996</id>
+    <title>Creative Writing (incl. Playwriting)</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>997</id>
+    <title>Dance</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>998</id>
+    <title>Drama, Theatre and Performance Studies</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>999</id>
+    <title>Maori Performing Arts</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1000</id>
+    <title>Music Composition</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1001</id>
+    <title>Music Performance</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1002</id>
+    <title>Music Therapy</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1003</id>
+    <title>Musicology and Ethnomusicology</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1004</id>
+    <title>Pacific Peoples Performing Arts</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1005</id>
+    <title>Performing Arts and Creative Writing not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1006</id>
+    <title>Continuing and Community Education</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1007</id>
+    <title>Early Childhood Education (excl. Maori)</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1008</id>
+    <title>Higher Education</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1009</id>
+    <title>Primary Education (excl. Maori)</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1010</id>
+    <title>Secondary Education</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1011</id>
+    <title>Technical, Further and Workplace Education</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1012</id>
+    <title>Education systems not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1013</id>
+    <title>Agricultural Economics</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1014</id>
+    <title>Economic Development and Growth</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1015</id>
+    <title>Economic History</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1016</id>
+    <title>Economics of Education</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1017</id>
+    <title>Environment and Resource Economics</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1018</id>
+    <title>Experimental Economics</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1019</id>
+    <title>Financial Economics</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1020</id>
+    <title>Health Economics</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1021</id>
+    <title>Industry Economics and Industrial Organisation</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1022</id>
+    <title>International Economics and International Finance</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1023</id>
+    <title>Labour Economics</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1024</id>
+    <title>Macroeconomics (incl. Monetary and Fiscal Theory)</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1025</id>
+    <title>Public Economics- Public Choice</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1026</id>
+    <title>Public Economics- Publically Provided Goods</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1027</id>
+    <title>Public Economics- Taxation and Revenue</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1028</id>
+    <title>Tourism Economics</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1029</id>
+    <title>Transport Economics</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1030</id>
+    <title>Urban and Regional Economics</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1031</id>
+    <title>Welfare Economics</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1032</id>
+    <title>Applied Economics not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1033</id>
+    <title>Cross-Sectional Analysis</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1034</id>
+    <title>Econometric and Statistical Methods</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1035</id>
+    <title>Economic Models and Forecasting</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1036</id>
+    <title>Panel Data Analysis</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1037</id>
+    <title>Time-Series Analysis</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1038</id>
+    <title>Econometrics not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1040</id>
+    <title>Agricultural Biotechnology Diagnostics (incl. Biosensors)</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1041</id>
+    <title>Agricultural Marine Biotechnology</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1042</id>
+    <title>Agricultural Molecular Engineering of Nucleic Acids and Proteins</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1043</id>
+    <title>Genetically Modified Animals</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1044</id>
+    <title>Genetically Modified Field Crops and Pasture</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1045</id>
+    <title>Genetically Modified Horticulture Plants</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1046</id>
+    <title>Genetically Modified Trees</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1047</id>
+    <title>Livestock Cloning</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1048</id>
+    <title>Transgenesis</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1049</id>
+    <title>Agricultural Biotechnology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1050</id>
+    <title>Biodiscovery</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1051</id>
+    <title>Biological Control</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1052</id>
+    <title>Bioremediation</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1053</id>
+    <title>Environmental Biotechnology Diagnostics (incl. Biosensors)</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1054</id>
+    <title>Environmental Marine Biotechnology</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1055</id>
+    <title>Environmental Molecular Engineering of Nucleic Acids and Proteins</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1056</id>
+    <title>Environmental Biotechnology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1057</id>
+    <title>Biocatalysis and Enzyme Technology</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1058</id>
+    <title>Bioprocessing, Bioproduction and Bioproducts</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1059</id>
+    <title>Fermentation</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1060</id>
+    <title>Industrial Biotechnology Diagnostics (incl. Biosensors)</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1061</id>
+    <title>Industrial Microbiology (incl. Biofeedstocks)</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1062</id>
+    <title>Industrial Molecular Engineering of Nucleic Acids and Proteins</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1063</id>
+    <title>Industrial Biotechnology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1064</id>
+    <title>Gene and Molecular Therapy</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1065</id>
+    <title>Medical Biotechnology Diagnostics (incl. Biosensors)</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1066</id>
+    <title>Medical Molecular Engineering of Nucleic Acids and Proteins</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1067</id>
+    <title>Regenerative Medicine (incl. Stem Cells and Tissue Engineering)</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1068</id>
+    <title>Medical Biotechnology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1069</id>
+    <title>Antennas and Propagation</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1070</id>
+    <title>Broadband and Modem Technology</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1071</id>
+    <title>Computer Communications Networks</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1072</id>
+    <title>Data Communications</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1073</id>
+    <title>Microwave and Millimetrewave Theory and Technology</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1074</id>
+    <title>Optical Fibre Communications</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1075</id>
+    <title>Optical Networks and Systems</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1076</id>
+    <title>Satellite Communications</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1077</id>
+    <title>Video Communications</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1078</id>
+    <title>Wireless Communications</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1079</id>
+    <title>Communications Technologies not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1080</id>
+    <title>Arithmetic and Logic Structures</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1081</id>
+    <title>Input, Output and Data Devices</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1082</id>
+    <title>Logic Design</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1083</id>
+    <title>Memory Structures</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1084</id>
+    <title>Performance Evaluation; Testing and Simulation of Reliability</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1085</id>
+    <title>Processor Architectures</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1086</id>
+    <title>Computer Hardware not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1087</id>
+    <title>Environmental Nanotechnology</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1088</id>
+    <title>Molecular and Organic Electronics</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1089</id>
+    <title>Nanobiotechnology</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1090</id>
+    <title>Nanoelectromechanical Systems</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1091</id>
+    <title>Nanoelectronics</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1092</id>
+    <title>Nanofabrication, Growth and Self Assembly</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1093</id>
+    <title>Nanomanufacturing</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1094</id>
+    <title>Nanomaterials</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1095</id>
+    <title>Nanomedicine</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1096</id>
+    <title>Nanometrology</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1097</id>
+    <title>Nanophotonics</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1098</id>
+    <title>Nanoscale Characterisation</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1099</id>
+    <title>Nanotoxicology, Health and Safety</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1100</id>
+    <title>Nanotechnology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1102</id>
+    <title>Architectural Design</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1103</id>
+    <title>Architectural Heritage and Conservation</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1104</id>
+    <title>Architectural History and Theory</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1105</id>
+    <title>Architectural Science and Technology (incl. Acoustics, Lighting, Structure and Ecologically Sustainable Design)</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1106</id>
+    <title>Architecture Management</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1107</id>
+    <title>Interior Design</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1108</id>
+    <title>Landscape Architecture</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1109</id>
+    <title>Architecture not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1110</id>
+    <title>Building Construction Management and Project Planning</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1111</id>
+    <title>Building Science and Techniques</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1112</id>
+    <title>Quantity Surveying</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1113</id>
+    <title>Building not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1114</id>
+    <title>Design History and Theory</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1115</id>
+    <title>Design Innovation</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1116</id>
+    <title>Design Management and Studio and Professional Practice</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1117</id>
+    <title>Digital and Interaction Design</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1118</id>
+    <title>Industrial Design</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1119</id>
+    <title>Textile and Fashion Design</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1120</id>
+    <title>Visual Communication Design (incl. Graphic Design)</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1121</id>
+    <title>Design Practice and Management not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1122</id>
+    <title>Engineering Design Empirical Studies</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1123</id>
+    <title>Engineering Design Knowledge</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1124</id>
+    <title>Engineering Design Methods</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1125</id>
+    <title>Engineering Systems Design</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1126</id>
+    <title>Models of Engineering Design</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1127</id>
+    <title>Engineering Design not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1128</id>
+    <title>Community Planning</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1129</id>
+    <title>History and Theory of the Built Environment (excl. Architecture)</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1130</id>
+    <title>Housing Markets, Development, Management</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1131</id>
+    <title>Land Use and Environmental Planning</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1132</id>
+    <title>Regional Analysis and Development</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1133</id>
+    <title>Transport Planning</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1134</id>
+    <title>Urban Analysis and Development</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1135</id>
+    <title>Urban Design</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1136</id>
+    <title>Urban and Regional Planning not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1101</parent_id>
+    <id>1137</id>
+    <title>Built Environment and Design not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1139</id>
+    <title>Accounting Theory and Standards</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1140</id>
+    <title>Auditing and Accountability</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1141</id>
+    <title>Financial Accounting</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1142</id>
+    <title>International Accounting</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1143</id>
+    <title>Management Accounting</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1144</id>
+    <title>Sustainability Accounting and Reporting</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1145</id>
+    <title>Taxation Accounting</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1146</id>
+    <title>Accounting, Auditing and Accountability not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1147</id>
+    <title>Finance</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1148</id>
+    <title>Financial Econometrics</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1149</id>
+    <title>Financial Institutions (incl. Banking)</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1150</id>
+    <title>Insurance Studies</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1151</id>
+    <title>Investment and Risk Management</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1152</id>
+    <title>Banking, Finance and Investment not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1153</id>
+    <title>Business Information Management (incl. Records, Knowledge and Information Management, and Intelligence)</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1154</id>
+    <title>Business Information Systems</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1155</id>
+    <title>Corporate Governance and Stakeholder Engagement</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1156</id>
+    <title>Entrepreneurship</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1157</id>
+    <title>Human Resources Management</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1158</id>
+    <title>Industrial Relations</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1159</id>
+    <title>Innovation and Technology Management</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1160</id>
+    <title>International Business</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1161</id>
+    <title>Logistics and Supply Chain Management</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1162</id>
+    <title>Organisation and Management Theory</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1163</id>
+    <title>Organisational Behaviour</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1164</id>
+    <title>Organisational Planning and Management</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1165</id>
+    <title>Quality Management</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1166</id>
+    <title>Small Business Management</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1167</id>
+    <title>Business and Management not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1168</id>
+    <title>Consumer-Oriented Product or Service Development</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1169</id>
+    <title>Marketing Communications</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1170</id>
+    <title>Marketing Management (incl. Strategy and Customer Relations)</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1171</id>
+    <title>Marketing Measurement</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1172</id>
+    <title>Marketing Research Methodology</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1173</id>
+    <title>Marketing Theory</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1174</id>
+    <title>Pricing (incl. Consumer Value Estimation)</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1175</id>
+    <title>Marketing not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1176</id>
+    <title>Air Transportation and Freight Services</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1177</id>
+    <title>Rail Transportation and Freight Services</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1178</id>
+    <title>Road Transportation and Freight Services</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1179</id>
+    <title>Transportation and Freight Services not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1181</id>
+    <title>Family and Household Studies</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1182</id>
+    <title>Fertility</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1183</id>
+    <title>Migration</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1184</id>
+    <title>Mortality</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1185</id>
+    <title>Population Trends and Policies</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1186</id>
+    <title>Demography not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1187</id>
+    <title>Economic Geography</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1188</id>
+    <title>Recreation, Leisure and Tourism Geography</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1189</id>
+    <title>Social and Cultural Geography</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1190</id>
+    <title>Urban and Regional Studies (excl. Planning)</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1191</id>
+    <title>Human Geography not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1192</id>
+    <title>Aboriginal and Torres Strait Islander Policy</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1193</id>
+    <title>Arts and Cultural Policy</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1194</id>
+    <title>Communications and Media Policy</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1195</id>
+    <title>Crime Policy</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1196</id>
+    <title>Economic Development Policy</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1197</id>
+    <title>Education Policy</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1198</id>
+    <title>Environment Policy</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1199</id>
+    <title>Health Policy</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1200</id>
+    <title>Public Administration</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1201</id>
+    <title>Public Policy</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1202</id>
+    <title>Research, Science and Technology Policy</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1203</id>
+    <title>Social Policy</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1204</id>
+    <title>Tourism Policy</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1205</id>
+    <title>Urban Policy</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1206</id>
+    <title>Policy and Administration not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1207</id>
+    <title>Australian Government and Politics</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1208</id>
+    <title>Citizenship</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1209</id>
+    <title>Comparative Government and Politics</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1210</id>
+    <title>Defence Studies</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1211</id>
+    <title>Environmental Politics</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1212</id>
+    <title>Government and Politics of Asia and the Pacific</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1213</id>
+    <title>International Relations</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1214</id>
+    <title>New Zealand Government and Politics</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1215</id>
+    <title>Political Theory and Political Philosophy</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1216</id>
+    <title>Political Science not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1217</id>
+    <title>Clinical Social Work Practice</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1218</id>
+    <title>Counselling, Welfare and Community Services</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1219</id>
+    <title>Social Program Evaluation</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1220</id>
+    <title>Social Work not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1222</id>
+    <title>Early English Languages</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1223</id>
+    <title>English Language</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1224</id>
+    <title>English as a Second Language</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1225</id>
+    <title>Central and Eastern European Languages (incl. Russian)</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1226</id>
+    <title>Latin and Classical Greek Languages</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1227</id>
+    <title>French Language</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1228</id>
+    <title>German Language</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1229</id>
+    <title>Iberian Languages</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1230</id>
+    <title>Italian Language</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1231</id>
+    <title>Other European Languages</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1232</id>
+    <title>Chinese Languages</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1233</id>
+    <title>Japanese Language</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1234</id>
+    <title>Indonesian Languages</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1235</id>
+    <title>South-East Asian Languages (excl. Indonesian)</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1236</id>
+    <title>Indian Languages</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1237</id>
+    <title>Korean Language</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1238</id>
+    <title>Other Asian Languages (excl. South-East Asian)</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1239</id>
+    <title>Middle Eastern Languages</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1240</id>
+    <title>Aboriginal and Torres Strait Islander Languages</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1241</id>
+    <title>Pacific Languages</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1242</id>
+    <title>Te Reo Maori (Maori Language)</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1243</id>
+    <title>Comparative Language Studies</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1244</id>
+    <title>Translation and Interpretation Studies</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1245</id>
+    <title>Language Studies not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1246</id>
+    <title>Aboriginal and Torres Strait Islander Literature</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1247</id>
+    <title>Australian Literature (excl. Aboriginal and Torres Strait Islander Literature)</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1248</id>
+    <title>British and Irish Literature</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1249</id>
+    <title>Maori Literature</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1250</id>
+    <title>New Zealand Literature (excl. Maori Literature)</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1251</id>
+    <title>North American Literature</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1252</id>
+    <title>Pacific Literature</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1253</id>
+    <title>Other Literatures in English</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1254</id>
+    <title>Central and Eastern European Literature (incl. Russian)</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1255</id>
+    <title>Latin and Classical Greek Literature</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1256</id>
+    <title>Literature in French</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1257</id>
+    <title>Literature in German</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1258</id>
+    <title>Literature in Italian</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1259</id>
+    <title>Literature in Spanish and Portuguese</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1260</id>
+    <title>Other European Literature</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1261</id>
+    <title>Indonesian Literature</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1262</id>
+    <title>Literature in Chinese</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1263</id>
+    <title>Literature in Japanese</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1264</id>
+    <title>South-East Asian Literature (excl. Indonesian)</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1265</id>
+    <title>Indian Literature</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1266</id>
+    <title>Korean Literature</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1267</id>
+    <title>Other Asian Literature (excl. South-East Asian)</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1268</id>
+    <title>Middle Eastern Literature</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1269</id>
+    <title>Comparative Literature Studies</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1270</id>
+    <title>Literary Theory</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1271</id>
+    <title>Stylistics and Textual Analysis</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1272</id>
+    <title>Literary Studies not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1273</id>
+    <title>Language, Communication and Culture not elsewhere classified</title>
+  </row>
+</root>
