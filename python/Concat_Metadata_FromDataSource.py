@@ -139,6 +139,7 @@ def confirm(prompt=None, resp=False):
 usage = "usage: %prog [options] arg1"
 parser = OptionParser(usage=usage)
 parser.add_option("--input", action="store", dest="data_source_uri", help="uri of OAI-PMH data source, e.g. http://spatial-dev.ala.org.au/geonetwork/srv/en/oaipmh")
+parser.add_option("--operation", action="store", dest="operation", help="operation - if not provided, ListRecords will be used")
 parser.add_option("--metadata_prefix", action="store", dest="metadata_prefix", help="metadata prefix, e.g. 'rif' or 'oai_dc' or 'iso19139.anzlic' or 'iso19139.mcp' ")
 parser.add_option("--set", action="store", dest="set", help="set to narrow down what is to be retrieved' ")
 parser.add_option("--output_directory", action="store", dest="output_directory", help="directory to write output to, e.g. 'AIMS'")
@@ -159,21 +160,22 @@ if len(options.data_source_uri) < 1:
     parser.error("Requires data_source_uri.  Try --help for usage")
     sys.exit(-1)
 
-if not options.metadata_prefix:
-    parser.error("Requires metadata_prefix.  Try --help for usage")
-    sys.exit(-1)
-
-if len(options.metadata_prefix) < 1:
-    parser.error("Requires metadata_prefix.  Try --help for usage")
+if ((options.operation == 'ListRecords') or ((options.operation == None) or (len(options.operation) < 1)))and ((options.metadata_prefix == None) or (len(options.metadata_prefix) < 1)):
+    parser.error("Requires metadata_prefix because ListRecords will be called - override ListRecords with --operation.  Try --help for usage")
     sys.exit(-1)
 
 if not options.output_directory:
     parser.error("Requires output directory.  Try --help for usage")
     sys.exit(-1)
 
-if len(options.metadata_prefix) < 1:
+if len(options.output_directory) < 1:
     parser.error("Requires output directory.  Try --help for usage")
-    sys.exit(-1)   
+    sys.exit(-1)
+
+if ((options.operation == None) or (len(options.operation) < 1)):
+    operation = 'ListRecords'
+else:
+    operation = options.operation
 
 metadataPrefix = options.metadata_prefix
 dataSourceURI = options.data_source_uri
@@ -183,12 +185,12 @@ subset = options.set
 def requestURI(dataSourceURI, subset, metadataPrefix):
   path = ""
   if len(dataSourceURI) > 0:
-    path = dataSourceURI+"?verb=ListRecords"
+    path = dataSourceURI+"?verb="+operation
 
   if (subset is not None) and (len(subset) > 0):
     path = path+"&set="+subset
 
-  if len(metadataPrefix) > 0:
+  if ((metadataPrefix != None) and (len(metadataPrefix) > 0)):
     path = path+"&metadataPrefix="+metadataPrefix
     
   return path
