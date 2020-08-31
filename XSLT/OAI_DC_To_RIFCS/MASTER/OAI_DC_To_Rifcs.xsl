@@ -370,17 +370,17 @@
                             <xsl:when test="contains(regex-group(0), '-')">
                                 <date type="dateFrom" dateFormat="W3CDTF">
                                     <xsl:value-of select="substring-before(regex-group(0), '-')"/>
-                                    <xsl:message select="concat('from: ', substring-before(regex-group(0), '-'))"/>
+                                    <!--xsl:message select="concat('from: ', substring-before(regex-group(0), '-'))"/-->
                                 </date>
                                 <date type="dateTo" dateFormat="W3CDTF">
                                     <xsl:value-of select="substring-after(regex-group(0), '-')"/>
-                                    <xsl:message select="concat('to: ', substring-after(regex-group(0), '-'))"/>
+                                    <!--xsl:message select="concat('to: ', substring-after(regex-group(0), '-'))"/-->
                                 </date>
                             </xsl:when>
                             <xsl:otherwise>
                                 <date type="dateFrom" dateFormat="W3CDTF">
                                     <xsl:value-of select="regex-group(0)"/>
-                                    <xsl:message select="concat('match: ', regex-group(0))"/>
+                                    <!--xsl:message select="concat('match: ', regex-group(0))"/-->
                                 </date> 
                             </xsl:otherwise>
                         </xsl:choose>

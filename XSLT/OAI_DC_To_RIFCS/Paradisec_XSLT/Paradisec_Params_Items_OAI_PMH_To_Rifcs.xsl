@@ -5,7 +5,9 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:dc="http://purl.org/dc/elements/1.1/" 
-    exclude-result-prefixes="xsl dc">
+    xmlns:oai="http://www.openarchives.org/OAI/2.0/" 
+    xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    exclude-result-prefixes="xsl dc oai fn">
 
     <xsl:import href="OLAC_DC_To_Rifcs.xsl"/>
     
@@ -18,41 +20,67 @@
     <xsl:param name="global_access_conditions" select="'https://www.paradisec.org.au/deposit/access-conditions'"/>
     <xsl:param name="global_rightsStatement" select="'Access to the catalog entry is open, but access to records is only open to registered users'"/>
     <xsl:param name="global_access_text_open" select="'Open (subject to agreeing to PDSC access conditions)'"/>
+    <xsl:param name="global_headerIdentitierPrefix" select="'oai:paradisec.org.au:'"/>
     
-    
-    <!-- if title is empty or equal to the item identifier after the '-', e.g. '014'
-            use the identifier value for title e.g. 'CS1-014' rather than just this item id '014' 
-            ; otherwise, prepend identifier before rich title, e.g. 'CS1-014 - Rich Title -->
+    <!--
+        Rules below are for how to determine title - for this example, we'll use collection-item identifier 'GB10-014'
+
+        choose
+ 	      when ((no title) OR ((title is exactly equal to item, e.g. '014') or (title equals '[Title to be supplied]')))
+             choose
+                when ((there is a description) AND (description does not contain 'No description available'))
+                    choose
+                        when description greater than 80
+                            use for title:  {collection-item} +  ' - ' {first 80 characters of description}
+                        otherwise
+                            use for title:  {collection-item} +  ' - ' {all description}
+                    otherwise (no title, or title equals '[Title to be supplied]' and no description either, so just use collection-item)
+                        use for title: {collection-item}
+           otherwise (we have a title and it is not just the item identifier)
+             use for title: {collection-item} + ' - ' + {title provided}
+    -->
     
     <xsl:template match="dc:title" mode="collection_name">
-       
+        <!--xsl:variable name="collectionIDandItemID" select="normalize-space(../dc:identifier[not(@*) or not(string-length(@*))][contains(., $itemIdentifierFromHeader)])"/-->
+        
+        <xsl:variable name="collAndItemIdentifierFromHeader" select="substring-after(normalize-space(ancestor::oai:record/oai:header/oai:identifier), $global_headerIdentitierPrefix)"/>
+        <xsl:message select="concat('oai:header/oai:identifier ',ancestor::oai:record/oai:header/oai:identifier)"/> <!-- e.g. format: 'CS1-014' 00-->
+        <xsl:message select="concat('Coll and item from header: ', $collAndItemIdentifierFromHeader)"/> <!-- e.g. format: 'CS1-014' 00-->
+        <xsl:variable name="count" select="count(tokenize($collAndItemIdentifierFromHeader, '-'))" as="xs:integer"/>
+        <xsl:variable name="itemIdentifierFromHeader" select="tokenize($collAndItemIdentifierFromHeader, '-')[$count]"/> <!-- e.g. format: '014' 00-->
+        <xsl:message select="concat('Item from header: ', $itemIdentifierFromHeader)"/>
+        <!--xsl:message select="concat('$collectionIDandItemID: ', $collectionIDandItemID)"/-->
+        <xsl:message select="concat('dc:title: ', normalize-space(.))"/>
         <xsl:variable name="titleProcessed">
             <xsl:choose>
                 <xsl:when test="(string-length(normalize-space(.)) = 0) or
-                    (normalize-space(.) = substring-after(normalize-space(../dc:identifier[not(@*) or not(string-length(@*))]), '-'))">
+                    (normalize-space(.) = $itemIdentifierFromHeader) or
+                    (normalize-space(.) = '[Title to be supplied]')">
                     <xsl:choose>
-                        <xsl:when test="string-length(normalize-space(../dc:description)) > 0">
+                        <xsl:when test="(string-length(normalize-space(../dc:description)) > 0) and
+                                        not(contains(lower-case(../dc:description), 'no description available'))">
                             <xsl:choose>
                                 <xsl:when test="string-length(../dc:description) > 80">
-                                    <xsl:value-of select="concat(normalize-space(../dc:identifier[not(@*) or not(string-length(@*))]), ' - ', substring(../dc:description, 1, 80), '...')"/>
+                                    <xsl:value-of select="concat($collAndItemIdentifierFromHeader, ' - ', substring(../dc:description, 1, 80), '...')"/>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <xsl:value-of select="concat(normalize-space(../dc:identifier[not(@*) or not(string-length(@*))]), ' - ', ../dc:description)"/>
+                                    <xsl:value-of select="concat($collAndItemIdentifierFromHeader, ' - ', ../dc:description)"/>
                                 </xsl:otherwise>
                             </xsl:choose>
                         </xsl:when>
                         <xsl:otherwise>
-                            <xsl:value-of select="normalize-space(../dc:identifier[not(@*) or not(string-length(@*))])"/>
+                            <xsl:value-of select="$collAndItemIdentifierFromHeader"/>
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:value-of select="concat(normalize-space(../dc:identifier[not(@*) or not(string-length(@*))]), ' - ', normalize-space(.))"/>
+                    <xsl:value-of select="concat($collAndItemIdentifierFromHeader, ' - ', normalize-space(.))"/>
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
         
         <xsl:if test="string-length($titleProcessed) > 0">
+            <xsl:message select="concat('Using $titleProcessed (instead of dc:title): ', $titleProcessed)"/>
             <name type="primary">
                 <namePart>
                     <xsl:value-of select="$titleProcessed"/>

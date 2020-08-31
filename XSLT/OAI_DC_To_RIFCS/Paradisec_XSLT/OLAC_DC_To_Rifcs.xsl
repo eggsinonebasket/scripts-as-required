@@ -47,7 +47,7 @@
     
   
     <xsl:template match="oai:OAI-PMH/*/oai:record">
-            <xsl:message select="concat('name: ', name(.), ', namespace-uri: ', fn:namespace-uri(.), ', prefix: ', fn:prefix-from-QName(node-name(.)))"/>
+            <!--xsl:message select="concat('name: ', name(.), ', namespace-uri: ', fn:namespace-uri(.), ', prefix: ', fn:prefix-from-QName(node-name(.)))"/-->
             <xsl:apply-templates select="oai:metadata/olac:olac" mode="collection"/>
             <!--  xsl:apply-templates select="oai:metadata/oai_dc:dc/dc:funding" mode="funding_party"/-->
             <!--xsl:apply-templates select="oai:metadata/olac:dc" mode="party"/--> 
