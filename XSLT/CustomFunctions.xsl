@@ -161,15 +161,45 @@
     
     <xsl:function name="custom:convertCoordinatesLatLongToLongLat" as="xs:string">
         <xsl:param name="coordinates" as="xs:string"/>
-        <!--  (?![\s|^|,])[\d\.-]+-->
-        <xsl:variable name="coordinateSequence" as="xs:string*">
-            <xsl:analyze-string select="$coordinates" regex="[\d\.-]+">
-                <xsl:matching-substring>
-                    <xsl:value-of select="regex-group(0)"/>
-                    <xsl:message select="concat('match: ', regex-group(0))"/>
-                </xsl:matching-substring>
-            </xsl:analyze-string>
+        <xsl:param name="flipParam" as="xs:boolean"/>
+        
+        <xsl:variable name="flip" as="xs:boolean">
+            <xsl:choose>
+                <xsl:when test="$flipParam = true()">
+                    <xsl:value-of select="true()"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="false()"/>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:variable>
+        <!-- to handle:
+            "long,lat,elevation long,lat,elevation ..." 
+            "lat,long,elevation lat,long,elevation ..." (cannot work out to flip yet, so needs to be told with param 'flip')
+            "long,lat long,lat" 
+            "lat,long lat,long" (cannot work out to flip yet, so needs to be told with param 'flip'
+            
+            First, separate into sequence each item between a space (and the last item)
+        -->
+        <xsl:variable name="coordinatePairOrTrioSequence" as="xs:string*" select="tokenize($coordinates, ' ')"/>
+        
+        <xsl:variable name="coordinateSequence" as="xs:string*">
+            <xsl:for-each select="$coordinatePairOrTrioSequence">
+                <!-- per each item in this sequence here we have either just one of the following patterns
+                    [long,lat,elevation]
+                    [lat,long,elevation]
+                    [long,lat]
+                    [lat,long]
+                    We are just going to use the first to (and flip lat long to long lat - if the param told us too)
+                    -->
+                <xsl:for-each select="tokenize(., ',')">
+                    <xsl:if test="position() &lt; 3">
+                        <xsl:value-of select="."/>    
+                    </xsl:if>
+                </xsl:for-each>
+            </xsl:for-each>
+        </xsl:variable>
+        
         
         <xsl:variable name="latCoords" as="xs:string*">
             <xsl:for-each select="$coordinateSequence">
@@ -190,13 +220,26 @@
         <xsl:message select="concat('longCoords ', string-join(for $i in $longCoords return $i, ' '))"/>
         <xsl:message select="concat('latCoords ', string-join(for $i in $latCoords return $i, ' '))"/>
         
+        
         <xsl:variable name="coordinatePair_sequence" as="xs:string*">
-            <xsl:for-each select="$longCoords">
-                <xsl:if test="count($latCoords) > position()">
-                    <xsl:variable name="index" select="position()" as="xs:integer"/>
-                    <xsl:value-of select="concat(., ',', normalize-space($latCoords[$index]))"/>
-                </xsl:if>
-            </xsl:for-each> 
+            <xsl:choose>
+                <xsl:when test="$flip = true()">
+                    <xsl:for-each select="$longCoords">
+                        <xsl:if test="count($latCoords) > position()">
+                            <xsl:variable name="index" select="position()" as="xs:integer"/>
+                            <xsl:value-of select="concat(., ',', normalize-space($latCoords[$index]))"/>
+                        </xsl:if>
+                    </xsl:for-each> 
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:for-each select="$latCoords">
+                        <xsl:if test="count($longCoords) > position()">
+                            <xsl:variable name="index" select="position()" as="xs:integer"/>
+                            <xsl:value-of select="concat(., ',', normalize-space($longCoords[$index]))"/>
+                        </xsl:if>
+                    </xsl:for-each> 
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:variable>
         
         <xsl:choose>    
