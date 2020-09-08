@@ -834,18 +834,20 @@
     
     <xsl:template match="gml:Polygon" mode="registryObject_coverage_spatial">
         
+        <!--xsl:variable name="coordsFormatted" select="custom:convertCoordinatesLatLongToLongLat(normalize-space(.), false())"/-->
+        
         <coverage>
             <spatial>
                 <xsl:attribute name="type">
-                    <xsl:text>gmlKmlPolyCoords</xsl:text>
+                    <xsl:text>kmlPolyCoords</xsl:text>
                 </xsl:attribute>
-                <xsl:value-of select="."/>
+                <xsl:value-of select="normalize-space(.)"/>
             </spatial>
             <spatial>
                 <xsl:attribute name="type">
-                    <xsl:text>text</xsl:text>
+                    <xsl:text>kmlPolyCoords</xsl:text>
                 </xsl:attribute>
-                <xsl:value-of select="."/>
+                <xsl:value-of select="normalize-space(.)"/>
             </spatial>
         </coverage>
     </xsl:template>
