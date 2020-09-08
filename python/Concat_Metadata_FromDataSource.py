@@ -160,7 +160,7 @@ if len(options.data_source_uri) < 1:
     parser.error("Requires data_source_uri.  Try --help for usage")
     sys.exit(-1)
 
-if ((options.operation == 'ListRecords') or ((options.operation == None) or (len(options.operation) < 1)))and ((options.metadata_prefix == None) or (len(options.metadata_prefix) < 1)):
+if ((options.operation == 'ListRecords') or ((options.operation == None) or (len(options.operation) < 1))) and ((options.metadata_prefix == None) or (len(options.metadata_prefix) < 1)):
     parser.error("Requires metadata_prefix because ListRecords will be called - override ListRecords with --operation.  Try --help for usage")
     sys.exit(-1)
 
