@@ -10,7 +10,8 @@
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    exclude-result-prefixes="xsl dc oai oai_dc dcterms olac fn xs xsi">
+    xmlns:custom="http://custom.nowhere.yet"
+    exclude-result-prefixes="custom xsl dc oai oai_dc dcterms olac fn xs xsi">
 	
 	
     <xsl:import href="CustomFunctions.xsl"/>
@@ -66,7 +67,7 @@
     </xsl:template>
     
     <xsl:template match="dcterms:bibliographicCitation" mode="collection_extract_DOI_identifier">
-        <xsl:variable name="doiValue" select="normalize-space(substring-after(.,'DOI:'))"/>
+        <xsl:variable name="doiValue" select="custom:getDOI_FromString(normalize-space(.))"/>
         <xsl:if test="string-length($doiValue) > 0">
             <identifier type='doi'>
                 <xsl:value-of select="$doiValue"/>
@@ -75,7 +76,7 @@
     </xsl:template>  
     
     <xsl:template match="dcterms:bibliographicCitation" mode="collection_extract_DOI_location">
-        <xsl:variable name="doiValue" select="normalize-space(substring-after(.,'DOI:'))"/>
+        <xsl:variable name="doiValue" select="custom:getDOI_FromString(normalize-space(.))"/>
         <xsl:if test="string-length($doiValue) > 0">
             <location>
                 <address>
@@ -88,6 +89,8 @@
             </location> 
         </xsl:if>
     </xsl:template>  
+    
+   
     
     <xsl:template match="dc:identifier[@xsi:type ='dcterms:URI']" mode="collection_location_if_no_DOI">
         <xsl:variable name="doiValue" select="normalize-space(substring-after(ancestor::olac:olac/dcterms:bibliographicCitation,'DOI:'))"/>

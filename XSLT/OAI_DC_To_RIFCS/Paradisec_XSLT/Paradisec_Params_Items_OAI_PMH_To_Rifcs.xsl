@@ -26,7 +26,7 @@
         Rules below are for how to determine title - for this example, we'll use collection-item identifier 'GB10-014'
 
         choose
- 	      when ((no title) OR ((title is exactly equal to item, e.g. '014') or (title equals '[Title to be supplied]')))
+ 	      when (no title) OR ((title is exactly equal to item, e.g. '014') or (title equals '[Title to be supplied]'))
              choose
                 when ((there is a description) AND (description does not contain 'No description available'))
                     choose
