@@ -833,19 +833,21 @@
     </xsl:template>
     
     <xsl:template match="gml:Polygon" mode="registryObject_coverage_spatial">
+        <!-- RDA doesn't handle altitude yet and if altitude is provided, the shapes aren't shown on the
+            map so I'm removing altitude from the map coords but keeping them in the text if they are there -->
         
-        <!--xsl:variable name="coordsFormatted" select="custom:convertCoordinatesLatLongToLongLat(normalize-space(.), false())"/-->
+        <xsl:variable name="coordsFormatted" select="custom:convertCoordinatesLatLongToLongLat(normalize-space(.), false())"/>
         
         <coverage>
             <spatial>
                 <xsl:attribute name="type">
                     <xsl:text>kmlPolyCoords</xsl:text>
                 </xsl:attribute>
-                <xsl:value-of select="normalize-space(.)"/>
+                <xsl:value-of select="$coordsFormatted"/>
             </spatial>
             <spatial>
                 <xsl:attribute name="type">
-                    <xsl:text>kmlPolyCoords</xsl:text>
+                    <xsl:text>text</xsl:text>
                 </xsl:attribute>
                 <xsl:value-of select="normalize-space(.)"/>
             </spatial>
