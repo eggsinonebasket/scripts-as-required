@@ -68,21 +68,23 @@
     
     <xsl:template match="dcterms:bibliographicCitation" mode="collection_extract_DOI_identifier">
         <xsl:variable name="doiValue" select="custom:getDOI_FromString(normalize-space(.))"/>
+        <xsl:variable name="doiValue" select="custom:getHandle_FromString(normalize-space(.))"/>
         <xsl:if test="string-length($doiValue) > 0">
             <identifier type='doi'>
                 <xsl:value-of select="$doiValue"/>
             </identifier>
         </xsl:if>
+        
     </xsl:template>  
     
     <xsl:template match="dcterms:bibliographicCitation" mode="collection_extract_DOI_location">
-        <xsl:variable name="doiValue" select="custom:getDOI_FromString(normalize-space(.))"/>
-        <xsl:if test="string-length($doiValue) > 0">
+        <xsl:variable name="doiValue_sequence" select="custom:getDOI_FromString(normalize-space(.))" as="xs:string*"/>
+        <xsl:if test="count($doiValue_sequence) > 0">
             <location>
                 <address>
                     <electronic type="url" target="landingPage">
                         <value>
-                            <xsl:value-of select="concat('http://doi.org/', $doiValue)"/>
+                            <xsl:value-of select="concat('http://doi.org/', $doiValue_sequence[1])"/>
                         </value>
                     </electronic>
                 </address>
@@ -93,10 +95,10 @@
    
     
     <xsl:template match="dc:identifier[@xsi:type ='dcterms:URI']" mode="collection_location_if_no_DOI">
-        <xsl:variable name="doiValue" select="normalize-space(substring-after(ancestor::olac:olac/dcterms:bibliographicCitation,'DOI:'))"/>
         <!-- if there isn't a doi value and so the template above didn't use the doi as location,
             use this uri as location -->
-        <xsl:if test="string-length($doiValue) = 0">
+        <xsl:variable name="doiValue_sequence" select="custom:getDOI_FromString(normalize-space(.))" as="xs:string*"/>
+        <xsl:if test="count($doiValue_sequence) = 0">
             <xsl:if test="string-length(.) > 0">
                 <location>
                     <address>

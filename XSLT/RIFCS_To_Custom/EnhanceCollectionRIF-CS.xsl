@@ -17,10 +17,10 @@
     </xsl:template>
     
     <xsl:template match="*:registryObject/*:collection/*:identifier">
-        <xsl:variable name="doiValue" select="custom:getDOI_FromString(normalize-space(ancestor::*:registryObject/*:collection/*:citationInfo/*:fullCitation))"/>
-        <xsl:if test="string-length($doiValue) > 0">
+        <xsl:variable name="doiValue_Sequence" select="custom:getDOI_FromString(normalize-space(ancestor::*:registryObject/*:collection/*:citationInfo/*:fullCitation))" as="xs:string*"/>
+        <xsl:if test="count($doiValue_Sequence) > 0">
             <identifier type="doi">
-                <xsl:value-of select="$doiValue"/>
+                <xsl:value-of select="$doiValue_Sequence[1]"/>
             </identifier>
         </xsl:if>
         <xsl:copy>

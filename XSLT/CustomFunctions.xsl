@@ -299,27 +299,50 @@
         </xsl:choose>
     </xsl:function>
     
-    <xsl:function name="custom:getDOI_FromString">
+    <xsl:function name="custom:getDOI_FromString" as="xs:string*">
         <xsl:param name="fullString"/>
         <xsl:message select="concat('Attempting to extract doi from : ', $fullString)"/>
+        
         <xsl:choose>
-            <xsl:when test="contains(lower-case($fullString), 'doi:')">
-                <xsl:analyze-string select="$fullString" regex="((DOI:)|(doi:))(\s?)+(\d.[^\s$lt;]*)">
-                    <xsl:matching-substring>
-                        <xsl:value-of select="normalize-space(substring-after(regex-group(0), ':'))"/>
-                        <xsl:message select="concat('Extracted doi: [', normalize-space(substring-after(regex-group(0), ':')), ']')"/>
-                    </xsl:matching-substring>
-                </xsl:analyze-string>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:analyze-string select="$fullString" regex="(http(s?):)(//[^#\s&lt;]*)">
-                    <xsl:matching-substring>
-                        <xsl:value-of select="regex-group(0)"/>
-                        <xsl:message select="concat('Extracted doi: [', regex-group(0), ']')"/>
-                    </xsl:matching-substring>
-                </xsl:analyze-string>
-            </xsl:otherwise>
-        </xsl:choose>
+             <xsl:when test="contains(lower-case($fullString), 'doi:')">
+                 <xsl:analyze-string select="$fullString" regex="((DOI:)|(doi:))(\s?)+(\d.[^\s&lt;]*)">
+                     <xsl:matching-substring>
+                         <xsl:value-of select="normalize-space(substring-after(regex-group(0), ':'))"/>
+                         <xsl:message select="concat('Extracted doi: [', normalize-space(substring-after(regex-group(0), ':')), ']')"/>
+                     </xsl:matching-substring>
+                 </xsl:analyze-string>
+             </xsl:when>
+             <xsl:when test="contains(lower-case($fullString), 'doi.org')">
+                 <xsl:analyze-string select="$fullString" regex="(http(s?):)(//)([^\s]*)(doi)([^\s&lt;]*)">
+                     <xsl:matching-substring>
+                         <xsl:value-of select="regex-group(0)"/>
+                         <xsl:message select="concat('Extracted doi: [', regex-group(0), ']')"/>
+                     </xsl:matching-substring>
+                 </xsl:analyze-string>
+             </xsl:when>
+         </xsl:choose>
+    </xsl:function>
+    
+    <xsl:function name="custom:getHandle_FromString" as="xs:string*">
+        <xsl:param name="fullString"/>
+        <xsl:message select="concat('Attempting to extract handle from : ', $fullString)"/>
+      
+       <xsl:if test="contains(lower-case($fullString), 'handle')">
+           <xsl:analyze-string select="$fullString" regex="(http(s?):)(//)([^\s]*)(handle)([^\s&lt;]*)">
+                <xsl:matching-substring>
+                    <xsl:choose>
+                        <xsl:when test="ends-with(regex-group(0), '.')">
+                            <xsl:message select="concat('Extracted handle: [', substring(regex-group(0), 0, string-length(regex-group(0))), ']')"/>
+                            <xsl:value-of select="regex-group(0)"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:message select="concat('Extracted handle: [', regex-group(0), ']')"/>
+                            <xsl:value-of select="regex-group(0)"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:matching-substring>
+            </xsl:analyze-string>
+        </xsl:if>
     </xsl:function>
     
 </xsl:stylesheet>
