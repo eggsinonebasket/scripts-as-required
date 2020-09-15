@@ -24,6 +24,7 @@
     <xsl:param name="global_access_text_open" select="''"/>
     <xsl:param name="global_access_conditions" select="''"/>
     <xsl:param name="global_rightsStatement" select="''"/>
+    <xsl:param name="global_debug" select="false()"/>
     
     <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
@@ -33,7 +34,6 @@
             xsi:schemaLocation="http://ands.org.au/standards/rif-cs/registryObjects 
             http://services.ands.org.au/documentation/rifcs/schema/registryObjects.xsd">
           
-            <xsl:message select="concat('name(oai:OAI-PMH): ', name(oai:OAI-PMH))"/>
             <xsl:apply-templates select="oai:OAI-PMH/*/oai:record"/>
             
         </registryObjects>
@@ -67,8 +67,7 @@
     </xsl:template>
     
     <xsl:template match="dcterms:bibliographicCitation" mode="collection_extract_DOI_identifier">
-        <xsl:variable name="doiValue" select="custom:getDOI_FromString(normalize-space(.))"/>
-        <xsl:variable name="doiValue" select="custom:getHandle_FromString(normalize-space(.))"/>
+        <xsl:variable name="doiValue" select="custom:getDOI_FromString(normalize-space(.), false())"/>
         <xsl:if test="string-length($doiValue) > 0">
             <identifier type='doi'>
                 <xsl:value-of select="$doiValue"/>
@@ -78,13 +77,13 @@
     </xsl:template>  
     
     <xsl:template match="dcterms:bibliographicCitation" mode="collection_extract_DOI_location">
-        <xsl:variable name="doiValue_sequence" select="custom:getDOI_FromString(normalize-space(.))" as="xs:string*"/>
+        <xsl:variable name="doiValue_sequence" select="custom:getDOI_FromString(normalize-space(.), true())" as="xs:string*"/>
         <xsl:if test="count($doiValue_sequence) > 0">
             <location>
                 <address>
                     <electronic type="url" target="landingPage">
                         <value>
-                            <xsl:value-of select="concat('http://doi.org/', $doiValue_sequence[1])"/>
+                            <xsl:value-of select="$doiValue_sequence[1]"/>
                         </value>
                     </electronic>
                 </address>
@@ -97,7 +96,7 @@
     <xsl:template match="dc:identifier[@xsi:type ='dcterms:URI']" mode="collection_location_if_no_DOI">
         <!-- if there isn't a doi value and so the template above didn't use the doi as location,
             use this uri as location -->
-        <xsl:variable name="doiValue_sequence" select="custom:getDOI_FromString(normalize-space(.))" as="xs:string*"/>
+        <xsl:variable name="doiValue_sequence" select="custom:getDOI_FromString(normalize-space(ancestor::olac:olac/dcterms:bibliographicCitation), false())" as="xs:string*"/>
         <xsl:if test="count($doiValue_sequence) = 0">
             <xsl:if test="string-length(.) > 0">
                 <location>
@@ -110,7 +109,6 @@
                     </address>
                 </location> 
             </xsl:if>
-            
         </xsl:if>
     </xsl:template>
     
@@ -155,29 +153,33 @@
         </xsl:if>
     </xsl:template>
     
+    <xsl:template name="rightsStatement">
+        <rights>
+            <xsl:if test="string-length($global_rightsStatement) > 0">
+                <rightsStatement>
+                    <xsl:value-of select="$global_rightsStatement"/>
+                </rightsStatement>
+            </xsl:if>
+        </rights>
+    </xsl:template>
+    
     <xsl:template match="dc:rights" mode="collection_rights_rightsStatement">
-            <rights>
-                <accessRights>
-                    <xsl:choose>
-                        <xsl:when test="(string-length($global_access_text_open) > 0) and (. = $global_access_text_open)">
-                            <xsl:attribute name="type">
-                                <xsl:text>open</xsl:text>
-                            </xsl:attribute>
-                        </xsl:when>
-                    </xsl:choose>
-                    <xsl:if test="string-length($global_access_conditions) > 0">
-                     <xsl:attribute name="rightsUri">
-                         <xsl:value-of select="$global_access_conditions"/>
-                     </xsl:attribute>
-                    </xsl:if>
-                </accessRights>
-                <xsl:if test="string-length($global_rightsStatement) > 0">
-                    <rightsStatement>
-                        <xsl:value-of select="$global_rightsStatement"/>
-                    </rightsStatement>
+        <rights>
+            <accessRights>
+                <xsl:choose>
+                    <xsl:when test="(string-length($global_access_text_open) > 0) and (. = $global_access_text_open)">
+                        <xsl:attribute name="type">
+                            <xsl:text>open</xsl:text>
+                        </xsl:attribute>
+                    </xsl:when>
+                </xsl:choose>
+                <xsl:if test="string-length($global_access_conditions) > 0">
+                    <xsl:attribute name="rightsUri">
+                        <xsl:value-of select="$global_access_conditions"/>
+                    </xsl:attribute>
                 </xsl:if>
-            </rights>
-        
+            </accessRights>
+        </rights>
     </xsl:template>
     
     <xsl:template match="dc:coverage" mode="collection_spatial_coverage">

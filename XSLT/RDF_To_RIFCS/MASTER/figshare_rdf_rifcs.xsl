@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet 
     xmlns="http://ands.org.au/standards/rif-cs/registryObjects" 
     xmlns:oai="http://www.openarchives.org/OAI/2.0/" 
@@ -27,8 +27,11 @@
     <xsl:param name="global_baseURI" select="'(xslt param required)'"/>
     <xsl:param name="global_group" select="'(xslt param required)'"/>
     <xsl:param name="global_publisherName" select="'(xslt param required)'"/>
-
-  <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
+  
+    <xsl:output method="xml" version="1.0" omit-xml-declaration="no" indent="yes" encoding="UTF-8"/>
+    
+       
+   <!--xsl:output method="xml" version="1.0" omit-xml-declaration="yes" indent="yes" encoding="UTF-8"/-->
     
     <xsl:template match="/">
         <registryObjects xmlns="http://ands.org.au/standards/rif-cs/registryObjects" 
@@ -36,7 +39,8 @@
             xsi:schemaLocation="http://ands.org.au/standards/rif-cs/registryObjects http://services.ands.org.au/documentation/rifcs/schema/registryObjects.xsd">
             
             <xsl:message select="concat('name(oai:OAI-PMH): ', name(oai:OAI-PMH))"/>
-            <xsl:apply-templates select="oai:OAI-PMH/*/oai:record"/>
+            <!--xsl:apply-templates select="copy-of(oai:OAI-PMH/*/oai:record)"/-->
+            <xsl:copy-of select="oai:OAI-PMH/*/oai:record"/>
             
         </registryObjects>
     </xsl:template>
@@ -217,8 +221,10 @@
     
     <xsl:template match="rdfs:label" mode="collection_name">
         <name type="primary">
+            <!--xsl:variable name="name" select='replace(.,"&#x00E2;&#x80;&#x99;", "&#8217;")'/-->
+            <xsl:variable name="name" select='replace(.,"&#x00E2;&#x80;&#x99;", "&#x2019;")'/>
             <namePart>
-                <xsl:value-of select="."/>
+                <xsl:value-of select='$name'/>
             </namePart>
         </name>
     </xsl:template>

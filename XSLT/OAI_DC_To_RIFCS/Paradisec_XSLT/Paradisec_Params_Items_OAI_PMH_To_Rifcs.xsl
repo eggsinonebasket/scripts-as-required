@@ -44,13 +44,14 @@
         <!--xsl:variable name="collectionIDandItemID" select="normalize-space(../dc:identifier[not(@*) or not(string-length(@*))][contains(., $itemIdentifierFromHeader)])"/-->
         
         <xsl:variable name="collAndItemIdentifierFromHeader" select="substring-after(normalize-space(ancestor::oai:record/oai:header/oai:identifier), $global_headerIdentitierPrefix)"/>
-        <xsl:message select="concat('oai:header/oai:identifier ',ancestor::oai:record/oai:header/oai:identifier)"/> <!-- e.g. format: 'CS1-014' 00-->
-        <xsl:message select="concat('Coll and item from header: ', $collAndItemIdentifierFromHeader)"/> <!-- e.g. format: 'CS1-014' 00-->
+        
         <xsl:variable name="count" select="count(tokenize($collAndItemIdentifierFromHeader, '-'))" as="xs:integer"/>
         <xsl:variable name="itemIdentifierFromHeader" select="tokenize($collAndItemIdentifierFromHeader, '-')[$count]"/> <!-- e.g. format: '014' 00-->
-        <xsl:message select="concat('Item from header: ', $itemIdentifierFromHeader)"/>
-        <!--xsl:message select="concat('$collectionIDandItemID: ', $collectionIDandItemID)"/-->
-        <xsl:message select="concat('dc:title: ', normalize-space(.))"/>
+        <xsl:if test="$global_debug">
+            <xsl:message select="concat('Coll and item from header: ', $collAndItemIdentifierFromHeader)"/> <!-- e.g. format: 'CS1-014' 00-->
+            <xsl:message select="concat('Item from header: ', $itemIdentifierFromHeader)"/>
+            <xsl:message select="concat('dc:title: ', normalize-space(.))"/>
+        </xsl:if>
         <xsl:variable name="titleProcessed">
             <xsl:choose>
                 <xsl:when test="(string-length(normalize-space(.)) = 0) or
@@ -80,7 +81,7 @@
         </xsl:variable>
         
         <xsl:if test="string-length($titleProcessed) > 0">
-            <xsl:message select="concat('Using $titleProcessed (instead of dc:title): ', $titleProcessed)"/>
+            <xsl:if test="$global_debug"><xsl:message select="concat('Using $titleProcessed (instead of dc:title): ', $titleProcessed)"/></xsl:if>
             <name type="primary">
                 <namePart>
                     <xsl:value-of select="$titleProcessed"/>

@@ -110,6 +110,8 @@
                 
                 <xsl:apply-templates select="dc:rights[string-length(.) > 0]" mode="collection_rights_rightsStatement"/>
                 
+                <xsl:call-template name="rightsStatement"/>
+                
                 <xsl:apply-templates select="dc:description[string-length(.) > 0]" mode="collection_description_full"/>
                
                 <xsl:apply-templates select="dc:date[string-length(.) > 0]" mode="collection_dates_coverage"/>  
@@ -216,7 +218,7 @@
     
     
    <xsl:template match="dc:identifier.orcid" mode="collection_relatedInfo">
-        <xsl:message select="concat('vivo:orcidId : ', .)"/>
+        <xsl:message select="concat('orcidId : ', .)"/>
                             
         <relatedInfo type='party'>
             <identifier type="{custom:getIdentifierType(.)}">
@@ -271,6 +273,10 @@
                 <xsl:value-of select='normalize-space(.)'/>
             </spatial>
         </coverage>
+    </xsl:template>
+   
+    <xsl:template name="rightsStatement">
+        <!-- override with rights statement for all in olac_dc if required -->
     </xsl:template>
    
     <xsl:template match="dc:rights" mode="collection_rights_rightsStatement">
@@ -361,7 +367,6 @@
     </xsl:template>
     
     <xsl:template match="dc:date" mode="collection_dates_coverage">
-    <xsl:message select="concat('input: ', .)"/>
         <coverage>
             <temporal>
                 <xsl:analyze-string select="translate(translate(., ']', ''), '[', '')" regex="[\d]+[?]*[-]*[\d]*">

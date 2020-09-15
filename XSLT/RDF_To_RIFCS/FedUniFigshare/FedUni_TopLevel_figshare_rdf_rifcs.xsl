@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet 
     xmlns="http://ands.org.au/standards/rif-cs/registryObjects" 
     xmlns:oai="http://www.openarchives.org/OAI/2.0/" 
@@ -27,15 +27,16 @@
     <xsl:param name="global_group" select="'Federation University Figshare'"/>
     <xsl:param name="global_publisherName" select="'Federation University Figshare'"/>
 
-  <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
-
-    <xsl:template match="/">
+     <xsl:template match="/">
         <registryObjects xmlns="http://ands.org.au/standards/rif-cs/registryObjects" 
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
             xsi:schemaLocation="http://ands.org.au/standards/rif-cs/registryObjects http://services.ands.org.au/documentation/rifcs/schema/registryObjects.xsd">
           
             <xsl:message select="concat('name(oai:OAI-PMH): ', name(oai:OAI-PMH))"/>
-            <xsl:apply-templates select="oai:OAI-PMH/*/oai:record"/>
+            
+            <xsl:copy>
+             <xsl:apply-templates select="oai:OAI-PMH/*/oai:record"/>
+            </xsl:copy>
             
         </registryObjects>
     </xsl:template>

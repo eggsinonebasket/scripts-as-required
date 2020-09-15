@@ -8,6 +8,8 @@
     xmlns:custom="http://custom.nowhere.yet"
     exclude-result-prefixes="custom">
     
+    <xsl:param name="global_debug" select="false()"/>
+    
     <xsl:function name="custom:sequenceContains" as="xs:boolean">
         <xsl:param name="sequence" as="xs:string*"/>
         <xsl:param name="str" as="xs:string"/>
@@ -301,34 +303,55 @@
     
     <xsl:function name="custom:getDOI_FromString" as="xs:string*">
         <xsl:param name="fullString"/>
-        <xsl:message select="concat('Attempting to extract doi from : ', $fullString)"/>
+        <!-- set fullRUL true if you want https://dx.doi.org/10.4225/72/5705AB92DB429 or as false
+            if 10.4225/72/5705AB92DB429 is required -->
+        <xsl:param name="fullURL" as="xs:boolean"/> 
+        <xsl:if test="$global_debug"><xsl:message select="concat('Attempting to extract doi from : ', $fullString)"/></xsl:if>
         
         <xsl:choose>
-             <xsl:when test="contains(lower-case($fullString), 'doi:')">
-                 <xsl:analyze-string select="$fullString" regex="((DOI:)|(doi:))(\s?)+(\d.[^\s&lt;]*)">
-                     <xsl:matching-substring>
-                         <xsl:value-of select="normalize-space(substring-after(regex-group(0), ':'))"/>
-                         <xsl:message select="concat('Extracted doi: [', normalize-space(substring-after(regex-group(0), ':')), ']')"/>
-                     </xsl:matching-substring>
-                 </xsl:analyze-string>
-             </xsl:when>
-             <xsl:when test="contains(lower-case($fullString), 'doi.org')">
-                 <xsl:analyze-string select="$fullString" regex="(http(s?):)(//)([^\s]*)(doi)([^\s&lt;]*)">
-                     <xsl:matching-substring>
-                         <xsl:value-of select="regex-group(0)"/>
-                         <xsl:message select="concat('Extracted doi: [', regex-group(0), ']')"/>
-                     </xsl:matching-substring>
-                 </xsl:analyze-string>
-             </xsl:when>
-         </xsl:choose>
+            <xsl:when test="contains(lower-case($fullString), 'doi:')">
+                <xsl:analyze-string select="$fullString" regex="((DOI:)|(doi:))(\s?)+(\d.[^\s&lt;]*)">
+                    <xsl:matching-substring>
+                        <xsl:variable name="extractedDOI" select="normalize-space(substring-after(regex-group(0), ':'))"/>
+                        <xsl:choose>
+                            <xsl:when test="$fullURL">
+                                <xsl:if test="$global_debug"><xsl:message select="concat('Returning doi: [', 'https://doi.org/', $extractedDOI, ']')"/></xsl:if>
+                                <xsl:value-of select="concat('http://doi.org/', $extractedDOI)"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:if test="$global_debug"><xsl:message select="concat('Returning doi: [', $extractedDOI, ']')"/></xsl:if>
+                                <xsl:value-of select="$extractedDOI"/>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:matching-substring>
+                </xsl:analyze-string>
+            </xsl:when>
+            <xsl:when test="contains(lower-case($fullString), 'doi.org/')">
+                <xsl:analyze-string select="$fullString" regex="(http(s?):)(//)([^\s]*)(doi.org/)([^\s&lt;]*)">
+                    <xsl:matching-substring>
+                        <xsl:variable name="extractedDOI" select="normalize-space(regex-group(0))"/>
+                        <xsl:choose>
+                            <xsl:when test="$fullURL">
+                                <xsl:if test="$global_debug"><xsl:message select="concat('Returning doi: [', $extractedDOI, ']')"/></xsl:if>
+                                <xsl:value-of select="$extractedDOI"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:if test="$global_debug"><xsl:message select="concat('Returning doi: [', substring-after($extractedDOI, 'doi.org/'), ']')"/></xsl:if>
+                                <xsl:value-of select="substring-after($extractedDOI, 'doi.org/')"/>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:matching-substring>
+                </xsl:analyze-string>
+            </xsl:when>
+        </xsl:choose>
     </xsl:function>
     
     <xsl:function name="custom:getHandle_FromString" as="xs:string*">
         <xsl:param name="fullString"/>
-        <xsl:message select="concat('Attempting to extract handle from : ', $fullString)"/>
-      
-       <xsl:if test="contains(lower-case($fullString), 'handle')">
-           <xsl:analyze-string select="$fullString" regex="(http(s?):)(//)([^\s]*)(handle)([^\s&lt;]*)">
+        <xsl:if test="$global_debug"><xsl:message select="concat('Attempting to extract handle from : ', $fullString)"/></xsl:if>
+        
+        <xsl:if test="contains(lower-case($fullString), 'handle')">
+            <xsl:analyze-string select="$fullString" regex="(http(s?):)(//)([^\s]*)(handle)([^\s&lt;]*)">
                 <xsl:matching-substring>
                     <xsl:choose>
                         <xsl:when test="ends-with(regex-group(0), '.')">
