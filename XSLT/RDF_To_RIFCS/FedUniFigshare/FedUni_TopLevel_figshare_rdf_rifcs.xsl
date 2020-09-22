@@ -24,8 +24,8 @@
     
     <xsl:param name="global_originatingSource" select="'Federation University Figshare'"/>
     <xsl:param name="global_baseURI" select="'https://federation.figshare.com/'"/>
-    <xsl:param name="global_group" select="'Federation University Figshare'"/>
-    <xsl:param name="global_publisherName" select="'Federation University Figshare'"/>
+    <xsl:param name="global_group" select="'Federation University Australia'"/>
+    <xsl:param name="global_publisherName" select="'Federation University Australia'"/>
 
      <xsl:template match="/">
         <registryObjects xmlns="http://ands.org.au/standards/rif-cs/registryObjects" 
@@ -34,9 +34,7 @@
           
             <xsl:message select="concat('name(oai:OAI-PMH): ', name(oai:OAI-PMH))"/>
             
-            <xsl:copy>
-             <xsl:apply-templates select="oai:OAI-PMH/*/oai:record"/>
-            </xsl:copy>
+            <xsl:apply-templates select="oai:OAI-PMH/*/oai:record"/>
             
         </registryObjects>
     </xsl:template>
