@@ -16,10 +16,11 @@
     xmlns:vivo="http://vivoweb.org/ontology/core#"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    xmlns:figFunc="http://figfunc.nowhere.yet"
     xmlns:local="http://local.here.org"
     xmlns:exslt="http://exslt.org/common"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
-    exclude-result-prefixes="oai dc bibo datacite fabio foaf literal obo rdf rdfs vcard vivo xs fn local exslt xsi">
+    exclude-result-prefixes="oai dc bibo datacite fabio foaf literal obo rdf rdfs vcard vivo xs fn local exslt xsi figFunc">
    
     <xsl:variable name="categoryCodeList" select="document('api.figshare.com_v2_categories.xml')"/>
     
@@ -221,8 +222,7 @@
     
     <xsl:template match="rdfs:label" mode="collection_name">
         <name type="primary">
-            <!--xsl:variable name="name" select='replace(.,"&#x00E2;&#x80;&#x99;", "&#8217;")'/-->
-            <xsl:variable name="name" select='replace(.,"&#x00E2;&#x80;&#x99;", "&#x2019;")'/>
+           <xsl:variable name="name" select="figFunc:characterReplace(.)"/>
             <namePart>
                 <xsl:value-of select='$name'/>
             </namePart>
@@ -355,8 +355,11 @@
     </xsl:template>
     
     <xsl:template match="bibo:abstract" mode="collection_description_full">
+        
+        <!--xsl:variable name="name" select='replace(.,"&#x00E2;&#x80;&#x99;", "&#8217;")'/-->
+        <xsl:variable name="description" select="figFunc:characterReplace(.)"/>
         <description type="full">
-            <xsl:value-of select="."/>
+            <xsl:value-of select="$description"/>
         </description>
     </xsl:template>
     
@@ -459,8 +462,16 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-   
-         
+    
+    <xsl:function name="figFunc:characterReplace">
+        <xsl:param name="input"/>
+        <!--xsl:variable name="name" select='replace(.,"&#x00E2;&#x80;&#x99;", "&#8217;")'/-->
+        <xsl:variable name="replaceSingleQuote" select='replace($input,"&#x00E2;&#x80;&#x99;", "&#x2019;")'/>
+        <xsl:variable name="replaceLeftDoubleQuote" select='replace($replaceSingleQuote, "&#x00E2;&#x80;&#x9c;", "&#x201C;")'/>
+        <xsl:variable name="replaceRightDoubleQuote" select='replace($replaceLeftDoubleQuote, "&#x00E2;&#x80;&#x9d;", "&#x201D;")'/>
+        <xsl:variable name="replaceNarrowNoBreakSpace" select='replace($replaceRightDoubleQuote, "&#xE2;&#x80;&#xAF;", "&#x202F;")'/>
+        <xsl:value-of select="$replaceNarrowNoBreakSpace"/>
+    </xsl:function>
+    
  
-
 </xsl:stylesheet>
