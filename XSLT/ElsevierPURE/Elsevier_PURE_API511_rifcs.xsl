@@ -259,14 +259,7 @@
 
     <xsl:template match="*:doi" mode="collection_identifier">
         <identifier type="doi">
-            <xsl:choose>
-                <xsl:when test="starts-with(. , '10.')">
-                    <xsl:value-of select="normalize-space(.)"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:value-of select="normalize-space(.)"/>
-                </xsl:otherwise>
-            </xsl:choose>
+            <xsl:value-of select="normalize-space(.)"/>
         </identifier>
     </xsl:template>
 
