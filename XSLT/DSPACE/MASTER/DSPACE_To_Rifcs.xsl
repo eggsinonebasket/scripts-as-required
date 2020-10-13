@@ -23,7 +23,7 @@
     <xsl:param name="global_publisherName" select="'{requires override}'"/>
     <xsl:param name="global_baseURI" select="'{requires override}'"/>
     <xsl:param name="global_path" select="'{requires override}'"/>
-    
+        
     <xsl:variable name="licenseCodelist" select="document('license-codelist.xml')"/>
     
 
@@ -59,7 +59,35 @@
         
         <xsl:message select="concat('name(oai:element[@name=''dc'']): ', name(element[@name ='dc']))"/>
         
-        <xsl:variable name="key" select="concat($global_acronym, ':', fn:generate-id(.))"/>
+        <xsl:variable name="identifierBase">
+            <xsl:choose>
+                <xsl:when test="string-length(ancestor::oai:record/oai:header/oai:identifier) > 0">
+                    <xsl:choose>
+                        <xsl:when test="matches(ancestor::oai:record/oai:header/oai:identifier, '[\d]+')">
+                            <xsl:analyze-string select="normalize-space(ancestor::oai:record/oai:header/oai:identifier)" regex="[\d]+">
+                                <xsl:matching-substring>
+                                    <xsl:value-of select="regex-group(0)"/>
+                                </xsl:matching-substring>
+                            </xsl:analyze-string>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="normalize-space(ancestor::oai:record/oai:header/oai:identifier)"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="fn:generate-id(.)"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>   
+        <xsl:variable name="numbersFromKey">
+            
+        </xsl:variable>
+        
+        <xsl:variable name="key" select="concat($global_acronym, custom:registryObjectKeyFromString($identifierBase))"/>
+        <xsl:variable name="key" select="concat($identifierBase, ':', $identifierBase)"/>
+        
+        
         <registryObject>
             <xsl:attribute name="group" select="$global_group"/>
             <key>
@@ -279,7 +307,7 @@
     </xsl:template>
     
     <xsl:template match="element[@name='uri']" mode="collection_identifier">
-        <identifier type="uri">
+        <identifier type="{custom:getIdentifierType(.)}">
             <xsl:value-of select="normalize-space(.)"/>
         </identifier>    
     </xsl:template>
