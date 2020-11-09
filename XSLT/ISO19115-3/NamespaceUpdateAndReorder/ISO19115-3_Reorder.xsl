@@ -48,7 +48,7 @@
                 xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
                 exclude-result-prefixes="#all">
 
-  <xsl:import href="ISO19115-3_NamespaceUpdate.xsl"/>
+  
   
   <xsl:output method="xml" version="1.1" indent="yes" omit-xml-declaration="no" undeclare-prefixes="yes"/>
 
@@ -56,14 +56,7 @@
 
   <xsl:variable name="stylesheetVersion" select="'0.1'"/>
   
-  <xsl:template match="/">
-    <xsl:variable name="allOutputXML" as="node()*">
-      <xsl:copy>
-        <xsl:apply-templates select="node()|@*"/>
-      </xsl:copy>
-    </xsl:variable>
-    <xsl:apply-templates select="$allOutputXML//mdb:MD_Metadata" mode="reorder"/>
-  </xsl:template>
+  
   
   <xsl:template match="mdb:MD_Metadata" mode="reorder">
     
