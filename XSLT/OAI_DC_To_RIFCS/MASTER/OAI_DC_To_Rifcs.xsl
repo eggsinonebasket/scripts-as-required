@@ -20,9 +20,9 @@
     <xsl:param name="global_group" select="''"/>
     <xsl:param name="global_acronym" select="''"/>
     <xsl:param name="global_publisherName" select="''"/>
-    <xsl:param name="global_baseURI" select="''"/>
-    <xsl:param name="global_path" select="''"/>
     <xsl:param name="global_rightsStatement" select="''"/>
+    <!--xsl:param name="global_baseURI" select="''"/-->
+    <!--xsl:param name="global_path" select="''"/-->
       
     <xsl:variable name="licenseCodelist" select="document('license-codelist.xml')"/>
     
@@ -112,7 +112,18 @@
                 
                 <xsl:call-template name="rightsStatement"/>
                 
-                <xsl:apply-templates select="dc:description[string-length(.) > 0]" mode="collection_description_full"/>
+                <xsl:choose>
+                    <xsl:when test="count(dc:description[string-length(.) > 0]) > 0">
+                        <xsl:apply-templates select="dc:description[string-length(.) > 0]" mode="collection_description_full"/>
+                    </xsl:when>
+                    <xsl:when test="count(dc:title[string-length(.) > 0]) > 0">
+                        <xsl:apply-templates select="dc:title[string-length(.) > 0]" mode="collection_description_brief"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:call-template name="collection_description_default"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+               
                
                 <xsl:apply-templates select="dc:date[string-length(.) > 0]" mode="collection_dates_coverage"/>  
                 
@@ -360,8 +371,21 @@
         
     </xsl:template>
     
+    <xsl:template name="collection_description_default">
+        <description type="brief">
+            <xsl:value-of select="'(no description)'"/>
+        </description>
+    </xsl:template>
+    
     <xsl:template match="dc:description" mode="collection_description_full">
         <description type="full">
+            <xsl:value-of select="normalize-space(.)"/>
+        </description>
+    </xsl:template>
+    
+    <!-- for when there is no description - use title in brief description -->
+    <xsl:template match="dc:title" mode="collection_description_brief">
+        <description type="brief">
             <xsl:value-of select="normalize-space(.)"/>
         </description>
     </xsl:template>

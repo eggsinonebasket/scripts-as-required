@@ -127,22 +127,32 @@
         </xsl:choose>
     </xsl:function>
     
-    <xsl:function name="custom:getDoiFromString" as="xs:string">
-        <xsl:param name="fullString"/>
+    <xsl:function name="custom:getDOIFromString" as="xs:string">
+        <xsl:param name="fullString" as="xs:string"/>
+        <xsl:variable name="result">
+            <xsl:choose>
+                <xsl:when test="contains(lower-case($fullString), 'doi:')">
+                    <xsl:analyze-string select="$fullString" regex="((DOI:)|(doi:))+(\d.[^\s&lt;]*)">
+                        <xsl:matching-substring>
+                            <xsl:value-of select="regex-group(0)"/>
+                        </xsl:matching-substring>
+                    </xsl:analyze-string>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:analyze-string select="$fullString" regex="(http(s?):)(//[^#\s&lt;]*)">
+                        <xsl:matching-substring>
+                            <xsl:value-of select="regex-group(0)"/>
+                        </xsl:matching-substring>
+                    </xsl:analyze-string>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
         <xsl:choose>
-            <xsl:when test="contains(lower-case($fullString), 'doi:')">
-                <xsl:analyze-string select="$fullString" regex="((DOI:)|(doi:))+(\d.[^\s&lt;]*)">
-                    <xsl:matching-substring>
-                        <xsl:value-of select="regex-group(0)"/>
-                    </xsl:matching-substring>
-                </xsl:analyze-string>
+            <xsl:when test="string-length(normalize-space($result)) > 0">
+                <xsl:value-of select="normalize-space($result)"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:analyze-string select="$fullString" regex="(http(s?):)(//[^#\s&lt;]*)">
-                    <xsl:matching-substring>
-                        <xsl:value-of select="regex-group(0)"/>
-                    </xsl:matching-substring>
-                </xsl:analyze-string>
+                <xsl:text></xsl:text> <!-- return emtpy string because function won't allow empty sequence returned -->
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>

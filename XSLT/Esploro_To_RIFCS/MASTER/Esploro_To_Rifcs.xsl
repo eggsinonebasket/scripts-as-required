@@ -7,23 +7,25 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:esploroFunc="http://esploro.no.fixed.address"
+    xmlns="http://ands.org.au/standards/rif-cs/registryObjects"
     xpath-default-namespace="http://www.loc.gov/MARC21/slim">
-    
-
+   
     <xsl:import href="CustomFunctions.xsl"/>
     
-    <xsl:param name="global_originatingSource" select="'Southern Cross University'"/>
-    <xsl:param name="global_baseURI" select="'epubs.scu.edu.au'"/>
-    <xsl:param name="global_group" select="'Southern Cross University'"/>
-    <xsl:param name="global_publisherName" select="'Southern Cross University'"/>
+    <xsl:param name="global_originatingSource" select="'{override required}'"/>
+    <xsl:param name="global_baseURI" select="'{override required}'"/>
+    <xsl:param name="global_group" select="'{override required}'"/>
+    <xsl:param name="global_publisherName" select="'{override required}'"/>
+    <xsl:param name="global_acronym" select="'{override required}'"/>
     
-  <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
+    
+   <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
     <xsl:template match="/">
         <registryObjects xmlns="http://ands.org.au/standards/rif-cs/registryObjects" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ands.org.au/standards/rif-cs/registryObjects http://services.ands.org.au/documentation/rifcs/schema/registryObjects.xsd">
             <xsl:apply-templates select="//oai:record/oai:metadata/*:record/*:data" mode="collection"/>
-            <!-- xsl:apply-templates select="//oai:record/oai:metadata/*:document-export/*:documents/*:document" mode="activity"/-->
             <xsl:apply-templates select="//oai:record/oai:metadata/*:record/*:data" mode="party"/>
+            <xsl:apply-templates select="//oai:record/oai:metadata/*:record/*:data/*:fundingreferenceList/*:fundingreference" mode="activity"/>
         </registryObjects>
     </xsl:template>
   
@@ -33,7 +35,7 @@
             <xsl:attribute name="group" select="$global_group"/>
             <key>
                 <!--xsl:value-of select="custom:registryObjectKeyFromString(concat(title, articleid, context-key))"/-->
-                <xsl:value-of select="custom:registryObjectKeyFromString(../../../oai:header/oai:identifier)"/>
+                <xsl:value-of select="concat($global_acronym, custom:registryObjectKeyFromString(ancestor::oai:record/oai:header/oai:identifier))"/>
             </key>
             <originatingSource>
                 <xsl:value-of select="$global_originatingSource"/>
@@ -97,6 +99,8 @@
                 <xsl:apply-templates select="copyright[string-length(.) > 0]" mode="collection_rights_statement"/>
                 
                 <xsl:apply-templates select="license[string-length(.) > 0]" mode="collection_rights_license"/>
+                
+                <xsl:apply-templates select="rightsList/rights/rights[string-length(.) > 0]" mode="collection_rights_access"/>
                 
                 <xsl:apply-templates select="date.submitted[string-length(.) > 0]" mode="collection_dates_submitted"/> 
                 
@@ -257,9 +261,9 @@
         </subject>
     </xsl:template>
     
-    <xsl:template match="keywords" mode="collection_subject_anzsrc_for">
+    <xsl:template match="subject.anzfor" mode="collection_subject_anzsrc_for">
         <subject type="anzsrc-for">
-            <xsl:value-of select="normalize-space(.)"/>
+            <xsl:value-of select="normalize-space(code)"/>
         </subject>
     </xsl:template>
     
@@ -332,36 +336,46 @@
    </xsl:template>
     
     <xsl:template match="relationship" mode="collection_relatedInfo">
-        <xsl:if test="count(relatedidentifiers/relatedidentifier[string-length() > 0]) > 0">
+        <xsl:if test="(count(relatedidentifiers/relatedidentifier/relatedIdentifer[string-length() > 0]) > 0) or
+            (count(relatedurl[string-length() > 0]) > 0)">
          <relatedInfo type="reuseInformation">
              <title>
                  <xsl:value-of select="relationtitle"/>
              </title>
-             <xsl:for-each select="relatedidentifiers/relatedidentifier">
-                 <identifier type="{relatedIdentiferType}">
-                     <xsl:value-of select="normalize-space(.)"/>
-                 </identifier>
-             </xsl:for-each>
+             <xsl:choose>
+                 <xsl:when test="count(relatedidentifiers/relatedidentifier/relatedIdentifer[string-length() > 0]) > 0">
+                     <xsl:for-each select="relatedidentifiers/relatedidentifier">
+                         <identifier type="{relatedIdentiferType}">
+                             <xsl:value-of select="normalize-space(relatedIdentifer)"/>
+                         </identifier>
+                     </xsl:for-each>
+                 </xsl:when>
+                 <xsl:when test="count(relatedurl[string-length() > 0]) > 0">
+                     <identifier type="uri">
+                         <xsl:value-of select="normalize-space(relatedurl)"/>
+                     </identifier>
+                 </xsl:when>
+                 <xsl:otherwise>
+                     <!-- ought not ever get here due to test at beginning of template -->
+                 </xsl:otherwise>
+             </xsl:choose>
              <relation type="{relationtype}"/>
          </relatedInfo>
         </xsl:if>
     </xsl:template>
   
-   <xsl:template match="field[@name='access']" mode="collection_rights_access">
+    <xsl:template match="rights" mode="collection_rights_access">
         <rights>
             <accessRights>
                 <xsl:choose>
-                    <xsl:when test="contains(lower-case(.), 'open access')">
+                    <xsl:when test="(lower-case(.) = 'open')">
                         <xsl:attribute name="type" select="'open'"/>
                     </xsl:when>
-                    <xsl:when test="contains(lower-case(.), 'mediated')">
-                        <xsl:attribute name="type" select="'conditional'"/>
+                    <xsl:when test="contains(lower-case(.), 'embargo')">
+                        <xsl:attribute name="type" select="'restricted'"/>
                     </xsl:when>
                 </xsl:choose>
-                <xsl:if test="string-length(../field[@name='comments'])">
-                    <xsl:value-of select="normalize-space(../field[@name='comments'])"/>
-                </xsl:if>
-            </accessRights>
+                </accessRights>
         </rights>
     </xsl:template>
     
@@ -499,7 +513,7 @@
                      </xsl:if>
                      
                      <xsl:if test="string-length(identifier.scopus) > 0 ">
-                         <identifier type="orcid">
+                         <identifier type="scopus">
                              <xsl:choose>
                                  <xsl:when test="starts-with(identifier.scopus, 'http')">
                                      <xsl:value-of select="identifier.scopus"/>
@@ -708,6 +722,43 @@
              </citationMetadata>
          </citationInfo>
         </xsl:if>
+    </xsl:template>
+    
+    <xsl:template match="fundingreference" mode="activity">
+        
+        <xsl:if test="string-length(normalize-space(.)) > 0">
+            
+            <registryObject group="{$global_group}">
+                <key>
+                    <xsl:value-of select="custom:registryObjectKeyFromString(.)"/>
+                </key>
+                <originatingSource>
+                    <xsl:value-of select="$global_originatingSource"/>
+                </originatingSource>
+                
+                <activity type="grant">
+                    <name type="primary">
+                        <namePart>
+                            <xsl:value-of select="normalize-space(awardtitle)"/>
+                        </namePart>
+                    </name>
+                    <identifier>
+                        <xsl:attribute name="type">
+                            <xsl:choose>
+                                <xsl:when test="contains(fundername, 'Australian Research Council') or (contains(fundername, 'ARC'))">
+                                    <xsl:text>arc</xsl:text>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:text>local</xsl:text>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </xsl:attribute>
+                        <xsl:value-of select="normalize-space(awardnumber)"/>
+                    </identifier>
+                </activity>
+            </registryObject>
+        </xsl:if>
+        
     </xsl:template>
       
     <xsl:function name="esploroFunc:formatKey">

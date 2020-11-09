@@ -12,8 +12,10 @@
     
     <xsl:param name="global_originatingSource" select="'Southern Cross University'"/>
     <xsl:param name="global_baseURI" select="'epubs.scu.edu.au'"/>
-    <xsl:param name="global_group" select="'Southern Cross University - Esploro'"/>
+    <xsl:param name="global_group" select="'Southern Cross University'"/>
     <xsl:param name="global_publisherName" select="'Southern Cross University'"/>
+    <xsl:param name="global_acronym" select="'SCU'"/>
+    
 
 </xsl:stylesheet>
     

@@ -99,8 +99,16 @@
                 <xsl:value-of select="$global_group"/>    
             </xsl:attribute>
             
-            <xsl:apply-templates select="mdb:metadataIdentifier/mcc:MD_Identifier[1]/mcc:code[string-length(.) > 0][1]" mode="registryObject_key"/>
-        
+            <xsl:choose>
+                <xsl:when test="count(mdb:metadataIdentifier/mcc:MD_Identifier[contains(mcc:codeSpace, 'uuid')]/mcc:code[string-length(.) > 0]) > 0">
+                    <xsl:apply-templates select="mdb:metadataIdentifier/mcc:MD_Identifier[contains(mcc:codeSpace, 'uuid')][1]/mcc:code[string-length(.) > 0][1]" mode="registryObject_key"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:apply-templates select="mdb:metadataIdentifier/mcc:MD_Identifier[1]/mcc:code[string-length(.) > 0][1]" mode="registryObject_key"/>
+                </xsl:otherwise>
+            </xsl:choose>
+            
+            
             <originatingSource>
                 <xsl:value-of select="$originatingSource"/>
             </originatingSource>
@@ -200,7 +208,7 @@
                     </xsl:choose>
                 </xsl:for-each>
                 
-                <xsl:apply-templates select="mdb:metadataIdentifier/mcc:MD_Identifier[contains(mcc:codeSpace, 'uuid')]/mcc:code"
+                <xsl:apply-templates select="mdb:metadataIdentifier/mcc:MD_Identifier/mcc:code"
                     mode="registryObject_identifier_global"/>
                 
                 <xsl:apply-templates select="mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier/mcc:MD_Identifier[not(contains(mcc:codeSpace, 'uuid'))]/mcc:code"
@@ -303,7 +311,7 @@
             mode="registryObject_description_brief"/>
         
         <xsl:apply-templates select="mri:extent/gex:EX_Extent/gex:geographicElement/gex:EX_GeographicBoundingBox" mode="registryObject_coverage_spatial"/>
-        <xsl:apply-templates select="mri:extent/gex:EX_Extent/gex:geographicElement/gex:EX_BoundingPolygon/gex:polygon/gml:Polygon" mode="registryObject_coverage_spatial"/>
+        <xsl:apply-templates select="mri:extent/gex:EX_Extent/gex:geographicElement/gex:EX_BoundingPolygon//gml:Polygon" mode="registryObject_coverage_spatial"/>
        
        
         <xsl:apply-templates
@@ -845,12 +853,14 @@
                 </xsl:attribute>
                 <xsl:value-of select="$coordsFormatted"/>
             </spatial>
+            <!--
             <spatial>
                 <xsl:attribute name="type">
                     <xsl:text>text</xsl:text>
                 </xsl:attribute>
                 <xsl:value-of select="normalize-space(.)"/>
             </spatial>
+            -->
         </coverage>
     </xsl:template>
     

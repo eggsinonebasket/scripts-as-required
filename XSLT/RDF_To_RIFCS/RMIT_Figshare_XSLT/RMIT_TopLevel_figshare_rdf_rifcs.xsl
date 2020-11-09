@@ -24,7 +24,7 @@
     
     <xsl:param name="global_originatingSource" select="'Royal Melbourne Institute of Technology Figshare'"/>
     <xsl:param name="global_baseURI" select="'rmit.edu.au'"/>
-    <xsl:param name="global_group" select="'Royal Melbourne Institute of Technology Figshare'"/>
+    <xsl:param name="global_group" select="'RMIT University, Australia'"/>
     <xsl:param name="global_publisherName" select="'Royal Melbourne Institute of Technology'"/>
     
   <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
