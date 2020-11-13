@@ -313,7 +313,7 @@
     
     <xsl:function name="custom:getDOI_FromString" as="xs:string*">
         <xsl:param name="fullString"/>
-        <!-- set fullRUL true if you want https://dx.doi.org/10.4225/72/5705AB92DB429 or as false
+        <!-- set fullURL true if you want https://dx.doi.org/10.4225/72/5705AB92DB429 or as false
             if 10.4225/72/5705AB92DB429 is required -->
         <xsl:param name="fullURL" as="xs:boolean"/> 
         <xsl:if test="$global_debug"><xsl:message select="concat('Attempting to extract doi from : ', $fullString)"/></xsl:if>
@@ -376,6 +376,16 @@
                 </xsl:matching-substring>
             </xsl:analyze-string>
         </xsl:if>
+    </xsl:function>
+    
+    <xsl:function name="custom:characterReplace">
+        <xsl:param name="input"/>
+        <!--xsl:variable name="name" select='replace(.,"&#x00E2;&#x80;&#x99;", "&#8217;")'/-->
+        <xsl:variable name="replaceSingleQuote" select='replace($input,"&#x00E2;&#x80;&#x99;", "&#x2019;")'/>
+        <xsl:variable name="replaceLeftDoubleQuote" select='replace($replaceSingleQuote, "&#x00E2;&#x80;&#x9c;", "&#x201C;")'/>
+        <xsl:variable name="replaceRightDoubleQuote" select='replace($replaceLeftDoubleQuote, "&#x00E2;&#x80;&#x9d;", "&#x201D;")'/>
+        <xsl:variable name="replaceNarrowNoBreakSpace" select='replace($replaceRightDoubleQuote, "&#xE2;&#x80;&#xAF;", "&#x202F;")'/>
+        <xsl:value-of select="$replaceNarrowNoBreakSpace"/>
     </xsl:function>
     
 </xsl:stylesheet>

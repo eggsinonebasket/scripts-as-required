@@ -173,7 +173,7 @@
     
     <xsl:template match="identifier.doi" mode="collection_identifier_doi">
         <identifier type="doi">
-            <xsl:value-of select="concat('http://doi.org/', .)"/>
+            <xsl:value-of select="normalize-space(.)"/>
         </identifier>
     </xsl:template>
     
