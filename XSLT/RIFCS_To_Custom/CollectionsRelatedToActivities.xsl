@@ -10,13 +10,10 @@
     <xsl:param name="columnSeparator" select="'^'"/>
     <xsl:param name="valueSeparator" select="','"/>
     
-    <!--xsl:param name="activityXML" select="document('file:///home/csiroanu/projects/UNIofAdelaide_Project/FromProductionRDA_DataConnect/University-of-Adelaide-MainDatasource_And_MintDatasource_RIF-CS-Export_ProductionPublishedActivities.xml')"/-->
-    <!--xsl:param name="collectionXML_prod" select="document('file:///home/csiroanu/projects/UNIofAdelaide_Project/University-of-Adelaide-Figshare-RIF-CS-Export_FigshareProdPublishedCollections.xml')"/-->
+    <xsl:param name="activityXML" select="document('file:///home/csiroanu/projects/UNIofAdelaide_Project/FromProductionRDA_DataConnect/University-of-Adelaide-MainDatasource_And_MintDatasource_RIF-CS-Export_ProductionPublishedActivities.xml')"/>
+    <xsl:param name="collectionXML_prod" select="document('file:///home/csiroanu/projects/UNIofAdelaide_Project/University-of-Adelaide-Figshare-RIF-CS-Export_FigshareProdPublishedCollections.xml')"/>
     
-    <xsl:param name="activityXML" select="document('file:///home/csiroanu/projects/UniversityOfCanberra/University-of-Canberra-RIF-CS-Export_prod_Activities.xml')"/>
-    <xsl:param name="collectionXML_prod" select="document('file:///home/csiroanu/projects/UniversityOfCanberra/University-of-Canberra-RIF-CS-Export_prod_Collections.xml')"/>
-    
-    <!-- This can be run on demo Collection registryObjects xml, to find each activity related to the Collection -->
+    <!-- This can be run on Collection registryObjects xml, to find each activity related to the Collection -->
     
     <xsl:output omit-xml-declaration="yes" indent="yes" encoding="UTF-8"/>
     <xsl:strip-space elements="*"/>  
@@ -39,7 +36,7 @@
         <xsl:text>collectionTitle</xsl:text>
         <xsl:value-of select="$columnSeparator"/>
         
-        <xsl:text>collectionIsInDemoRDA (from new source repository)</xsl:text>
+        <xsl:text>collectionIsInDemoRDA (from figshare)</xsl:text>
         <xsl:value-of select="$columnSeparator"/>
        
         <xsl:text>&#xa;</xsl:text>
@@ -120,9 +117,9 @@
             <xsl:text>&quot;</xsl:text>
             <xsl:choose>
                 <xsl:when test="count($collectionXML_prod/ro:registryObjects/ro:registryObject/ro:collection[contains(ro:name/ro:namePart, $currentCollectionName)]) > 0">
-                    <xsl:message>Collection is in new source repository</xsl:message>
+                    <xsl:message>Collection is in figshare</xsl:message>
                     <xsl:if test="string-length($collectionXML_prod/ro:registryObjects/ro:registryObject/ro:collection[contains(ro:name/ro:namePart, $currentCollectionName)][1]/ro:name/ro:namePart) > 0">
-                        <xsl:message><xsl:value-of select="concat('Collection in new source repository has name: ', $collectionXML_prod/ro:registryObjects/ro:registryObject/ro:collection[contains(ro:name/ro:namePart, $currentCollectionName)][1]/preceding-sibling::ro:key)"/></xsl:message>
+                        <xsl:message><xsl:value-of select="concat('Collection in figshare has name: ', $collectionXML_prod/ro:registryObjects/ro:registryObject/ro:collection[contains(ro:name/ro:namePart, $currentCollectionName)][1]/preceding-sibling::ro:key)"/></xsl:message>
                         <xsl:value-of select="concat('https://researchdata.ands.org.au/view/?key=', $collectionXML_prod/ro:registryObjects/ro:registryObject/ro:collection[contains(ro:name/ro:namePart, $currentCollectionName)][1]/preceding-sibling::ro:key)"/>    
                     </xsl:if>
                 </xsl:when>         
