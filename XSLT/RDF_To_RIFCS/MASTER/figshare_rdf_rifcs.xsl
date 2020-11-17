@@ -22,7 +22,7 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
     exclude-result-prefixes="oai dc bibo datacite fabio foaf literal obo rdf rdfs vcard vivo xs fn local exslt xsi figFunc">
    
-    <xsl:variable name="categoryCodeList" select="document('api.figshare.com_v2_categories.xml')"/>
+    <xsl:variable name="categoryCodeList" select="document('api_figshare_com_v2_categories.xml')"/>
     
     <xsl:param name="global_originatingSource" select="'(xslt param required)'"/>
     <xsl:param name="global_baseURI" select="'(xslt param required)'"/>
@@ -347,11 +347,20 @@
     <xsl:template match="oai:setSpec" mode="collection_subject">
         <xsl:variable name="categoryId" select="substring-after(., 'category_')" as="xs:string"/>
         <xsl:variable name="mappedValue" select="$categoryCodeList/root/row[id = $categoryId]/title"/>
-        <xsl:message select="concat('categoryId [', $categoryId, '] mapped to [', $mappedValue, ']')"/>
+       
             
-        <subject type="local">
-            <xsl:value-of select="$mappedValue"/>
-        </subject>
+            
+        <xsl:choose>
+            <xsl:when test="string-length($mappedValue) > 0">
+                <xsl:message select="concat('categoryId [', $categoryId, '] mapped to [', $mappedValue, ']')"/>
+                <subject type="local">
+                    <xsl:value-of select="$mappedValue"/>
+                </subject>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:message select="concat('No text found for categoryId [', $categoryId, ']')"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
     
     <xsl:template match="bibo:abstract" mode="collection_description_full">

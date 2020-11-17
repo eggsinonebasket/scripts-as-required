@@ -3,7 +3,6 @@
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:gmd="http://www.isotc211.org/2005/gmd"
-                xmlns:gcoold="http://www.isotc211.org/2005/gco"
                 xmlns:gmi="http://www.isotc211.org/2005/gmi"
                 xmlns:gmx="http://www.isotc211.org/2005/gmx"
                 xmlns:gsr="http://www.isotc211.org/2005/gsr"
@@ -118,15 +117,23 @@
   
   <xsl:template match="mdb:MD_Metadata">
       <xsl:element name="mdb:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mdb/1.3" >
-        <xsl:namespace name="mdb" select="'https://schemas.isotc211.org/19115/-1/mdb/1.3'"/>
-        <xsl:namespace name="xsi" select="'https://www.w3.org/2001/XMLSchema-instance'"/>
+        <xsl:namespace name="cat" select="'https://schemas.isotc211.org/19115/-3/cat/1.0'"/>
         <xsl:namespace name="cit" select="'https://schemas.isotc211.org/19115/-1/cit/1.3'"/>
+        <xsl:namespace name="fcc" select="'https://schemas.isotc211.org/19110/-/fcc/1.0'"/>
+        <xsl:namespace name="gco" select="'https://schemas.isotc211.org/19103/-/gco/1.1'"/>
+        <xsl:namespace name="gcx" select="'https://schemas.isotc211.org/19103/-/gcx/1.1'"/>
         <xsl:namespace name="gex" select="'https://schemas.isotc211.org/19115/-1/gex/1.3'"/>
+        <xsl:namespace name="gfc" select="'https://schemas.isotc211.org/19110/-/gfc/1.0'"/>
+        <xsl:namespace name="gml" select="'https://www.opengis.net/gml/3.2'"/>
+        <xsl:namespace name="gwm" select="'https://schemas.isotc211.org/19136/-/gwm/1.1'"/>
         <xsl:namespace name="lan" select="'https://schemas.isotc211.org/19115/-1/lan/1.3'"/>
+        <xsl:namespace name="mac" select="'https://schemas.isotc211.org/19115/-2/mac/2.1'"/>
         <xsl:namespace name="mas" select="'https://schemas.isotc211.org/19115/-1/mas/1.3'"/>
         <xsl:namespace name="mcc" select="'https://schemas.isotc211.org/19115/-1/mcc/1.3'"/>
         <xsl:namespace name="mco" select="'https://schemas.isotc211.org/19115/-1/mco/1.3'"/>
         <xsl:namespace name="mda" select="'https://schemas.isotc211.org/19115/-1/mda/1.3'"/>
+        <xsl:namespace name="mdb" select="'https://schemas.isotc211.org/19115/-1/mdb/1.3'"/>
+        <xsl:namespace name="mdq" select="'https://schemas.isotc211.org/19157/-2/mdq/1.1'"/>
         <xsl:namespace name="mex" select="'https://schemas.isotc211.org/19115/-1/mex/1.3'"/>
         <xsl:namespace name="mmi" select="'https://schemas.isotc211.org/19115/-1/mmi/1.3'"/>
         <xsl:namespace name="mpc" select="'https://schemas.isotc211.org/19115/-1/mpc/1.3'"/>
@@ -137,16 +144,8 @@
         <xsl:namespace name="mrs" select="'https://schemas.isotc211.org/19115/-1/mrs/1.3'"/>
         <xsl:namespace name="msr" select="'https://schemas.isotc211.org/19115/-1/msr/1.3'"/>
         <xsl:namespace name="srv" select="'https://schemas.isotc211.org/19115/-1/srv/1.3'"/>
-        <xsl:namespace name="mac" select="'https://schemas.isotc211.org/19115/-2/mac/2.1'"/>
-        <xsl:namespace name="cat" select="'https://schemas.isotc211.org/19115/-3/cat/1.0'"/>
-        <xsl:namespace name="gco" select="'https://schemas.isotc211.org/19103/-/gco/1.1'"/>
-        <xsl:namespace name="gcx" select="'https://schemas.isotc211.org/19103/-/gcx/1.1'"/>
-        <xsl:namespace name="gfc" select="'https://schemas.isotc211.org/19110/-/gfc/1.0'"/>
-        <xsl:namespace name="fcc" select="'https://schemas.isotc211.org/19110/-/fcc/1.0'"/>
-        <xsl:namespace name="mdq" select="'https://schemas.isotc211.org/19157/-2/mdq/1.1'"/>
-        <xsl:namespace name="gwm" select="'https://schemas.isotc211.org/19136/-/gwm/1.1'"/>
-        <xsl:namespace name="gml" select="'https://www.opengis.net/gml/3.2'"/>
-        <xsl:namespace name="xlink" select="'http://www.w3.org/1999/xlink'"/>
+        <!--xsl:namespace name="xlink" select="'http://www.w3.org/1999/xlink'"/-->
+        <!--xsl:namespace name="xsi" select="'https://www.w3.org/2001/XMLSchema-instance'"/-->
         <!--xsl:attribute name="xsi:schemaLocation" select="'http://standards.iso.org/iso/19115/-1/mdb/1.3 https://schemas.isotc211.org/19115/-3/mdb/1.0/mdb.xsd'"/-->
         <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
@@ -170,6 +169,18 @@
     </xsl:element>
   </xsl:template>
   
+  <xsl:template match="gco:*">
+    <xsl:element name="gco:{local-name()}" namespace="https://schemas.isotc211.org/19103/-/gco/1.1" >
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:element>
+  </xsl:template>
+  
+  <xsl:template match="gcx:*">
+    <xsl:element name="gcx:{local-name()}" namespace="https://schemas.isotc211.org/19136/-/gcx/1.1" >
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:element>
+  </xsl:template>
+  
   <xsl:template match="gex:*">
     <xsl:element name="gex:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/gex/1.3" >
       <xsl:apply-templates select="node()|@*"/>
@@ -182,20 +193,14 @@
     </xsl:element>
   </xsl:template>
   
-  <xsl:template match="gcx:*">
-    <xsl:element name="gcx:{local-name()}" namespace="https://schemas.isotc211.org/19136/-/gcx/1.1" >
-      <xsl:apply-templates select="node()|@*"/>
-    </xsl:element>
-  </xsl:template>
-  
-  <xsl:template match="gco:*">
-    <xsl:element name="gco:{local-name()}" namespace="https://schemas.isotc211.org/19103/-/gco/1.1" >
-      <xsl:apply-templates select="node()|@*"/>
-    </xsl:element>
-  </xsl:template>
-  
   <xsl:template match="gml:*">
     <xsl:element name="gml:{local-name()}" namespace="http://www.opengis.net/gml/3.2" >
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:element>
+  </xsl:template>
+  
+  <xsl:template match="gwm:*">
+    <xsl:element name="gwm:{local-name()}" namespace="https://schemas.isotc211.org/19136/-/gwm/1.1" >
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
   </xsl:template>
@@ -244,7 +249,13 @@
     </xsl:element>
   </xsl:template>
   
-  <xsl:template match="mdb:*[not(local-name() ='MD_Metadata')]">
+  <!--xsl:template match="mdb:*[not(local-name() ='MD_Metadata')]">
+    <xsl:element name="mdb:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mdb/1.3" >
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:element>
+  </xsl:template-->
+  
+  <xsl:template match="mdb:*">
     <xsl:element name="mdb:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mdb/1.3" >
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
@@ -257,12 +268,6 @@
   </xsl:template>
   
   <!--xmlns:mdt="http://standards.iso.org/iso/19115/-3/mdt/1.0"-->
-  
-  <xsl:template match="mdt:*">
-    <xsl:element name="mdq:{local-name()}" namespace="https://schemas.isotc211.org/19157/-2/mdq/1.1" >
-      <xsl:apply-templates select="node()|@*"/>
-    </xsl:element>
-  </xsl:template>
   
   <xsl:template match="mex:*">
     <xsl:element name="mex:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mex/1.3" >
