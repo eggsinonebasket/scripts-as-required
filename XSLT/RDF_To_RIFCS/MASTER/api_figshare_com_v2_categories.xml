@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <root>
   <row>
     <parent_id>48</parent_id>
@@ -1208,7 +1208,7 @@
   <row>
     <parent_id>142</parent_id>
     <id>300</id>
-    <title>Cardiovascular Medicine and Haematology not elsewhere classified</title>
+    <title>Cardiorespiratory Medicine and Haematology not elsewhere classified</title>
   </row>
   <row>
     <parent_id>142</parent_id>
@@ -5304,5 +5304,1600 @@
     <parent_id>1221</parent_id>
     <id>1273</id>
     <title>Language, Communication and Culture not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1275</id>
+    <title>Agricultural Land Management</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1276</id>
+    <title>Agricultural Land Planning</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1277</id>
+    <title>Agricultural Production Systems Simulation</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1278</id>
+    <title>Agricultural Spatial Analysis and Modelling</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1279</id>
+    <title>Agricultural Systems Analysis and Modelling</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1280</id>
+    <title>Farm Management, Rural Management and Agribusiness</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1281</id>
+    <title>Farming Systems Research</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1282</id>
+    <title>Sustainable Agricultural Development</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1283</id>
+    <title>Agriculture, Land and Farm Management not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1284</id>
+    <title>Animal Breeding</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1285</id>
+    <title>Animal Growth and Development</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1286</id>
+    <title>Animal Management</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1287</id>
+    <title>Animal Nutrition</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1288</id>
+    <title>Animal Protection (Pests and Pathogens)</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1289</id>
+    <title>Animal Reproduction</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1290</id>
+    <title>Humane Animal Treatment</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1291</id>
+    <title>Animal Production not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1292</id>
+    <title>Agro-ecosystem Function and Prediction</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1293</id>
+    <title>Agronomy</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1294</id>
+    <title>Crop and Pasture Biochemistry and Physiology</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1295</id>
+    <title>Crop and Pasture Biomass and Bioproducts</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1296</id>
+    <title>Crop and Pasture Improvement (Selection and Breeding)</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1297</id>
+    <title>Crop and Pasture Nutrition</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1298</id>
+    <title>Crop and Pasture Post Harvest Technologies (incl. Transportation and Storage)</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1299</id>
+    <title>Crop and Pasture Protection (Pests, Diseases and Weeds)</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1300</id>
+    <title>Crop and Pasture Production not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1301</id>
+    <title>Aquaculture</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1302</id>
+    <title>Aquatic Ecosystem Studies and Stock Assessment</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1303</id>
+    <title>Fisheries Management</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1304</id>
+    <title>Fish Pests and Diseases</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1305</id>
+    <title>Fish Physiology and Genetics</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1306</id>
+    <title>Post-Harvest Fisheries Technologies (incl. Transportation)</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1307</id>
+    <title>Fisheries Sciences not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1308</id>
+    <title>Agroforestry</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1309</id>
+    <title>Forestry Biomass and Bioproducts</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1310</id>
+    <title>Forestry Fire Management</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1311</id>
+    <title>Forestry Management and Environment</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1312</id>
+    <title>Forestry Pests, Health and Diseases</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1313</id>
+    <title>Forestry Product Quality Assessment</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1314</id>
+    <title>Tree Improvement (Selection and Breeding)</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1315</id>
+    <title>Tree Nutrition and Physiology</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1316</id>
+    <title>Wood Fibre Processing</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1317</id>
+    <title>Wood Processing</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1318</id>
+    <title>Forestry Sciences not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1319</id>
+    <title>Horticultural Crop Growth and Development</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1320</id>
+    <title>Horticultural Crop Improvement (Selection and Breeding)</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1321</id>
+    <title>Horticultural Crop Protection (Pests, Diseases and Weeds)</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1322</id>
+    <title>Oenology and Viticulture</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1323</id>
+    <title>Post Harvest Horticultural Technologies (incl. Transportation and Storage)</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1324</id>
+    <title>Horticultural Production not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1325</id>
+    <title>Veterinary Anaesthesiology and Intensive Care</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1326</id>
+    <title>Veterinary Anatomy and Physiology</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1327</id>
+    <title>Veterinary Diagnosis and Diagnostics</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1328</id>
+    <title>Veterinary Epidemiology</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1329</id>
+    <title>Veterinary Immunology</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1330</id>
+    <title>Veterinary Medicine</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1331</id>
+    <title>Veterinary Microbiology (excl. Virology)</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1332</id>
+    <title>Veterinary Parasitology</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1333</id>
+    <title>Veterinary Pathology</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1334</id>
+    <title>Veterinary Pharmacology</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1335</id>
+    <title>Veterinary Surgery</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1336</id>
+    <title>Veterinary Virology</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1337</id>
+    <title>Veterinary Sciences not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1338</id>
+    <title>Agricultural Hydrology (Drainage, Flooding, Irrigation, Quality, etc.)</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1339</id>
+    <title>Fertilisers and Agrochemicals (Application etc.)</title>
+  </row>
+  <row>
+    <parent_id>1274</parent_id>
+    <id>1340</id>
+    <title>Agricultural and Veterinary Sciences not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1500</id>
+    <title>Communication and Media Studies not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1501</id>
+    <title>Aboriginal and Torres Strait Islander Cultural Studies</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1502</id>
+    <title>Asian Cultural Studies</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1503</id>
+    <title>Consumption and Everyday Life</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1504</id>
+    <title>Cultural Theory</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1505</id>
+    <title>Culture, Gender, Sexuality</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1506</id>
+    <title>Globalisation and Culture</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1507</id>
+    <title>Studies in Human Society not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1508</id>
+    <title>Migrant Cultural Studies</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1509</id>
+    <title>Multicultural, Intercultural and Cross-cultural Studies</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1510</id>
+    <title>Pacific Cultural Studies</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1511</id>
+    <title>Postcolonial Studies</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1512</id>
+    <title>Screen and Media Culture</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>1516</id>
+    <title>Aboriginal and Torres Strait Islander Environmental Knowledge</title>
+  </row>
+  <row>
+    <parent_id>1039</parent_id>
+    <id>1517</id>
+    <title>Technology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>1518</id>
+    <title>Maori Environmental Knowledge</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1519</id>
+    <title>Applied Sociology, Program Evaluation and Social Impact Assessment</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1520</id>
+    <title>Environmental Sociology</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1521</id>
+    <title>Film, Television and Digital Media not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1522</id>
+    <title>Rural Sociology</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1523</id>
+    <title>Crafts</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1524</id>
+    <title>Social Theory</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1525</id>
+    <title>Lens-based Practice</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1526</id>
+    <title>Performance and Installation Art</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1527</id>
+    <title>Sociology of Education</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1528</id>
+    <title>Urban Sociology and Community Studies</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1529</id>
+    <title>Criminology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1530</id>
+    <title>History and Philosophy of Law and Justice</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1531</id>
+    <title>History and Philosophy of Medicine</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1532</id>
+    <title>History and Philosophy of Science (incl. Non-historical Philosophy of Science)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1533</id>
+    <title>History and Philosophy of the Humanities</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1534</id>
+    <title>History and Philosophy of the Social Sciences</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1535</id>
+    <title>History of Ideas</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1536</id>
+    <title>History of Philosophy</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1537</id>
+    <title>Ethical Use of New Technology (e.g. Nanotechnology, Biotechnology)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1539</id>
+    <title>Kura Kaupapa Maori (Maori Primary Education)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1540</id>
+    <title>History and Archaeology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1543</id>
+    <title>Studies of Asian Society</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1544</id>
+    <title>Impacts of Tourism</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1545</id>
+    <title>Tourism Forecasting</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1546</id>
+    <title>Tourism Management</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1547</id>
+    <title>Tourism Marketing</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1548</id>
+    <title>Tourism Resource Appraisal</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1549</id>
+    <title>Tourist Behaviour and Visitor Experience</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1551</id>
+    <title>Sociology and Social Studies of Science and Technology</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1553</id>
+    <title>Maori Cultural Studies</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1555</id>
+    <title>Taxation Law</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1556</id>
+    <title>Cultural Studies not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1557</id>
+    <title>Philosophy and Religious Studies not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1560</id>
+    <title>Te Tiriti O Waitangi (The Treaty of Waitangi)</title>
+  </row>
+  <row>
+    <parent_id>18</parent_id>
+    <id>1561</id>
+    <title>Kaupapa Maori Psychology</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1562</id>
+    <title>Sociology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1563</id>
+    <title>Visual Arts and Crafts not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1565</id>
+    <title>History and Philosophy of Specific Fields not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1566</id>
+    <title>Aesthetics</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1567</id>
+    <title>Decision Theory</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1568</id>
+    <title>Environmental Philosophy</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1569</id>
+    <title>Epistemology</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1570</id>
+    <title>Ethical Theory</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1571</id>
+    <title>Feminist Theory</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1572</id>
+    <title>Hermeneutic and Critical Theory</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1573</id>
+    <title>Logic</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1574</id>
+    <title>Metaphysics</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1575</id>
+    <title>Phenomenology</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1576</id>
+    <title>Philosophical Psychology (incl. Moral Psychology and Philosophy of Action)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1577</id>
+    <title>Philosophy of Cognition</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1578</id>
+    <title>Creative Arts, Media and Communication Curriculum and Pedagogy</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1579</id>
+    <title>Curriculum and Pedagogy Theory and Development</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1580</id>
+    <title>Philosophy of Religion</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1581</id>
+    <title>English and Literacy Curriculum and Pedagogy (excl. LOTE, ESL and TESOL)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1582</id>
+    <title>Humanities and Social Sciences Curriculum and Pedagogy (excl. Economics, Business and Management)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1583</id>
+    <title>Psychoanalytic Philosophy</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1584</id>
+    <title>LOTE, ESL and TESOL Curriculum and Pedagogy (excl. Maori)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1585</id>
+    <title>Mathematics and Numeracy Curriculum and Pedagogy</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1586</id>
+    <title>Medicine, Nursing and Health Curriculum and Pedagogy</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1587</id>
+    <title>Physical Education and Development Curriculum and Pedagogy</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1588</id>
+    <title>Religion Curriculum and Pedagogy</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1589</id>
+    <title>Science, Technology and Engineering Curriculum and Pedagogy</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1590</id>
+    <title>Vocational Education and Training Curriculum and Pedagogy</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1591</id>
+    <title>Electronic Media Art</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1592</id>
+    <title>Tourism not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1594</id>
+    <title>Art Criticism</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>1595</id>
+    <title>Maori Information and Knowledge Systems</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1596</id>
+    <title>Aboriginal and Torres Strait Islander Archaeology</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1597</id>
+    <title>Archaeological Science</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1598</id>
+    <title>Archaeology of Asia, Africa and the Americas</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1599</id>
+    <title>Archaeology of Australia (excl. Aboriginal and Torres Strait Islander)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1600</id>
+    <title>Archaeology of Europe, the Mediterranean and the Levant</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1601</id>
+    <title>Archaeology of New Guinea and Pacific Islands (excl. New Zealand)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1602</id>
+    <title>Archaeology of New Zealand (excl. Maori)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1603</id>
+    <title>Historical Archaeology (incl. Industrial Archaeology)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1604</id>
+    <title>Maori Archaeology</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1605</id>
+    <title>Maritime Archaeology</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1606</id>
+    <title>Pacific Peoples Education</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1607</id>
+    <title>Courts and Sentencing</title>
+  </row>
+  <row>
+    <parent_id>33</parent_id>
+    <id>1610</id>
+    <title>Pacific Peoples Environmental Knowledge</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1611</id>
+    <title>Art History</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1612</id>
+    <title>Applied Linguistics and Educational Linguistics</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1614</id>
+    <title>Discourse and Pragmatics</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1615</id>
+    <title>Laboratory Phonetics and Speech Science</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1616</id>
+    <title>Language in Culture and Society (Sociolinguistics)</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1617</id>
+    <title>Language in Time and Space (incl. Historical Linguistics, Dialectology)</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1618</id>
+    <title>Lexicography</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1619</id>
+    <title>Linguistic Structures (incl. Grammar, Phonology, Lexicon, Semantics)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1620</id>
+    <title>Education not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1621</id>
+    <title>Interactive Media</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1622</id>
+    <title>Fine Arts (incl. Sculpture and Painting)</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>1623</id>
+    <title>Pacific Peoples Information and Knowledge Systems</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1625</id>
+    <title>Sociological Methodology and Research Methods</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1626</id>
+    <title>Art Theory</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1627</id>
+    <title>Computational Linguistics</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1628</id>
+    <title>Philosophy not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1629</id>
+    <title>Christian Studies (incl. Biblical Studies and Church History)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1630</id>
+    <title>Comparative Religious Studies</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1631</id>
+    <title>Islamic Studies</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1632</id>
+    <title>Jewish Studies</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1633</id>
+    <title>Religion and Society</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1634</id>
+    <title>Studies in Eastern Religious Traditions</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1635</id>
+    <title>Studies in Religious Traditions (excl. Eastern, Jewish, Christian and Islamic Traditions)</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1636</id>
+    <title>Cinema Studies</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1637</id>
+    <title>Computer Gaming and Animation</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1638</id>
+    <title>Curriculum and Pedagogy not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1639</id>
+    <title>Film and Television</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1640</id>
+    <title>Aboriginal and Torres Strait Islander Education</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1641</id>
+    <title>Comparative and Cross-Cultural Education</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1642</id>
+    <title>Education Assessment and Evaluation</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1643</id>
+    <title>Educational Administration, Management and Leadership</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1644</id>
+    <title>Educational Counselling</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1645</id>
+    <title>Educational Technology and Computing</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1646</id>
+    <title>Ethnic Education (excl. Aboriginal and Torres Strait Islander, Maori and Pacific Peoples)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1647</id>
+    <title>Gender, Sexuality and Education</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1648</id>
+    <title>Learning Sciences</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1649</id>
+    <title>Maori Education (excl. Early Childhood and Primary Education)</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1650</id>
+    <title>Food and Hospitality Services</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1651</id>
+    <title>Special Education and Disability</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1652</id>
+    <title>Teacher Education and Professional Development of Educators</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1653</id>
+    <title>Classical Greek and Roman History</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1654</id>
+    <title>European History (excl. British, Classical Greek and Roman)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1655</id>
+    <title>Archaeology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1656</id>
+    <title>Archival, Repository and Related Studies</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1657</id>
+    <title>Heritage and Cultural Conservation</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1658</id>
+    <title>Materials Conservation</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1659</id>
+    <title>Museum Studies</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1660</id>
+    <title>Aboriginal and Torres Strait Islander Law</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1661</id>
+    <title>Causes and Prevention of Crime</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1662</id>
+    <title>Access to Justice</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1663</id>
+    <title>Latin American History</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1664</id>
+    <title>Administrative Law</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1665</id>
+    <title>Civil Law and Procedure</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1666</id>
+    <title>Linguistics not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1667</id>
+    <title>Pacific History (excl. New Zealand and Maori)</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1668</id>
+    <title>Technical Writing</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1669</id>
+    <title>Art Theory and Criticism not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>52</parent_id>
+    <id>1670</id>
+    <title>Aboriginal and Torres Strait Islander Knowledge Management</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1671</id>
+    <title>Studies in the Creative Arts and Writing not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>1672</id>
+    <title>Traditional Aboriginal and Torres Strait Islander Medicine and Treatments</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1673</id>
+    <title>History of Economic Thought</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1674</id>
+    <title>Macroeconomic Theory</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1675</id>
+    <title>Mathematical Economics</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1676</id>
+    <title>Microeconomic Theory</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1677</id>
+    <title>Corporations and Associations Law</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1678</id>
+    <title>Religion and Religious Studies not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1679</id>
+    <title>Ecological Economics</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1680</id>
+    <title>Environmental and Natural Resources Law</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1681</id>
+    <title>Journalism Studies</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1682</id>
+    <title>Professional Writing</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1683</id>
+    <title>Specialist Studies in Education not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1684</id>
+    <title>Business and Labour History</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1685</id>
+    <title>Te Whariki (Maori Early Childhood Education)</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1686</id>
+    <title>Anthropology of Development</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1687</id>
+    <title>Biological (Physical) Anthropology</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1688</id>
+    <title>Linguistic Anthropology</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1689</id>
+    <title>Social and Cultural Anthropology</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1691</id>
+    <title>Medical Ethics</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1692</id>
+    <title>Applied Ethics not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1693</id>
+    <title>Curatorial and Related Studies not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1694</id>
+    <title>Aboriginal and Torres Strait Islander History</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1695</id>
+    <title>Asian History</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1696</id>
+    <title>Australian History (excl. Aboriginal and Torres Strait Islander History)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1697</id>
+    <title>Biography</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1698</id>
+    <title>British History</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1699</id>
+    <title>Hospitality Management</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1700</id>
+    <title>Real Estate and Valuation Services</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1701</id>
+    <title>Sport and Leisure Management</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1702</id>
+    <title>Maori History</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1703</id>
+    <title>Middle Eastern and African History</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1704</id>
+    <title>New Zealand History</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1705</id>
+    <title>North American History</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1706</id>
+    <title>Commercial and Contract Law</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1707</id>
+    <title>Comparative Law</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1708</id>
+    <title>Conflict of Laws (Private International Law)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1709</id>
+    <title>Constitutional Law</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1710</id>
+    <title>Comparative Economic Systems</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1711</id>
+    <title>Criminal Law and Procedure</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1712</id>
+    <title>Heterodox Economics</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1713</id>
+    <title>Equity and Trusts Law</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1714</id>
+    <title>Visual Cultures</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1715</id>
+    <title>Human Rights Law</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1716</id>
+    <title>Intellectual Property Law</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1717</id>
+    <title>International Law (excl. International Trade Law)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1718</id>
+    <title>International Trade Law</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1719</id>
+    <title>Labour Law</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1720</id>
+    <title>Philosophy of Language</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1721</id>
+    <title>Legal Institutions (incl. Courts and Justice Systems)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1722</id>
+    <title>Legal Practice, Lawyering and the Legal Profession</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1723</id>
+    <title>Legal Theory, Jurisprudence and Legal Interpretation</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1724</id>
+    <title>Litigation, Adjudication and Dispute Resolution</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1725</id>
+    <title>Property Law (excl. Intellectual Property Law)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1726</id>
+    <title>Philosophy of Mind (excl. Cognition)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1727</id>
+    <title>Tort Law</title>
+  </row>
+  <row>
+    <parent_id>142</parent_id>
+    <id>1728</id>
+    <title>Traditional Maori Medicine and Treatments</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1729</id>
+    <title>Economics, Business and Management Curriculum and Pedagogy</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1730</id>
+    <title>Communication Studies</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1731</id>
+    <title>Communication Technology and Digital Media Studies</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1732</id>
+    <title>Economic Theory not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1734</id>
+    <title>Philosophy of Specific Cultures (incl. Comparative Philosophy)</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1735</id>
+    <title>Studies of Maori Society</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1736</id>
+    <title>Gender Specific Studies</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1737</id>
+    <title>Studies of Aboriginal and Torres Strait Islander Society</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1738</id>
+    <title>Poststructuralism</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1739</id>
+    <title>Family Law</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1740</id>
+    <title>Studies of Pacific Peoples&apos; Societies</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1741</id>
+    <title>Law and Society</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1742</id>
+    <title>Kohanga Reo (Maori Language Curriculum and Pedagogy)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1743</id>
+    <title>Law and Legal Studies not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1744</id>
+    <title>Social Philosophy</title>
+  </row>
+  <row>
+    <parent_id>994</parent_id>
+    <id>1745</id>
+    <title>Journalism and Professional Writing not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1746</id>
+    <title>Race and Ethnic Relations</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1747</id>
+    <title>Maori Law not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1748</id>
+    <title>Bioethics (human and animal)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1749</id>
+    <title>Business Ethics</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1750</id>
+    <title>Anthropology not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1751</id>
+    <title>Human Rights and Justice Issues</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1752</id>
+    <title>Legal Ethics</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1753</id>
+    <title>Correctional Theory, Offender Treatment and Rehabilitation</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1754</id>
+    <title>Professional Ethics (incl. police and research ethics)</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1755</id>
+    <title>Criminological Theories</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1756</id>
+    <title>Police Administration, Procedures and Practice</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1757</id>
+    <title>Private Policing and Security Services</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1758</id>
+    <title>History and Philosophy of Education</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1759</id>
+    <title>Historical Studies not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1760</id>
+    <title>Commercial Services not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1761</id>
+    <title>Law not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1762</id>
+    <title>Nga Tikanga Maori (Maori Customary Law)</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1763</id>
+    <title>Te Maori Whakakaere Rauemi (Maori Resource Law)</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1764</id>
+    <title>International and Development Communication</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1765</id>
+    <title>Te Ture Whenua (Maori Land Law)</title>
+  </row>
+  <row>
+    <parent_id>26</parent_id>
+    <id>1766</id>
+    <title>Economics not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>50</parent_id>
+    <id>1767</id>
+    <title>History and Philosophy of Engineering and Technology</title>
+  </row>
+  <row>
+    <parent_id>1221</parent_id>
+    <id>1768</id>
+    <title>Organisational, Interpersonal and Intercultural Communication</title>
+  </row>
+  <row>
+    <parent_id>1138</parent_id>
+    <id>1769</id>
+    <title>Commerce, Management, Tourism and Services not elsewhere classified</title>
+  </row>
+  <row>
+    <parent_id>1180</parent_id>
+    <id>1770</id>
+    <title>Social Change</title>
+  </row>
+  <row>
+    <parent_id>5</parent_id>
+    <id>1771</id>
+    <title>Additive Manufacturing</title>
   </row>
 </root>
