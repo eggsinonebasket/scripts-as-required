@@ -10,12 +10,12 @@
     <xsl:import href="ISO19115-3_NamespaceUpdate.xsl"/>
     
     <xsl:template match="/">
-        <xsl:variable name="allOutputXML" as="node()*">
-            <xsl:copy>
-                <xsl:apply-templates select="node()|@*"/>
-            </xsl:copy>
-        </xsl:variable>
-        <xsl:apply-templates select="$allOutputXML//mdb:MD_Metadata" mode="reorder"/>
+        <xsl:for-each select="//*[local-name() = 'MD_Metadata']">
+            <xsl:variable name="allOutputXML" as="node()*">
+                <xsl:apply-templates select="." mode="namespaceUpdate"/>
+            </xsl:variable>
+            <xsl:apply-templates select="$allOutputXML" mode="reorder"/>
+        </xsl:for-each>
     </xsl:template>
     
 </xsl:stylesheet>

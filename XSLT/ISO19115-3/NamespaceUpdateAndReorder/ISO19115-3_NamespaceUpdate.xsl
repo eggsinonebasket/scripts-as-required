@@ -9,7 +9,6 @@
                 xmlns:gss="http://www.isotc211.org/2005/gss"
                 xmlns:gts="http://www.isotc211.org/2005/gts"
                 xmlns:srvold="http://www.isotc211.org/2005/srv"
-                xmlns:gml30="http://www.opengis.net/gml"
                 xmlns:gfc="http://standards.iso.org/iso/19110/gfc/1.0"
                 xmlns:fcc="http://standards.iso.org/iso/19110/fcc/1.0"
                 xmlns:cat="http://standards.iso.org/iso/19115/-3/cat/1.0"
@@ -44,6 +43,7 @@
                 xmlns:gml="http://www.opengis.net/gml/3.2"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
                 xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
+                xmlns="http://standards.iso.org/iso/19115/-3/mdb/1.0"
                 exclude-result-prefixes="#all">
   <!-- 
   <xsl:import href="utility/create19115-3Namespaces.xsl"/>
@@ -99,23 +99,12 @@
   <xsl:variable name="stylesheetVersion" select="'0.1'"/>
   
   <xsl:template match="/">
-    <xsl:variable name="allOutputXML" as="node()*">
-     <xsl:copy>
-       <xsl:apply-templates select="node()|@*"/>
-     </xsl:copy>
-    </xsl:variable>
-    <xsl:for-each select="$allOutputXML">
-      <xsl:copy-of select="."/>
+    <xsl:for-each select="//mdb:MD_Metadata">
+      <xsl:apply-templates select="." mode="namespaceUpdate"/>
     </xsl:for-each>
   </xsl:template>
   
-  <xsl:template match="node()|@*">
-    <xsl:copy>
-      <xsl:apply-templates select="node()|@*"/>
-    </xsl:copy>
-  </xsl:template>
-  
-  <xsl:template match="mdb:MD_Metadata">
+  <xsl:template match="mdb:MD_Metadata" mode="namespaceUpdate">
       <xsl:element name="mdb:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mdb/1.3" >
         <xsl:namespace name="cat" select="'https://schemas.isotc211.org/19115/-3/cat/1.0'"/>
         <xsl:namespace name="cit" select="'https://schemas.isotc211.org/19115/-1/cit/1.3'"/>
@@ -144,11 +133,17 @@
         <xsl:namespace name="mrs" select="'https://schemas.isotc211.org/19115/-1/mrs/1.3'"/>
         <xsl:namespace name="msr" select="'https://schemas.isotc211.org/19115/-1/msr/1.3'"/>
         <xsl:namespace name="srv" select="'https://schemas.isotc211.org/19115/-1/srv/1.3'"/>
-        <!--xsl:namespace name="xlink" select="'http://www.w3.org/1999/xlink'"/-->
-        <!--xsl:namespace name="xsi" select="'https://www.w3.org/2001/XMLSchema-instance'"/-->
-        <!--xsl:attribute name="xsi:schemaLocation" select="'http://standards.iso.org/iso/19115/-1/mdb/1.3 https://schemas.isotc211.org/19115/-3/mdb/1.0/mdb.xsd'"/-->
+        <xsl:namespace name="xlink" select="'https://www.w3.org/1999/xlink'"/>
+        <xsl:namespace name="xsi" select="'https://www.w3.org/2001/XMLSchema-instance'"/>
+        
         <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
+  </xsl:template>
+  
+  <xsl:template match="node()|@*">
+    <xsl:copy copy-namespaces="no" inherit-namespaces="no">
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:copy>
   </xsl:template>
   
   <xsl:template match="cat:*">
@@ -157,10 +152,24 @@
     </xsl:element>
   </xsl:template>
   
+  <xsl:template match="@cat:*">
+    <xsl:attribute name="cat:{local-name()}" namespace="https://schemas.isotc211.org/19115/-3/cat/1.0" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
+  </xsl:template>
+  
   <xsl:template match="cit:*">
     <xsl:element name="cit:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/cit/1.3" >
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
+  </xsl:template>
+  
+  <xsl:template match="@cit:*">
+    <xsl:attribute name="cit:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/cit/1.3" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
   </xsl:template>
   
   <xsl:template match="fcc:*">
@@ -169,10 +178,24 @@
     </xsl:element>
   </xsl:template>
   
+  <xsl:template match="@fcc:*">
+    <xsl:attribute name="fcc:{local-name()}" namespace="https://schemas.isotc211.org/19110/-/fcc/1.0" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
+  </xsl:template>
+  
   <xsl:template match="gco:*">
     <xsl:element name="gco:{local-name()}" namespace="https://schemas.isotc211.org/19103/-/gco/1.1" >
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
+  </xsl:template>
+  
+ <xsl:template match="@gco:*">
+    <xsl:attribute name="gco:{local-name()}" namespace="https://schemas.isotc211.org/19103/-/gco/1.1" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
   </xsl:template>
   
   <xsl:template match="gcx:*">
@@ -181,10 +204,24 @@
     </xsl:element>
   </xsl:template>
   
+  <xsl:template match="@gcx:*">
+    <xsl:attribute name="gcx:{local-name()}" namespace="https://schemas.isotc211.org/19136/-/gcx/1.1" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
+  </xsl:template>
+  
   <xsl:template match="gex:*">
     <xsl:element name="gex:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/gex/1.3" >
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
+  </xsl:template>
+  
+  <xsl:template match="@gex:*">
+    <xsl:attribute name="gex:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/gex/1.3" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
   </xsl:template>
   
   <xsl:template match="gfc:*">
@@ -193,10 +230,27 @@
     </xsl:element>
   </xsl:template>
   
-  <xsl:template match="gml:*">
-    <xsl:element name="gml:{local-name()}" namespace="http://www.opengis.net/gml/3.2" >
+  <xsl:template match="@gfc:*">
+    <xsl:attribute name="gfc:{local-name()}" namespace="https://schemas.isotc211.org/19110/-/gfc/1.0" >
+      <xsl:value-of select="."/>
       <xsl:apply-templates select="node()|@*"/>
-    </xsl:element>
+    </xsl:attribute>
+  </xsl:template>
+  
+  <xsl:template match="gml:*">
+    <!--xsl:element name="gml:{local-name()}" namespace="http://www.opengis.net/gml/3.2" >
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:element-->
+    <xsl:copy copy-namespaces="no" inherit-namespaces="no">
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:copy>
+  </xsl:template>
+  
+  <xsl:template match="@gml:*">
+    <xsl:attribute name="gml:{local-name()}" namespace="http://www.opengis.net/gml/3.2" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
   </xsl:template>
   
   <xsl:template match="gwm:*">
@@ -205,16 +259,37 @@
     </xsl:element>
   </xsl:template>
   
+  <xsl:template match="@gwm:*">
+    <xsl:attribute name="gwm:{local-name()}" namespace="https://schemas.isotc211.org/19136/-/gwm/1.1" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
+  </xsl:template>
+  
   <xsl:template match="lan:*">
     <xsl:element name="lan:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/lan/1.3" >
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
   </xsl:template>
   
+  <xsl:template match="@lan:*">
+    <xsl:attribute name="lan:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/lan/1.3" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
+  </xsl:template>
+  
   <xsl:template match="mac:*">
     <xsl:element name="mac:{local-name()}" namespace="https://schemas.isotc211.org/19115/-2/mac/2.1" >
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
+  </xsl:template>
+  
+  <xsl:template match="@mac:*">
+    <xsl:attribute name="mac:{local-name()}" namespace="https://schemas.isotc211.org/19115/-2/mac/2.1" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
   </xsl:template>
   
   <!-- xmlns:mai="http://standards.iso.org/iso/19115/-3/mai/1.0" -->
@@ -229,10 +304,24 @@
     </xsl:element>
   </xsl:template>
   
+  <xsl:template match="@mas:*">
+    <xsl:attribute name="mas:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mas/1.3" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
+  </xsl:template>
+  
   <xsl:template match="mcc:*">
     <xsl:element name="mcc:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mcc/1.3" >
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
+  </xsl:template>
+  
+  <xsl:template match="@mcc:*">
+    <xsl:attribute name="mcc:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mcc/1.3" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
   </xsl:template>
   
   <!--   xmlns:mds="http://standards.iso.org/iso/19115/-3/mds/1.0" -->
@@ -243,10 +332,24 @@
     </xsl:element>
   </xsl:template>
   
+  <xsl:template match="@mco:*">
+    <xsl:attribute name="mco:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mco/1.3" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
+  </xsl:template>
+  
   <xsl:template match="mda:*">
     <xsl:element name="mda:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mda/1.3" >
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
+  </xsl:template>
+  
+  <xsl:template match="@mda:*">
+    <xsl:attribute name="mda:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mda/1.3" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
   </xsl:template>
   
   <!--xsl:template match="mdb:*[not(local-name() ='MD_Metadata')]">
@@ -261,10 +364,24 @@
     </xsl:element>
   </xsl:template>
   
+  <xsl:template match="@mdb:*">
+    <xsl:attribute name="mdb:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mdb/1.3" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
+  </xsl:template>
+  
   <xsl:template match="mdq:*">
     <xsl:element name="mdq:{local-name()}" namespace="https://schemas.isotc211.org/19157/-2/mdq/1.1" >
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
+  </xsl:template>
+  
+  <xsl:template match="@mdq:*">
+    <xsl:attribute name="mdq:{local-name()}" namespace="https://schemas.isotc211.org/19157/-2/mdq/1.1" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
   </xsl:template>
   
   <!--xmlns:mdt="http://standards.iso.org/iso/19115/-3/mdt/1.0"-->
@@ -275,10 +392,24 @@
     </xsl:element>
   </xsl:template>
   
+  <xsl:template match="@mex:*">
+    <xsl:attribute name="mex:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mex/1.3" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
+  </xsl:template>
+  
   <xsl:template match="mmi:*">
     <xsl:element name="mmi:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mmi/1.3" >
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
+  </xsl:template>
+  
+  <xsl:template match="@mmi:*">
+    <xsl:attribute name="mmi:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mmi/1.3" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
   </xsl:template>
   
   <xsl:template match="mpc:*">
@@ -287,10 +418,24 @@
     </xsl:element>
   </xsl:template>
   
+  <xsl:template match="@mpc:*">
+    <xsl:attribute name="mpc:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mpc/1.3" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
+  </xsl:template>
+  
   <xsl:template match="mrc:*">
     <xsl:element name="mrc:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mrc/1.3" >
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
+  </xsl:template>
+  
+  <xsl:template match="@mrc:*">
+    <xsl:attribute name="mrc:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mrc/1.3" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
   </xsl:template>
   
   <xsl:template match="mrd:*">
@@ -299,10 +444,24 @@
     </xsl:element>
   </xsl:template>
   
+  <xsl:template match="@mrd:*">
+    <xsl:attribute name="mrd:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mrd/1.3" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
+  </xsl:template>
+  
   <xsl:template match="mri:*">
     <xsl:element name="mri:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mri/1.3" >
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
+  </xsl:template>
+  
+  <xsl:template match="@mri:*">
+    <xsl:attribute name="mri:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mri/1.3" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
   </xsl:template>
   
   <xsl:template match="mrl:*">
@@ -311,16 +470,58 @@
     </xsl:element>
   </xsl:template>
   
+  <xsl:template match="@mrl:*">
+    <xsl:attribute name="mrl:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mrl/1.3" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
+  </xsl:template>
+  
   <xsl:template match="mrs:*">
     <xsl:element name="mrs:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mrs/1.3" >
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
   </xsl:template>
   
+  <xsl:template match="@mrs:*">
+    <xsl:attribute name="mrs:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/mrs/1.3" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
+  </xsl:template>
+  
   <xsl:template match="srv:*">
     <xsl:element name="srv:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/srv/1.3" >
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
+  </xsl:template>
+  
+  <xsl:template match="@srv:*">
+    <xsl:attribute name="srv:{local-name()}" namespace="https://schemas.isotc211.org/19115/-1/srv/1.3" >
+      <xsl:value-of select="."/>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
+  </xsl:template>
+  
+  <xsl:template match="xsi:*">
+    <xsl:element name="srv:{local-name()}" namespace="https://www.w3.org/2001/XMLSchema-instance" >
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:element>
+  </xsl:template>
+  
+  <xsl:template match="@xsi:*">
+    <xsl:attribute name="xsi:{local-name()}" namespace="https://www.w3.org/2001/XMLSchema-instance" >
+      <xsl:choose>
+        <xsl:when test="local-name() = 'schemaLocation'">
+          <xsl:value-of select="'https://schemas.isotc211.org/19115/-1/mdb/1.3 https://schemas.isotc211.org/19115/-1/mdb/1.3/mdb.xsd'"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="."/>
+        </xsl:otherwise>
+      </xsl:choose>
+      
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:attribute>
   </xsl:template>
   
   
