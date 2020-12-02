@@ -250,7 +250,7 @@
     
     <xsl:template match="datacite:date" mode="collection_dates_date">
         <dates type="{lower-case(@dateType)}">
-            <date type="dateFrom">
+            <date type="dateFrom" dateFormat="W3CDTF">
                 <xsl:value-of select="."/>
             </date>
         </dates>
