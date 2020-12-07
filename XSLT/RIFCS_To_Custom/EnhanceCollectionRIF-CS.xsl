@@ -39,42 +39,64 @@
         </xsl:choose>
     </xsl:template>
     
-    <xsl:template match="registryObject/collection/identifier">
-        
-        <xsl:if test="$getCitationDOI_populateIdentifier_AppendExisting = true()">
-          <xsl:variable name="doiValue_Sequence" select="custom:getDOI_FromString(normalize-space(ancestor::*:registryObject/*:collection/*:citationInfo/*:fullCitation), false())" as="xs:string*"/>
-          <xsl:if test="(count($doiValue_Sequence) > 0) and (string-length($doiValue_Sequence[1]) > 0)">
-              <identifier type="doi">
-                  <xsl:value-of select="$doiValue_Sequence[1]"/>
-              </identifier>
-          </xsl:if>
-        </xsl:if>
-        <!-- do the following either way, to tranfer other identifiers as they are-->
-        <xsl:copy>
-            <xsl:apply-templates select="@*|node()"/>
-        </xsl:copy>
-    </xsl:template>
-    
-    <xsl:template match="registryObject/collection/location/address/electronic">
-        
+    <xsl:template match="registryObject/collection/identifier[(@type='doi') or (contains(.,'doi.org')) or (starts-with(., '10.'))]">
+        <!-- if we are going to replace this doi, don't pass these on - catch them here -->
+        <xsl:variable name="doiValue_Sequence" select="custom:getDOI_FromString(normalize-space(ancestor::*:registryObject/*:collection/*:citationInfo/*:fullCitation), false())" as="xs:string*"/>
         <xsl:choose>
-            <xsl:when test="$getCitationDOI_populateElectronicLocation_ReplaceExisting= true()">
-                <xsl:variable name="doiValue_Sequence" select="custom:getDOI_FromString(normalize-space(ancestor::*:registryObject/*:collection/*:citationInfo/*:fullCitation), true())" as="xs:string*"/>
-                <xsl:if test="(count($doiValue_Sequence) > 0) and (string-length($doiValue_Sequence[1]) > 0)">
-                    <electronic type="url" target="landingPage">
-                        <value>
-                            <xsl:value-of select="$doiValue_Sequence"/>
-                        </value>
-                    </electronic>
-                </xsl:if>
-            </xsl:when>
-            <xsl:otherwise>
+            <xsl:when test="($getCitationDOI_populateIdentifier_AppendExisting = false()) or ((count($doiValue_Sequence) = 0) or (string-length($doiValue_Sequence[1]) = 0))">
+                <!-- we won't be replacing the doi so use those provided -->
                 <xsl:copy>
                     <xsl:apply-templates select="@*|node()"/>
                 </xsl:copy>
-                
-            </xsl:otherwise>
+            </xsl:when>
+          </xsl:choose>
+    </xsl:template>
+    
+    <xsl:template match="location/address/electronic">
+        <!-- if we are going to replace this doi, don't pass these on - catch them here -->
+        <xsl:variable name="doiValue_Sequence" select="custom:getDOI_FromString(normalize-space(ancestor::*:registryObject/*:collection/*:citationInfo/*:fullCitation), false())" as="xs:string*"/>
+        <xsl:choose>
+            <xsl:when test="($getCitationDOI_populateElectronicLocation_ReplaceExisting = false()) or ((count($doiValue_Sequence) = 0) or (string-length($doiValue_Sequence[1]) = 0))">
+                <!-- we won't be replacing the electronic location so use those provided -->
+                <xsl:copy>
+                    <xsl:apply-templates select="@*|node()"/>
+                </xsl:copy>
+            </xsl:when>
         </xsl:choose>
     </xsl:template>
+    
+    <xsl:template match="registryObject/collection">
+        <!-- construct collection element -->
+        <collection>
+            <!-- construct attributes-->
+            <xsl:apply-templates select="@*"/>
+            
+            <xsl:variable name="doiValue_Sequence" select="custom:getDOI_FromString(normalize-space(ancestor::*:registryObject/*:collection/*:citationInfo/*:fullCitation), true())" as="xs:string*"/>
+            
+            <!-- add identifier type 'doi', using doi from full citation-->
+            <xsl:if test="($getCitationDOI_populateIdentifier_AppendExisting = true()) and ((count($doiValue_Sequence) > 0) and (string-length($doiValue_Sequence[1]) > 0))">
+                <identifier type="doi">
+                    <xsl:value-of select="$doiValue_Sequence[1]"/>
+                </identifier>
+            </xsl:if>
+            
+            
+            <xsl:if test="($getCitationDOI_populateElectronicLocation_ReplaceExisting= true()) and ((count($doiValue_Sequence) > 0) and (string-length($doiValue_Sequence[1]) > 0))">
+                <location>
+                    <address>
+                        <electronic type="url" target="landingPage">
+                            <value>
+                                <xsl:value-of select="$doiValue_Sequence"/>
+                            </value>
+                        </electronic>
+                    </address>
+                </location>
+            </xsl:if>
+            
+            <xsl:apply-templates select="node()"/>
+        </collection>
+    </xsl:template>
+        
+  
     
 </xsl:stylesheet>
