@@ -139,11 +139,27 @@
         <xsl:attribute name="dateAccessioned" select="normalize-space(.)"/>
     </xsl:template>
     
-    <xsl:template match="datacite:identifier | datacite:alternateIdentifier" mode="identifier">
+    <xsl:template match="datacite:identifier" mode="identifier">
         <identifier>
             <xsl:attribute name="type">
                 <xsl:choose>
                     <xsl:when test="lower-case(@identifierType) = 'doi'">
+                        <xsl:text>doi</xsl:text>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="custom:getIdentifierType(.)"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:attribute>
+            <xsl:value-of select="normalize-space(.)"/>
+        </identifier>    
+    </xsl:template>
+    
+    <xsl:template match="datacite:alternateIdentifier" mode="identifier">
+        <identifier>
+            <xsl:attribute name="type">
+                <xsl:choose>
+                    <xsl:when test="lower-case(@alternateIdentifierType) = 'doi'">
                         <xsl:text>doi</xsl:text>
                     </xsl:when>
                     <xsl:otherwise>
@@ -242,7 +258,25 @@
     
     <xsl:template match="datacite:subject" mode="collection_subject">
         <xsl:if test="string-length(.) > 0">
-            <subject type="local">
+            <subject>
+                <xsl:attribute name="type">
+                    <xsl:choose>
+                        <xsl:when test="string-length(@subjectScheme) > 0">
+                            <xsl:value-of select="@subjectScheme"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>local</xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                    
+                </xsl:attribute>
+            
+                <xsl:if test="string-length(@valueURI) > 0">
+                    <xsl:attribute name="termIdentifier">
+                     <xsl:value-of select="@valueURI"/>
+                    </xsl:attribute>
+                </xsl:if>
+                
                 <xsl:value-of select="normalize-space(.)"/>
             </subject>
         </xsl:if>
@@ -310,11 +344,20 @@
             <citationMetadata>
                 <xsl:choose>
                     <xsl:when test="count(datacite:identifier[(@identifierType = 'DOI') and (string-length() > 0)]) > 0">
-                        <xsl:apply-templates select="datacite:identifier[(@identifierType = 'DOI')]" mode="identifier"/>
+                        <xsl:apply-templates select="datacite:identifier[(@identifierType = 'DOI')][1]" mode="identifier"/>
                     </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:apply-templates select="datacite:alternateIdentifier[(@alternateIdentifierType = 'URL')]" mode="identifier"/>
-                    </xsl:otherwise>
+                    <xsl:when test="count(datacite:identifier[(string-length() > 0)]) > 0">
+                        <xsl:apply-templates select="datacite:identifier[(string-length() > 0)][1]" mode="identifier"/>
+                    </xsl:when>
+                    <xsl:when test="count(datacite:alternateIdentifier[(@alternateIdentifierType = 'URL') and (string-length() > 0)]) > 0">
+                        <xsl:apply-templates select="datacite:alternateIdentifier[(@alternateIdentifierType = 'URL')][1]" mode="identifier"/>
+                    </xsl:when>
+                    <xsl:when test="count(datacite:alternateIdentifier[(@alternateIdentifierType = 'PURL') and (string-length() > 0)]) > 0">
+                        <xsl:apply-templates select="datacite:alternateIdentifier[(@alternateIdentifierType = 'PURL')][1]" mode="identifier"/>
+                    </xsl:when>
+                    <xsl:when test="count(datacite:alternateIdentifier[(string-length() > 0)]) > 0">
+                        <xsl:apply-templates select="datacite:alternateIdentifier[(string-length() > 0)][1]" mode="identifier"/>
+                    </xsl:when>
                 </xsl:choose>
                             
                 <xsl:for-each select="datacite:creators/datacite:creator/datacite:creatorName">
@@ -337,7 +380,14 @@
                     <xsl:value-of select="datacite:dates/datacite:date[@dateType = 'Issued']"/>
                 </date>
                 <url>
-                    <xsl:value-of select="datacite:alternateIdentifier[(@alternateIdentifierType = 'URL')]"/>
+                    <xsl:choose>
+                        <xsl:when test="count(datacite:alternateIdentifier[(@alternateIdentifierType = 'URL') and (string-length() > 0)]) > 0">
+                            <xsl:value-of select="datacite:alternateIdentifier[(@alternateIdentifierType = 'URL')][1]"/>
+                        </xsl:when>
+                        <xsl:when test="count(datacite:alternateIdentifier[(@alternateIdentifierType = 'PURL') and (string-length() > 0)]) > 0">
+                            <xsl:value-of select="datacite:alternateIdentifier[(@alternateIdentifierType = 'PURL')][1]"/>
+                        </xsl:when>
+                    </xsl:choose>
                 </url>
             </citationMetadata>
         </citationInfo>
