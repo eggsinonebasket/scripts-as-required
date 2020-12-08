@@ -71,22 +71,24 @@
             <!-- construct attributes-->
             <xsl:apply-templates select="@*"/>
             
-            <xsl:variable name="doiValue_Sequence" select="custom:getDOI_FromString(normalize-space(ancestor::*:registryObject/*:collection/*:citationInfo/*:fullCitation), true())" as="xs:string*"/>
+            <xsl:variable name="doiValue_Sequence_short" select="custom:getDOI_FromString(normalize-space(ancestor::*:registryObject/*:collection/*:citationInfo/*:fullCitation), false())" as="xs:string*"/>
             
             <!-- add identifier type 'doi', using doi from full citation-->
-            <xsl:if test="($getCitationDOI_populateIdentifier_AppendExisting = true()) and ((count($doiValue_Sequence) > 0) and (string-length($doiValue_Sequence[1]) > 0))">
+            <xsl:if test="($getCitationDOI_populateIdentifier_AppendExisting = true()) and ((count($doiValue_Sequence_short) > 0) and (string-length($doiValue_Sequence_short[1]) > 0))">
                 <identifier type="doi">
-                    <xsl:value-of select="$doiValue_Sequence[1]"/>
+                    <xsl:value-of select="$doiValue_Sequence_short[1]"/>
                 </identifier>
             </xsl:if>
             
+            <xsl:variable name="doiValue_Sequence_http" select="custom:getDOI_FromString(normalize-space(ancestor::*:registryObject/*:collection/*:citationInfo/*:fullCitation), true())" as="xs:string*"/>
             
-            <xsl:if test="($getCitationDOI_populateElectronicLocation_ReplaceExisting= true()) and ((count($doiValue_Sequence) > 0) and (string-length($doiValue_Sequence[1]) > 0))">
+            
+            <xsl:if test="($getCitationDOI_populateElectronicLocation_ReplaceExisting= true()) and ((count($doiValue_Sequence_http) > 0) and (string-length($doiValue_Sequence_http[1]) > 0))">
                 <location>
                     <address>
                         <electronic type="url" target="landingPage">
                             <value>
-                                <xsl:value-of select="$doiValue_Sequence"/>
+                                <xsl:value-of select="$doiValue_Sequence_http[1]"/>
                             </value>
                         </electronic>
                     </address>
