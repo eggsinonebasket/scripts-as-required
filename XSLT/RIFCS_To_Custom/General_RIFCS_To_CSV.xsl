@@ -27,7 +27,8 @@
     <!--xsl:variable name="otherDatasourceRifCS" select="document('/home/ada168/projects/UniversityOfCanberra/PURE-at-University-of-Canberra-RIF-CS-Export_demo_Collections.xml')"/-->
     <!--xsl:variable name="otherDatasourceRifCS" select="document('/home/ada168/projects/RMIT/RMIT-Figshare-RIF-CS-Export_DemoFigshare.xml')"/-->
     <!--xsl:variable name="otherDatasourceRifCS" select="document('/home/ada168/projects/UNE_Project/FromRDA/university-of-new-england-une-dspace-RIF-CS-Export_demo.xml')"/-->
-    <xsl:variable name="otherDatasourceRifCS" select="document('file:/home/ada168/projects/SouthernCrossUniversity/InProdNew/SCU-Esploro-RIF-CS-Export_ProductionPublishedCollections_360.xml')"/>
+    <!--xsl:variable name="otherDatasourceRifCS" select="document('file:/home/ada168/projects/SouthernCrossUniversity/InProdNew/SCU-Esploro-RIF-CS-Export_ProductionPublishedCollections_360.xml')"/-->
+    <xsl:variable name="otherDatasourceRifCS" select="document('file:/home/ada168/projects/RMIT/RMIT-Redbox-RIF-CS-Export_ProdRedBox_PublishedCollections_Figshare_357.xml')"/>
     <xsl:template match="node()|@*">
         <xsl:copy>
             <xsl:apply-templates select="node()|@*"/>
@@ -279,25 +280,25 @@
                         <xsl:call-template name="here:populateOtherDatasourceDOI"/>
                     </xsl:for-each>
                 </xsl:when>
-                <xsl:when test="count($otherDatasourceRifCS/registryObjects/registryObject[(collection|service|party|activity)/name[contains(lower-case(namePart), lower-case($objectNamePart))]]/key) > 0">
-                    <xsl:message select="concat('Found ', count($otherDatasourceRifCS/registryObjects/registryObject[(collection|service|party|activity)/name[contains(lower-case(namePart), lower-case($objectNamePart))]]/key), ' collection(s) from other datasource with name: ', $objectNamePart)"/>
+                <xsl:when test="count($otherDatasourceRifCS/registryObjects/registryObject[(collection|service|party|activity)/name[lower-case(normalize-space(namePart)) = lower-case(normalize-space($objectNamePart))]]/key) > 0">
+                    <xsl:message select="concat('Found ', count($otherDatasourceRifCS/registryObjects/registryObject[(collection|service|party|activity)/name[lower-case(normalize-space(namePart)) = lower-case(normalize-space($objectNamePart))]]/key), ' collection(s) from other datasource with name: ', $objectNamePart)"/>
                     
                     <xsl:text>&quot;</xsl:text>
-                    <xsl:for-each select="$otherDatasourceRifCS/registryObjects/registryObject[(collection|service|party|activity)/name[contains(lower-case(namePart), lower-case($objectNamePart))]]/(collection|service|party|activity)/name[contains(lower-case(@type), 'primary')]/namePart">
+                    <xsl:for-each select="$otherDatasourceRifCS/registryObjects/registryObject[(collection|service|party|activity)/name[lower-case(normalize-space(namePart)) = lower-case(normalize-space($objectNamePart))]]/(collection|service|party|activity)/name[contains(lower-case(@type), 'primary')]/namePart">
                         <xsl:value-of select="."/>
                     </xsl:for-each>
                     <xsl:text>&quot;</xsl:text>
                     <xsl:value-of select="$columnSeparator"/>
                     
                     <xsl:text>&quot;</xsl:text>
-                    <xsl:for-each select="$otherDatasourceRifCS/registryObjects/registryObject[(collection|service|party|activity)/name[contains(lower-case(namePart), lower-case($objectNamePart))]]/key">
+                    <xsl:for-each select="$otherDatasourceRifCS/registryObjects/registryObject[(collection|service|party|activity)/name[lower-case(normalize-space(namePart)) = lower-case(normalize-space($objectNamePart))]]/key">
                         <xsl:value-of select="."/>
                     </xsl:for-each>
                     <xsl:text>&quot;</xsl:text>
                     <xsl:value-of select="$columnSeparator"/>
                     
                     <xsl:text>&quot;</xsl:text>
-                    <xsl:for-each select="$otherDatasourceRifCS/registryObjects/registryObject[(collection|service|party|activity)/name[contains(lower-case(namePart), lower-case($objectNamePart))]]/key">
+                    <xsl:for-each select="$otherDatasourceRifCS/registryObjects/registryObject[(collection|service|party|activity)/name[lower-case(normalize-space(namePart)) = lower-case(normalize-space($objectNamePart))]]/key">
                         <xsl:value-of select="concat('https://', $registry_address, '/view?key=', ., ' ')"/>
                     </xsl:for-each>
                     <xsl:text>&quot;</xsl:text>
@@ -307,7 +308,7 @@
                     <xsl:text>namePart</xsl:text>
                     <xsl:text>&quot;</xsl:text>
                     <xsl:value-of select="$columnSeparator"/>
-                    <xsl:for-each select="($otherDatasourceRifCS/registryObjects/registryObject[(collection|service|party|activity)/name[contains(lower-case(namePart), lower-case($objectNamePart))]])[1]">
+                    <xsl:for-each select="($otherDatasourceRifCS/registryObjects/registryObject[(collection|service|party|activity)/name[lower-case(normalize-space(namePart)) = lower-case(normalize-space($objectNamePart))]])[1]">
                         <xsl:call-template name="here:populateOtherDatasourceDOI"/>
                     </xsl:for-each>
                     

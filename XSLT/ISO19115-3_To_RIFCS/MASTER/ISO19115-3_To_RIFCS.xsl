@@ -245,7 +245,7 @@
                 <xsl:apply-templates
                     select="mdb:identificationInfo/*/mri:purpose[string-length(.) > 0]"
                     mode="registryObject_description_notes"/>
-                  
+                   
                 <xsl:apply-templates select="mdb:identificationInfo/*[contains(lower-case(name()),'identification')]" mode="registryObject">
                     <xsl:with-param name="registryObjectTypeSubType_sequence" select="$registryObjectTypeSubType_sequence"/>
                 </xsl:apply-templates>
@@ -413,6 +413,10 @@
                 <xsl:when test="contains(., 'doi:')">
                     <xsl:attribute name="type" select="'doi'"/>
                     <xsl:value-of select="normalize-space(replace(.,'doi:', ''))"/>   
+                </xsl:when>
+                <xsl:when test="matches(., 'https?://dx.doi.org/')">
+                    <xsl:attribute name="type" select="'doi'"/>
+                    <xsl:value-of select="normalize-space(substring-after(.,'dx.doi.org/'))"/>   
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:value-of select="."/>

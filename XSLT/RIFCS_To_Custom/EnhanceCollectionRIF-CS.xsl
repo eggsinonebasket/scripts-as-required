@@ -8,11 +8,11 @@
     exclude-result-prefixes="xs custom extRif"
     version="2.0">
     
+    <xsl:import href="CustomFunctions.xsl"/>
+    
     <xsl:param name="getCitationDOI_populateIdentifier_AppendExisting" select="true()"/>
     <xsl:param name="getCitationDOI_populateElectronicLocation_ReplaceExisting" select="true()"/>
     <xsl:param name="replaceDodgyCharactersName" select="true()"/>
-    
-    <xsl:import href="CustomFunctions.xsl"/>
     
     <xsl:param name="global_debug" select="true()"/>
     
@@ -52,7 +52,7 @@
           </xsl:choose>
     </xsl:template>
     
-    <xsl:template match="location/address/electronic">
+    <xsl:template match="registryObject/collection/location/address/electronic">
         <!-- if we are going to replace this doi, don't pass these on - catch them here -->
         <xsl:variable name="doiValue_Sequence" select="custom:getDOI_FromString(normalize-space(ancestor::*:registryObject/*:collection/*:citationInfo/*:fullCitation), false())" as="xs:string*"/>
         <xsl:choose>
