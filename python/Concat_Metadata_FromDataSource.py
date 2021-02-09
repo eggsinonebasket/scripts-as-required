@@ -230,7 +230,7 @@ resumptionToken = retrieveXML(count, filePath, requestURI)
 while resumptionToken is not None:
   assert(len(resumptionToken) > 1)
   count=count+1
-  resumptionToken = retrieveXML(count, filePath, dataSourceURI+"?verb=ListRecords&resumptionToken="+resumptionToken)
+  resumptionToken = retrieveXML(count, filePath, dataSourceURI+"?verb="+operation+"&resumptionToken="+resumptionToken)
 
 print("Output files written to directory %s" % outputDirectory)
 
