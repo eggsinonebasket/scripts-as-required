@@ -47,7 +47,25 @@
     
     <xsl:template match="oaire:resource"  mode="collection">
         
-        <xsl:variable name="class" select="'collection'"/>
+        <xsl:variable name="class">
+            <xsl:choose>
+                <xsl:when test="boolean(custom:sequenceContains(oaire:resourceType/@resourceTypeGeneral, 'dataset')) = true()">
+                    <xsl:value-of select="'collection'"/>
+                </xsl:when>
+                <xsl:when test="boolean(custom:sequenceContains(oaire:resourceType/@resourceTypeGeneral, 'software')) = true()">
+                    <xsl:value-of select="'collection'"/>
+                </xsl:when>
+                <xsl:when test="boolean(custom:sequenceContains(oaire:resourceType/@resourceTypeGeneral, 'service')) = true()">
+                    <xsl:value-of select="'service'"/>
+                </xsl:when>
+                <xsl:when test="boolean(custom:sequenceContains(oaire:resourceType/@resourceTypeGeneral, 'website')) = true()">
+                    <xsl:value-of select="'service'"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="'collection'"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
         
         <registryObject>
             <xsl:attribute name="group" select="$global_group"/>
@@ -59,8 +77,17 @@
                 
                 <xsl:attribute name="type">
                     <xsl:choose>
-                        <xsl:when test="boolean(custom:sequenceContains(oaire:resourceType, 'dataset')) = true()">
+                        <xsl:when test="boolean(custom:sequenceContains(oaire:resourceType/@resourceTypeGeneral, 'dataset')) = true()">
                             <xsl:value-of select="'dataset'"/>
+                        </xsl:when>
+                        <xsl:when test="boolean(custom:sequenceContains(oaire:resourceType/@resourceTypeGeneral, 'software')) = true()">
+                            <xsl:value-of select="'software'"/>
+                        </xsl:when>
+                        <xsl:when test="boolean(custom:sequenceContains(oaire:resourceType/@resourceTypeGeneral, 'service')) = true()">
+                            <xsl:value-of select="'report'"/>
+                        </xsl:when>
+                        <xsl:when test="boolean(custom:sequenceContains(oaire:resourceType/@resourceTypeGeneral, 'website')) = true()">
+                            <xsl:value-of select="'report'"/>
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:value-of select="'collection'"/>
@@ -102,7 +129,9 @@
                 
                 <!--xsl:apply-templates select="dc:coverage[string-length(.) > 0]" mode="collection_spatial_coverage"/-->
                 
-                <xsl:apply-templates select="datacite:rights[string-length(.) > 0]" mode="collection_rights"/>
+                <xsl:apply-templates select="datacite:rights[string-length(.) > 0]" mode="collection_rights_datacite"/>
+                
+                <xsl:apply-templates select="oaire:rights[string-length(.) > 0]" mode="collection_rights_oaire"/>
                 
                 <xsl:call-template name="rightsStatement"/>
                 
@@ -117,6 +146,18 @@
                         <xsl:call-template name="collection_description_default"/>
                     </xsl:otherwise>
                 </xsl:choose>
+                
+                <xsl:apply-templates select="dc:coverage[string-length(.) > 0]" mode="collection_coverage"/>
+                
+                <xsl:apply-templates select="datacite:geoLocations//datacite:geoLocationPlace[string-length(.) > 0]" mode="collection_coverage_spatial_text"/>
+                
+                <xsl:apply-templates select="datacite:geoLocations/*/datacite:geoLocationPoint[string-length(.) > 0]" mode="collection_coverage_spatial_point"/>
+                
+                <xsl:apply-templates select="datacite:geoLocations/*/datacite:geoLocationPolygon[string-length(.) > 0]" mode="collection_coverage_spatial_polygon"/>
+                
+                <xsl:apply-templates select="datacite:geoLocations/*/datacite:geoLocationBox[string-length(.) > 0]" mode="collection_coverage_spatial_box"/>
+                
+                <xsl:apply-templates select="oaire:fundingReferences/oaire:fundingReference[string-length(oaire:awardNumber) > 0]" mode="collection_relatedInfo_activity"/>
                 
                 <xsl:apply-templates select="." mode="collection_citationInfo_citationMetadata"/>
                 
@@ -303,22 +344,63 @@
         <!-- override with rights statement for all in olac_dc if required -->
     </xsl:template>
    
-    <xsl:template match="datacite:rights" mode="collection_rights">
+    <xsl:template match="datacite:rights" mode="collection_rights_datacite">
         <rights>
             <accessRights>
                 <xsl:attribute name="rightsUri">
                     <xsl:value-of select="@rightsURI"/>
                 </xsl:attribute>
-                <xsl:if test="(lower-case(.) = 'open access')">
-                    <xsl:attribute name="type">
-                        <xsl:text>open</xsl:text>
-                    </xsl:attribute>
-                </xsl:if>
+                <xsl:attribute name="type">
+                    <xsl:choose>
+                        <xsl:when test="(lower-case(.) = 'open access')">
+                            <xsl:text>open</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="(lower-case(.) = 'embargoed access')">
+                            <xsl:text>restricted</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="(lower-case(.) = 'restricted access')">
+                            <xsl:text>restricted</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="(lower-case(.) = 'metadata only access')">
+                            <xsl:text>conditional</xsl:text>
+                        </xsl:when>
+                    </xsl:choose>
+                </xsl:attribute>
+            
                 <xsl:value-of select="."/>
             </accessRights>
         </rights>
         
-          </xsl:template>
+    </xsl:template>
+    
+    <xsl:template match="oaire:rights" mode="collection_rights_oaire">
+        <rights>
+            <accessRights>
+                <xsl:attribute name="rightsUri">
+                    <xsl:value-of select="@rightsURI"/>
+                </xsl:attribute>
+                <xsl:attribute name="type">
+                    <xsl:choose>
+                        <xsl:when test="(lower-case(.) = 'open access')">
+                            <xsl:text>open</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="(lower-case(.) = 'embargoed access')">
+                            <xsl:text>restricted</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="(lower-case(.) = 'restricted access')">
+                            <xsl:text>restricted</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="(lower-case(.) = 'metadata only access')">
+                            <xsl:text>conditional</xsl:text>
+                        </xsl:when>
+                    </xsl:choose>
+                </xsl:attribute>
+                
+                <xsl:value-of select="."/>
+            </accessRights>
+        </rights>
+        
+    </xsl:template>
     
     <xsl:template name="collection_description_default">
         <description type="brief">
@@ -337,6 +419,98 @@
         <description type="brief">
             <xsl:value-of select="normalize-space(.)"/>
         </description>
+    </xsl:template>
+    
+    <xsl:template match="dc:coverage" mode="collection_coverage">
+        <coverage>
+            <temporal>
+                <text>
+                    <xsl:value-of select="normalize-space(.)"/>
+                </text>
+            </temporal>
+        </coverage>
+    </xsl:template>
+    
+    <xsl:template match="datacite:geoLocationPlace" mode="collection_coverage_spatial_text">
+        <coverage>
+            <spatial type="text">
+                <xsl:value-of select="normalize-space(.)"/>
+            </spatial>
+        </coverage>
+    </xsl:template>
+    
+    
+    <xsl:template match="datacite:geoLocationPoint" mode="collection_coverage_spatial_point">
+        
+         <coverage>
+            <spatial type="gmlKmlPolyCoords">
+                <xsl:value-of select="concat(datacite:pointLongitude, ',', datacite:pointLatitude)"/>
+            </spatial>
+        </coverage>
+           
+    </xsl:template>
+    
+    <xsl:template match="datacite:geoLocationPolygon" mode="collection_coverage_spatial_polygon">
+        
+        <coverage>
+            <spatial type="gmlKmlPolyCoords">
+                <xsl:for-each select="datacite:geoLocationPoint">
+                    <xsl:value-of select="concat(datacite:pointLongitude, ',', datacite:pointLatitude)"/>
+                    <xsl:text> </xsl:text>
+                </xsl:for-each>
+            </spatial>
+        </coverage>
+    </xsl:template>
+    
+    
+    <xsl:template match="datacite:geoLocationBox" mode="collection_coverage_spatial_box">
+        <xsl:message select="concat('processing point coordinates input: ', normalize-space(.))"/>
+        
+        <coverage>
+            <spatial type="iso19139dcmiBox">
+                <xsl:value-of select="concat('northlimit=',datacite:northBoundLongitude,'; westlimit=',datacite:westBoundLongitude,'; eastlimit=',datacite:eastBoundLongitude,'; southlimit=',datacite:southBoundLongitude)"/>
+            </spatial>
+        </coverage>
+        
+    </xsl:template>
+    
+    <xsl:template match="oaire:fundingReference" mode="collection_relatedInfo_activity">
+        <relatedInfo type="activity">
+            <identifier>
+                <xsl:attribute name="type">
+                    <xsl:choose>
+                        <xsl:when test="
+                            (contains(lower-case(oaire:funderName),'australian research council')) or
+                            (contains(lower-case(oaire:funderName),'arc'))">
+                            <xsl:text>arc</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="
+                            (contains(lower-case(oaire:funderName),'national health and medical research council')) or
+                            (contains(lower-case(oaire:funderName),'nhmrc'))">
+                            <xsl:text>nhmrc</xsl:text>
+                        </xsl:when>
+                        <xsl:when test="contains(oaire:awardNumber,'http')">
+                            <xsl:text>uri</xsl:text>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>local</xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:attribute>
+                <xsl:value-of select="oaire:awardNumber"/>
+            </identifier>
+            <xsl:if test="string-length(oaire:awardTitle) > 0">
+                 <title>
+                     <xsl:value-of select="oaire:awardTitle"/>
+                 </title>
+            </xsl:if>
+            <xsl:if test="string-length(oaire:funderName) > 0">
+                <notes>
+                    <xsl:value-of select="concat('Funder: ', oaire:funderName)"/>
+                </notes>
+            </xsl:if>
+            <relation type="isOutputOf"/>
+        </relatedInfo>
     </xsl:template>
     
     <xsl:template match="oaire:resource" mode="collection_citationInfo_citationMetadata">
@@ -369,8 +543,9 @@
                 </xsl:for-each>
                 
                 <title>
-                    <xsl:value-of select="datacite:title"/>
+                    <xsl:value-of select="string-join(//datacite:title, ', ')"/>
                 </title>
+                
                 <!--version></version-->
                 <!--placePublished></placePublished-->
                 <publisher>
