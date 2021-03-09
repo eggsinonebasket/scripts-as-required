@@ -318,7 +318,7 @@
     <xsl:template match="dc:rights" mode="collection_rights_access">
         
         <xsl:choose>
-            <xsl:when test="contains(upper-case(.), 'CC BY')">
+            <xsl:when test="matches(upper-case(.), 'CC.BY')">
                 <xsl:variable name="ccNoNumber" as="xs:string*">
                     <xsl:analyze-string select="." regex="[A-Za-zÀ-ÿ\s-]+">
                         <xsl:matching-substring>
@@ -329,7 +329,7 @@
                     </xsl:analyze-string>
                 </xsl:variable>
                 <rights>
-                    <licence type="{upper-case(replace(normalize-space($ccNoNumber), ' ', '-'))}">
+                    <licence type="{upper-case(replace(normalize-space($ccNoNumber[1]), ' ', '-'))}">
                         <xsl:value-of select="upper-case(replace(normalize-space(.), ' ', '-'))"/>
                     </licence>
                 </rights>   

@@ -99,31 +99,43 @@
                 
                 <xsl:apply-templates select="ancestor::oai:record/oai:header/oai:datestamp" mode="collection_date_accessioned"/>
                 
-                <xsl:apply-templates select="datacite:identifier" mode="identifier"/>
+                <xsl:apply-templates select="datacite:identifier" mode="collection_identifier"/>
                 
-                <xsl:apply-templates select="datacite:alternateIdentifier" mode="identifier"/>
+                <xsl:apply-templates select="datacite:alternateIdentifiers/datacite:alternateIdentifier" mode="collection_alt_identifier"/>
                 
-                <xsl:apply-templates select="datacite:identifier[(@identifierType = 'DOI') and (string-length(.) > 0)]" mode="collection_location_doi"/>
+                <xsl:choose>
+                    <xsl:when test="count(datacite:identifier[(@identifierType = 'DOI') and (string-length(.) > 0)]) > 0">
+                        <xsl:apply-templates select="datacite:identifier[(@identifierType = 'DOI') and (string-length(.) > 0)]" mode="collection_location_doi"/>
+                    </xsl:when>
+                    <xsl:when test="count(datacite:alternateIdentifiers/datacite:alternateIdentifier[(@alternateIdentifierType = 'Permalink') and (string-length(.) > 0)]) > 0">
+                        <xsl:apply-templates select="datacite:alternateIdentifiers/datacite:alternateIdentifier[(@alternateIdentifierType = 'Permalink') and (string-length(.) > 0)]" mode="collection_location_url"/>
+                    </xsl:when>
+                    <xsl:when test="count(datacite:identifier[(@identifierType = 'URL') and (string-length(.) > 0)]) > 0">
+                        <xsl:apply-templates select="datacite:identifier[(@identifierType = 'URL') and (string-length(.) > 0)][1]" mode="collection_location_url"/>
+                    </xsl:when>
+                    <xsl:when test="count(datacite:alternateIdentifiers/datacite:alternateIdentifier[(@alternateIdentifierType = 'URL') and (string-length(.) > 0)]) > 0">
+                        <xsl:apply-templates select="datacite:alternateIdentifiers/datacite:alternateIdentifier[(@alternateIdentifierType = 'URL') and (string-length(.) > 0)][1]" mode="collection_location_url"/>
+                    </xsl:when>
+                </xsl:choose>
                 
-                <!-- if no doi, use url as location -->
-                <xsl:if test="count(datacite:identifier[(@identifierType = 'DOI') and (string-length(.) > 0)]) = 0">
-                    <xsl:apply-templates select="datacite:alternateIdentifier[(@identifierType = 'URL') and (string-length(.) > 0)[1]]" mode="collection_location_url"/>
-                </xsl:if>
+               
                 
                 <!--xsl:apply-templates select="../../oai:header/oai:identifier[contains(.,'oai:eprints.utas.edu.au:')]" mode="collection_location_nodoi"/-->
                 
-                <xsl:apply-templates select="datacite:title[string-length(.) > 0]" mode="collection_name"/>
+                <xsl:apply-templates select="datacite:titles/datacite:title[string-length(.) > 0]" mode="collection_name"/>
                 
                 
-                <!--xsl:apply-templates select="dc:identifier[not(@*) or not(string-length(@*))][1]" mode="collection_relatedObject"/-->
+                <!--xsl:apply-templates select="dc:identifier[not(@*) or not(string-length(@*))][1]" mode="collection_relatedObject_party"/-->
                 
                 <!--xsl:apply-templates select="dc:identifier[@xsi:type ='dcterms:URI']" mode="collection_location_if_no_DOI"/-->
                 
-                <xsl:apply-templates select="datacite:creators/datacite:creator[string-length(.) > 0]" mode="collection_relatedObject"/>
+                <xsl:apply-templates select="datacite:creators/datacite:creator[string-length(.) > 0]" mode="collection_relatedObject_party"/>
                
-                <xsl:apply-templates select="datacite:contributors/datacite:contributor[string-length(.) > 0]" mode="collection_relatedObject"/>
+                <xsl:apply-templates select="datacite:contributors/datacite:contributor[string-length(.) > 0]" mode="collection_relatedObject_party"/>
                 
-                <xsl:apply-templates select="datacite:subject" mode="collection_subject"/>
+                <xsl:apply-templates select="datacite:relatedIdentifiers/datacite:relatedIdentifier[string-length(.) > 0]" mode="collection_relatedInfo"/>
+                
+                <xsl:apply-templates select="datacite:subjects/datacite:subject" mode="collection_subject"/>
                 
                 <xsl:apply-templates select="datacite:dates/datacite:date[string-length(.) > 0]" mode="collection_dates_date"/>
                 
@@ -133,14 +145,16 @@
                 
                 <xsl:apply-templates select="oaire:rights[string-length(.) > 0]" mode="collection_rights_oaire"/>
                 
+                <xsl:apply-templates select="oaire:licenseCondition[string-length(.) > 0]" mode="collection_rights_license"/>
+                
                 <xsl:call-template name="rightsStatement"/>
                 
                 <xsl:choose>
                     <xsl:when test="count(dc:description[string-length(.) > 0]) > 0">
                         <xsl:apply-templates select="dc:description[string-length(.) > 0]" mode="collection_description_full"/>
                     </xsl:when>
-                    <xsl:when test="count(datacite:title[string-length(.) > 0]) > 0">
-                        <xsl:apply-templates select="datacite:title[string-length(.) > 0]" mode="collection_description_brief"/>
+                    <xsl:when test="count(datacite:titles/datacite:title[string-length(.) > 0]) > 0">
+                        <xsl:apply-templates select="datacite:titles/datacite:title[string-length(.) > 0]" mode="collection_description_brief"/>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:call-template name="collection_description_default"/>
@@ -180,53 +194,19 @@
         <xsl:attribute name="dateAccessioned" select="normalize-space(.)"/>
     </xsl:template>
     
-    <xsl:template match="datacite:identifier" mode="identifier">
+    <xsl:template match="datacite:identifier" mode="collection_identifier">
         <identifier>
-            <xsl:attribute name="type">
-                <xsl:choose>
-                    <xsl:when test="lower-case(@identifierType) = 'doi'">
-                        <xsl:text>doi</xsl:text>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:value-of select="custom:getIdentifierType(.)"/>
-                    </xsl:otherwise>
-                </xsl:choose>
-            </xsl:attribute>
+            <xsl:attribute name="type" select="custom:getIdentifierType(.)"/>
             <xsl:value-of select="normalize-space(.)"/>
         </identifier>    
     </xsl:template>
     
-    <xsl:template match="datacite:alternateIdentifier" mode="identifier">
+    <xsl:template match="datacite:alternateIdentifier" mode="collection_alt_identifier">
         <identifier>
-            <xsl:attribute name="type">
-                <xsl:choose>
-                    <xsl:when test="lower-case(@alternateIdentifierType) = 'doi'">
-                        <xsl:text>doi</xsl:text>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:value-of select="custom:getIdentifierType(.)"/>
-                    </xsl:otherwise>
-                </xsl:choose>
-            </xsl:attribute>
+            <xsl:attribute name="type" select="custom:getIdentifierType(.)"/>
             <xsl:value-of select="normalize-space(.)"/>
         </identifier>    
     </xsl:template>
-    
-    <xsl:template match="datacite:identifier" mode="collection_identifier_maybe_not_doi">
-        <identifier type="{custom:getIdentifierType(.)}">
-            <xsl:choose>
-                <xsl:when test="starts-with(. , '10.')">
-                    <xsl:value-of select="concat('http://doi.org/', .)"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:value-of select="normalize-space(.)"/>
-                </xsl:otherwise>
-            </xsl:choose>
-        </identifier>    
-    </xsl:template>
-    
-    <!--xsl:template match="dc:identifier[@xsi:type ='dcterms:URI']" mode="collection_location_if_no_DOI">
-    </xsl:template-->
     
     <xsl:template match="datacite:identifier" mode="collection_location_doi">
         <location>
@@ -247,7 +227,7 @@
         </location> 
     </xsl:template>
     
-    <xsl:template match="datacite:identifier" mode="collection_location_url">
+    <xsl:template match="datacite:identifier | datacite:alternateIdentifier" mode="collection_location_url">
         <location>
             <address>
                 <electronic type="url" target="landingPage">
@@ -279,22 +259,61 @@
         </relatedInfo>
     <xsl:template-->
     
-    <xsl:template match="datacite:creator" mode="collection_relatedObject">
-        <relatedObject>
-            <key>
-                <xsl:value-of select="murFunc:formatKey(murFunc:formatName(datacite:creatorName))"/> 
-            </key>
-            <relation type="hasCollector"/>
-        </relatedObject>
+    <xsl:template match="datacite:creator" mode="collection_relatedObject_party">
+        <xsl:variable name="nameToUseForKey">
+            <xsl:choose>
+                <xsl:when test="(string-length(datacite:givenName) + string-length(datacite:familyName)) > 0">
+                    <xsl:value-of select="concat(datacite:givenName, datacite:familyName)"/>
+                </xsl:when>
+                <xsl:when test="(string-length(datacite:creatorName)) > 0">
+                    <xsl:value-of select="datacite:creatorName"/>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:variable>
+        
+        <xsl:if test="string-length($nameToUseForKey) > 0">
+            <relatedObject>
+                <key>
+                    <xsl:value-of select="murFunc:formatKey(murFunc:formatName($nameToUseForKey))"/> 
+                </key>
+                <relation type="hasCollector"/>
+            </relatedObject>
+        </xsl:if>
     </xsl:template>
     
-    <xsl:template match="datacite:contributor" mode="collection_relatedObject">
-        <relatedObject>
-            <key>
-                <xsl:value-of select="murFunc:formatKey(murFunc:formatName(datacite:contributorName))"/> 
-            </key>
-            <relation type="hasCollector"/>
-        </relatedObject>
+    <xsl:template match="datacite:contributor" mode="collection_relatedObject_party">
+        <xsl:variable name="nameToUseForKey">
+            <xsl:choose>
+                <xsl:when test="(string-length(datacite:givenName) + string-length(datacite:familyName)) > 0">
+                    <xsl:value-of select="concat(datacite:givenName, datacite:familyName)"/>
+                </xsl:when>
+                <xsl:when test="(string-length(datacite:contributorName)) > 0">
+                    <xsl:value-of select="datacite:contributorName"/>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:variable>
+        
+        <xsl:if test="string-length($nameToUseForKey) > 0">
+            
+            <relatedObject>
+                <key>
+                    <xsl:value-of select="murFunc:formatKey(murFunc:formatName($nameToUseForKey))"/> 
+                </key>
+                <relation>
+                    <xsl:attribute name="type">
+                        <xsl:choose>
+                            <xsl:when test="string-length(@contributorType) > 0">
+                                <xsl:value-of select="@contributorType"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:text>hasAssociationWith</xsl:text>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                        
+                    </xsl:attribute>
+                </relation>
+            </relatedObject>
+        </xsl:if>
     </xsl:template>
     
     <xsl:template match="datacite:subject" mode="collection_subject">
@@ -341,7 +360,7 @@
     </xsl:template-->
    
     <xsl:template name="rightsStatement">
-        <!-- override with rights statement for all in olac_dc if required -->
+        <!-- override with rights statement for all in if required -->
     </xsl:template>
    
     <xsl:template match="datacite:rights" mode="collection_rights_datacite">
@@ -401,6 +420,15 @@
         </rights>
         
     </xsl:template>
+    
+    <xsl:template match="oaire:licenseCondition" mode="collection_rights_license">
+        <rights>
+            <licence rightsUri="{@uri}" type="{.}">
+                <xsl:value-of select="concat('Licence ', .,' commencing ', @startDate)"/>
+            </licence>
+        </rights>
+    </xsl:template>
+                
     
     <xsl:template name="collection_description_default">
         <description type="brief">
@@ -474,6 +502,17 @@
         
     </xsl:template>
     
+    <xsl:template match="datacite:relatedIdentifier" mode="collection_relatedInfo">
+        <relatedInfo>
+            <identifier type="{@relatedIdentifierType}">
+                <xsl:value-of select="."/>
+            </identifier>
+            <relation type="{@relationType}"/>
+        </relatedInfo>
+    </xsl:template>
+        
+  
+    
     <xsl:template match="oaire:fundingReference" mode="collection_relatedInfo_activity">
         <relatedInfo type="activity">
             <identifier>
@@ -518,19 +557,22 @@
             <citationMetadata>
                 <xsl:choose>
                     <xsl:when test="count(datacite:identifier[(@identifierType = 'DOI') and (string-length() > 0)]) > 0">
-                        <xsl:apply-templates select="datacite:identifier[(@identifierType = 'DOI')][1]" mode="identifier"/>
+                        <xsl:apply-templates select="datacite:identifier[(@identifierType = 'DOI')][1]" mode="collection_identifier"/>
+                    </xsl:when>
+                    <xsl:when test="count(datacite:alternateIdentifiers/datacite:alternateIdentifier[(@alternateIdentifierType = 'Permalink') and (string-length() > 0)]) > 0">
+                        <xsl:apply-templates select="datacite:alternateIdentifiers/datacite:alternateIdentifier[(@alternateIdentifierType = 'Permalink')][1]" mode="collection_alt_identifier"/>
                     </xsl:when>
                     <xsl:when test="count(datacite:identifier[(string-length() > 0)]) > 0">
-                        <xsl:apply-templates select="datacite:identifier[(string-length() > 0)][1]" mode="identifier"/>
+                        <xsl:apply-templates select="datacite:identifier[(string-length() > 0)][1]" mode="collection_identifier"/>
                     </xsl:when>
-                    <xsl:when test="count(datacite:alternateIdentifier[(@alternateIdentifierType = 'URL') and (string-length() > 0)]) > 0">
-                        <xsl:apply-templates select="datacite:alternateIdentifier[(@alternateIdentifierType = 'URL')][1]" mode="identifier"/>
+                    <xsl:when test="count(datacite:alternateIdentifiers/datacite:alternateIdentifier[(@alternateIdentifierType = 'URL') and (string-length() > 0)]) > 0">
+                        <xsl:apply-templates select="datacite:alternateIdentifiers/datacite:alternateIdentifier[(@alternateIdentifierType = 'URL')][1]" mode="collection_alt_identifier"/>
                     </xsl:when>
-                    <xsl:when test="count(datacite:alternateIdentifier[(@alternateIdentifierType = 'PURL') and (string-length() > 0)]) > 0">
-                        <xsl:apply-templates select="datacite:alternateIdentifier[(@alternateIdentifierType = 'PURL')][1]" mode="identifier"/>
+                    <xsl:when test="count(datacite:alternateIdentifiers/datacite:alternateIdentifier[(@alternateIdentifierType = 'PURL') and (string-length() > 0)]) > 0">
+                        <xsl:apply-templates select="datacite:alternateIdentifiers/datacite:alternateIdentifier[(@alternateIdentifierType = 'PURL')][1]" mode="collection_alt_identifier"/>
                     </xsl:when>
-                    <xsl:when test="count(datacite:alternateIdentifier[(string-length() > 0)]) > 0">
-                        <xsl:apply-templates select="datacite:alternateIdentifier[(string-length() > 0)][1]" mode="identifier"/>
+                    <xsl:when test="count(datacite:alternateIdentifiers/datacite:alternateIdentifier[(string-length() > 0)]) > 0">
+                        <xsl:apply-templates select="datacite:alternateIdentifiers/datacite:alternateIdentifier[(string-length() > 0)][1]" mode="collection_alt_identifier"/>
                     </xsl:when>
                 </xsl:choose>
                             
@@ -543,7 +585,7 @@
                 </xsl:for-each>
                 
                 <title>
-                    <xsl:value-of select="string-join(//datacite:title, ', ')"/>
+                    <xsl:value-of select="string-join(datacite:titles/datacite:title, ' - ')"/>
                 </title>
                 
                 <!--version></version-->
@@ -552,9 +594,9 @@
                     <xsl:value-of select="dc:publisher"/>
                 </publisher>
                 <date type="publicationDate">
-                    <xsl:value-of select="datacite:dates/datacite:date[@dateType = 'Issued']"/>
+                    <xsl:value-of select="datacite:publicationYear"/>
                 </date>
-                <url>
+                <!--url>
                     <xsl:choose>
                         <xsl:when test="count(datacite:alternateIdentifier[(@alternateIdentifierType = 'URL') and (string-length() > 0)]) > 0">
                             <xsl:value-of select="datacite:alternateIdentifier[(@alternateIdentifierType = 'URL')][1]"/>
@@ -563,7 +605,7 @@
                             <xsl:value-of select="datacite:alternateIdentifier[(@alternateIdentifierType = 'PURL')][1]"/>
                         </xsl:when>
                     </xsl:choose>
-                </url>
+                </url-->
             </citationMetadata>
         </citationInfo>
         
