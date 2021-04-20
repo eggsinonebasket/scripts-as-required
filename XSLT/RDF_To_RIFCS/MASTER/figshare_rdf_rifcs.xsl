@@ -24,10 +24,10 @@
    
     <xsl:variable name="categoryCodeList" select="document('api_figshare_com_v2_categories.xml')"/>
     
-    <xsl:param name="global_originatingSource" select="'(xslt param required)'"/>
-    <xsl:param name="global_baseURI" select="'(xslt param required)'"/>
-    <xsl:param name="global_group" select="'(xslt param required)'"/>
-    <xsl:param name="global_publisherName" select="'(xslt param required)'"/>
+    <xsl:param name="global_originatingSource" select="''"/>
+    <xsl:param name="global_baseURI" select="''"/>
+    <xsl:param name="global_group" select="''"/>
+    <xsl:param name="global_publisherName" select="''"/>
   
     <xsl:output method="xml" version="1.0" omit-xml-declaration="no" indent="yes" encoding="UTF-8"/>
     
@@ -177,6 +177,8 @@
             <xsl:apply-templates select="*/vivo:datePublished/@rdf:resource[string-length(.) > 0]" mode="collection_dates_issued"/>  
          
             <xsl:apply-templates select="*/vivo:dateCreated/@rdf:resource[string-length(.) > 0]" mode="collection_dates_created"/>  
+            
+            <xsl:apply-templates select="." mode="collection_citationInfo_citationMetadata"/>
          
         </xsl:element>
     </registryObject>
@@ -192,12 +194,18 @@
         <identifier type="doi">
             <xsl:choose>
                 <xsl:when test="starts-with(. , '10.')">
-                    <xsl:value-of select="concat('http://doi.org/', .)"/>
+                    <xsl:value-of select="concat('https://doi.org/', .)"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:value-of select="."/>
                 </xsl:otherwise>
             </xsl:choose>
+        </identifier>    
+    </xsl:template>
+    
+    <xsl:template match="@rdf:about" mode="collection_identifier_URI">
+        <identifier type="URI">
+            <xsl:value-of select="."/>
         </identifier>    
     </xsl:template>
     
@@ -208,7 +216,7 @@
                     <value>
                         <xsl:choose>
                             <xsl:when test="starts-with(. , '10.')">
-                                <xsl:value-of select="concat('http://doi.org/', .)"/>
+                                <xsl:value-of select="concat('https://doi.org/', .)"/>
                             </xsl:when>
                             <xsl:otherwise>
                                 <xsl:value-of select="."/>
@@ -308,6 +316,43 @@
         
     </xsl:template>
     
+    <xsl:template match="vcard:hasName" mode="citationMetadata_contributor">
+        
+        <!-- value of @rdf:resource will only resolve if it contains a name with a number, 
+            so if it's only a number just make a unique identifier for
+            this client that obviously does not resolve, to avoid confusion -->
+        
+        <xsl:message select="concat('@rdf:resource [', @rdf:resource, ']')"/>
+        
+        <xsl:variable name="nameFromURL">
+            <xsl:analyze-string select="substring-after(@rdf:resource, 'authors/')" regex="^[a-zA-ZÀ-ÿ-]*[_+][a-zA-ZÀ-ÿ-]*">
+                <xsl:matching-substring>
+                    <xsl:value-of select="regex-group(0)"/>
+                </xsl:matching-substring>
+            </xsl:analyze-string>
+        </xsl:variable>
+        
+        
+        <xsl:message select="concat('nameFromURL ', $nameFromURL)"/>
+        
+        <xsl:variable name="personID">
+            <xsl:analyze-string select="@rdf:resource" regex="[\d]+">
+                <xsl:matching-substring>
+                    <xsl:value-of select="regex-group(0)"/>
+                </xsl:matching-substring>
+            </xsl:analyze-string>
+        </xsl:variable>
+        
+        <xsl:for-each select="ancestor::rdf:RDF/vcard:Name[contains(@rdf:about, $personID)]">
+           <contributor>
+               <namePart>
+                <xsl:value-of select="normalize-space(concat(vcard:givenName, ' ', vcard:familyName))"/>
+               </namePart>
+           </contributor>
+        </xsl:for-each>
+
+    </xsl:template>
+    
    
     <xsl:template match="bibo:freetextKeyword" mode="collection_subject">
         <subject type="local">
@@ -387,6 +432,71 @@
             </date>
         </dates>    
     </xsl:template>
+    
+    <xsl:template match="rdf:RDF" mode="collection_citationInfo_citationMetadata">
+        <xsl:message select="concat('Citation publisher is defaulting to ', $global_publisherName)"/>
+        <citationInfo>
+            <citationMetadata>
+                <xsl:choose>
+                    <xsl:when test="count(*/bibo:doi[string-length() > 0]) > 0">
+                        <xsl:apply-templates select="*/bibo:doi[string-length() > 0][1]" mode="collection_identifier"/>
+                    </xsl:when>
+                    <xsl:when test="count(*[1]/@rdf:about[(string-length(.) > 0)]) > 0">
+                        <xsl:apply-templates select="*[1]/@rdf:about[(string-length(.) > 0)]" mode="collection_identifier_URI"/>
+                    </xsl:when>
+               </xsl:choose>
+                
+                <xsl:for-each select="vivo:Authorship/vivo:relates/vcard:Individual/vcard:hasName">
+                    <xsl:apply-templates select="." mode="citationMetadata_contributor"/>
+                </xsl:for-each>
+                
+                <title>
+                    <xsl:value-of select="string-join(*/rdfs:label[string-length(.) > 0][1], ' - ')"/>
+                </title>
+                
+                <!--version></version-->
+                <!--placePublished></placePublished-->
+                <xsl:choose>
+                    <xsl:when test="string-length(dc:publisher) > 0">
+                        <publisher>
+                            <xsl:value-of select="dc:publisher"/>
+                        </publisher>
+                    </xsl:when>
+                    <xsl:when test="string-length(vivo:publisher) > 0">
+                        <publisher>
+                            <xsl:value-of select="vivo:publisher"/>
+                        </publisher>
+                    </xsl:when>
+                    <xsl:when test="string-length($global_publisherName) > 0">
+                        <publisher>
+                            <xsl:value-of select="$global_publisherName"/>
+                        </publisher>
+                    </xsl:when>        
+                </xsl:choose>
+                
+                <xsl:apply-templates select="*/vivo:datePublished/@rdf:resource[string-length(.) > 0]" mode="collection_citation_publicationDate"/>  
+                
+                <!--url>
+                    <xsl:choose>
+                        <xsl:when test="count(datacite:alternateIdentifier[(@alternateIdentifierType = 'URL') and (string-length() > 0)]) > 0">
+                            <xsl:value-of select="datacite:alternateIdentifier[(@alternateIdentifierType = 'URL')][1]"/>
+                        </xsl:when>
+                        <xsl:when test="count(datacite:alternateIdentifier[(@alternateIdentifierType = 'PURL') and (string-length() > 0)]) > 0">
+                            <xsl:value-of select="datacite:alternateIdentifier[(@alternateIdentifierType = 'PURL')][1]"/>
+                        </xsl:when>
+                    </xsl:choose>
+                </url-->
+            </citationMetadata>
+        </citationInfo>
+        
+    </xsl:template>
+    
+    
+    <xsl:template match="@rdf:resource" mode="collection_citation_publicationDate">
+        <date type="publicationDate">
+            <xsl:value-of select="substring(substring-after(., 'http://openvivo.org/a/date'), 1, 4)"/>
+        </date>
+    </xsl:template> 
     
     <!--xsl:template match="rdf:RDF" mode="party">
         

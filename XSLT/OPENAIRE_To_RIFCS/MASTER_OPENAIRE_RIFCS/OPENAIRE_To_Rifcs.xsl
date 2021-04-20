@@ -69,7 +69,15 @@
         
         <registryObject>
             <xsl:attribute name="group" select="$global_group"/>
-            <xsl:apply-templates select="ancestor::oai:record/oai:header/oai:identifier" mode="collection_key"/>
+            <!-- Generate key from doi if there is one (this means key will stay the same in future harvests even if harvest api or source xml changes form-->
+            <xsl:choose>
+                <xsl:when test="count(datacite:identifier[(@identifierType = 'DOI') and (string-length(.) > 0)]) > 0">
+                    <xsl:apply-templates select="datacite:identifier[(@identifierType = 'DOI') and (string-length(.) > 0)]" mode="collection_key"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:apply-templates select="ancestor::oai:record/oai:header/oai:identifier" mode="collection_key"/>
+                </xsl:otherwise>
+            </xsl:choose>
             <originatingSource>
                 <xsl:value-of select="$global_originatingSource"/>
             </originatingSource>
@@ -185,6 +193,13 @@
         </key>
     </xsl:template>
    
+   
+    <xsl:template match="datacite:identifier" mode="collection_key">
+        <key>
+            <xsl:value-of select="substring(string-join(for $n in fn:reverse(fn:string-to-codepoints(.)) return string($n), ''), 0, 50)"/>
+        </key>
+    </xsl:template>
+    
     
     <xsl:template match="@todo" mode="collection_date_modified">
         <xsl:attribute name="dateModified" select="normalize-space(.)"/>

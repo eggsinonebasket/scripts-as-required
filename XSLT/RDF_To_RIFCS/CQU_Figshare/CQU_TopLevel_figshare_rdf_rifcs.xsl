@@ -24,7 +24,7 @@
     
     <xsl:param name="global_originatingSource" select="'Central Queensland University'"/>
     <xsl:param name="global_baseURI" select="'cqu.edu.au'"/>
-    <xsl:param name="global_group" select="'Central Queensland University Figshare'"/>
+    <xsl:param name="global_group" select="'Central Queensland University'"/>
     <xsl:param name="global_publisherName" select="'Central Queensland University'"/>
 
   <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
@@ -38,6 +38,68 @@
             <xsl:apply-templates select="oai:OAI-PMH/*/oai:record"/>
             
         </registryObjects>
+    </xsl:template>
+    
+    <xsl:template match="oai:OAI-PMH/*/oai:record">
+        
+        <xsl:message select="'Overriding filtering for CQU - including only dataset, fileset and code'"/>
+        
+        <!-- item_type_1 -->
+        <!-- Article type: figure -->
+        <!-- item_type_2 -->
+        <!-- Article type: media -->
+        <!-- item_type_3 -->
+        <!-- Article type: dataset -->
+        <!-- item_type_4 -->
+        <!-- Article type: fileset -->
+        <!-- item_type_5 -->
+        <!-- Article type: poster -->
+        <!-- item_type_6 -->
+        <!-- Article type: paper -->
+        <!-- item_type_7 -->
+        <!-- Article type: presentation -->
+        <!-- item_type_8 -->
+        <!-- Article type: thesis -->
+        <!-- item_type_9 -->
+        <!-- Article type: code -->
+        <!-- item_type_11 -->
+        <!-- Article type: metadata --> 
+        
+        <!-- include dataset, fileset and code for now -->
+  
+        
+        <xsl:if test="
+            (count(oai:header/oai:setSpec[text() = 'item_type_3']) > 0) or
+            (count(oai:header/oai:setSpec[text() = 'item_type_4']) > 0) or
+            (count(oai:header/oai:setSpec[text() = 'item_type_9']) > 0)">
+            
+            <xsl:variable name="type">
+                <xsl:choose>
+                    <!-- dataset -->
+                    <xsl:when test="count(oai:header/oai:setSpec[text() = 'item_type_3']) > 0">
+                        <xsl:text>dataset</xsl:text>
+                    </xsl:when>
+                    <!-- fileset -->
+                    <xsl:when test="count(oai:header/oai:setSpec[text() = 'item_type_4']) > 0">
+                        <xsl:text>collection</xsl:text>
+                    </xsl:when>
+                    <!-- code -->
+                    <xsl:when test="count(oai:header/oai:setSpec[text() = 'item_type_9']) > 0">
+                        <xsl:text>software</xsl:text>
+                    </xsl:when>
+                   </xsl:choose>
+            </xsl:variable>
+            
+            <xsl:variable name="oaiFigshareIdentifier" select="oai:header/oai:identifier"/>
+            <xsl:if test="string-length($oaiFigshareIdentifier)">
+                <xsl:apply-templates select="oai:metadata/rdf:RDF" mode="collection">
+                    <xsl:with-param name="oaiFigshareIdentifier" select="$oaiFigshareIdentifier"/>
+                    <xsl:with-param name="type" select="$type"/>
+                </xsl:apply-templates>
+                <!-- xsl:apply-templates select="oai:metadata/rdf:RDF/dc:funding" mode="funding_party"/ -->
+                <!-- xsl:apply-templates select="oai:metadata/rdf:RDF" mode="party"/-->
+            </xsl:if>
+        </xsl:if>
     </xsl:template>
     
 </xsl:stylesheet>

@@ -19,7 +19,7 @@
     <xsl:param name="global_baseURI_PID" select="''"/>
     <xsl:param name="global_path_PID" select="''"/>
     <xsl:param name="global_path" select="'/geonetwork/srv/eng/search?uuid='"/>
-    <xsl:param name="global_group" select="'University of Tasmania, Australia'"/>
+    <xsl:param name="global_group" select="'IMAS UTAS - ISO19115-3'"/>
     <xsl:param name="global_publisherName" select="'University of Tasmania, Australia'"/>
     <xsl:param name="global_publisherPlace" select="''"/>
     

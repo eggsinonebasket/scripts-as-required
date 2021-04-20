@@ -22,16 +22,19 @@
     <!--xsl:variable name="keyPrefix" select="''"/-->
     
     <xsl:param name="compareWithOtherDatasource" select="true()"/>
-    <xsl:param name="registry_address_demo" select="'demo.researchdata.ardc.edu.au'"/>
-    <xsl:param name="registry_address_prod" select="'researchdata.edu.au'">
+    <!--xsl:param name="registry_address_input" select="'demo.researchdata.ardc.edu.au'"/-->
+    <xsl:param name="registry_address_input" select="'researchdata.edu.au'"/>
+    <xsl:param name="registry_address_other" select="'researchdata.edu.au'"/>
     <!-- Presuming comparing demo xml with prod file -->
     <!-- change the following the the correct other datasource content for the contributor that you are working with and set $compareWithOtherDatasource to true()-->
-    <!--xsl:variable name="otherDatasourceRifCS" select="document('/home/ada168/projects/UniversityOfCanberra/PURE-at-University-of-Canberra-RIF-CS-Export_demo_Collections.xml')"/-->
-    <!--xsl:variable name="otherDatasourceRifCS" select="document('/home/ada168/projects/RMIT/RMIT-Figshare-RIF-CS-Export_DemoFigshare.xml')"/-->
-    <!--xsl:variable name="otherDatasourceRifCS" select="document('/home/ada168/projects/UNE_Project/FromRDA/university-of-new-england-une-dspace-RIF-CS-Export_demo.xml')"/-->
-    <!--xsl:variable name="otherDatasourceRifCS" select="document('file:/home/ada168/projects/SouthernCrossUniversity/InProdNew/SCU-Esploro-RIF-CS-Export_ProductionPublishedCollections_360.xml')"/-->
-    <!--xsl:variable name="otherDatasourceRifCS" select="document('file:/home/ada168/projects/RMIT/RMIT-Redbox-RIF-CS-Export_ProdRedBox_PublishedCollections_Figshare_357.xml')"/-->
-    <xsl:variable name="otherDatasourceRifCS" select="document('file:/home/ada168/projects/ACU_Victoria/ACU_20202/CompareDemoProd/ACU_InProdRDA.xml')"/>
+    <!--xsl:variable name="otherDatasourceRifCS" select="document('~/projects/UniversityOfCanberra/PURE-at-University-of-Canberra-RIF-CS-Export_demo_Collections.xml')"/-->
+    <!--xsl:variable name="otherDatasourceRifCS" select="document('~/projects/RMIT/RMIT-Figshare-RIF-CS-Export_DemoFigshare.xml')"/-->
+    <!--xsl:variable name="otherDatasourceRifCS" select="document('~/projects/UNE_Project/FromRDA/university-of-new-england-une-dspace-RIF-CS-Export_demo.xml')"/-->
+    <!--xsl:variable name="otherDatasourceRifCS" select="document('~/projects/SouthernCrossUniversity/InProdNew/SCU-Esploro-RIF-CS-Export_ProductionPublishedCollections_360.xml')"/-->
+    <!--xsl:variable name="otherDatasourceRifCS" select="document('~/projects/RMIT/RMIT-Redbox-RIF-CS-Export_ProdRedBox_PublishedCollections_Figshare_357.xml')"/-->
+    <!--xsl:variable name="otherDatasourceRifCS" select="document('~/projects/ACU_Victoria/ACU_20202/CompareDemoProd/ACU_InProdRDA.xml')"/-->
+    <xsl:variable name="otherDatasourceRifCS" select="document('~/projects/CQU_Project/CompareKeys/Central-Queensland-University-RIF-CS-Export_OldProd.xml')"/>
+  
     <xsl:template match="node()|@*">
         <xsl:copy>
             <xsl:apply-templates select="node()|@*"/>
@@ -78,7 +81,7 @@
         
         <!--	column: location -->
         <xsl:text>&quot;</xsl:text>
-        <xsl:value-of select="concat('https://', $registry_address_demo, '/view?key=', key)"/>
+        <xsl:value-of select="concat('https://', $registry_address_input, '/view?key=', key)"/>
         <xsl:text>&quot;</xsl:text>
         <xsl:value-of select="$columnSeparator"/>
         
@@ -207,7 +210,7 @@
                     <xsl:value-of select="$columnSeparator"/>
                     
                     <xsl:text>&quot;</xsl:text>
-                    <xsl:value-of select="concat('https://', $registry_address_prod, '/view?key=', $otherDatasourceRifCS/registryObjects/registryObject[(collection|service|party|activity)/identifier[contains(lower-case(.), lower-case($doiPostFixFromKey))]]/key)"/>
+                    <xsl:value-of select="concat('https://', $registry_address_other, '/view?key=', $otherDatasourceRifCS/registryObjects/registryObject[(collection|service|party|activity)/identifier[contains(lower-case(.), lower-case($doiPostFixFromKey))]]/key)"/>
                     <xsl:text>&quot;</xsl:text>
                     <xsl:value-of select="$columnSeparator"/>
                     
@@ -233,7 +236,7 @@
                     <xsl:value-of select="$columnSeparator"/>
                     
                     <xsl:text>&quot;</xsl:text>
-                    <xsl:value-of select="concat('https://', $registry_address_prod, '/view?key=', $otherDatasourceRifCS/registryObjects/registryObject[(collection|service|party|activity)/identifier[contains(lower-case(.), lower-case($doiPostFixFromDoi))]]/key)"/>
+                    <xsl:value-of select="concat('https://', $registry_address_other, '/view?key=', $otherDatasourceRifCS/registryObjects/registryObject[(collection|service|party|activity)/identifier[contains(lower-case(.), lower-case($doiPostFixFromDoi))]]/key)"/>
                     <xsl:text>&quot;</xsl:text>
                     <xsl:value-of select="$columnSeparator"/>
                     
@@ -259,7 +262,7 @@
                     <xsl:value-of select="$columnSeparator"/>
                      
                     <xsl:text>&quot;</xsl:text>
-                    <xsl:value-of select="concat('https://', $registry_address_prod, '/view?key=', $otherDatasourceRifCS/registryObjects/registryObject[(collection|service|party|activity)/identifier[contains(lower-case(.), lower-case($handlePostFixFromHandle))]]/key)"/>
+                    <xsl:value-of select="concat('https://', $registry_address_other, '/view?key=', $otherDatasourceRifCS/registryObjects/registryObject[(collection|service|party|activity)/identifier[contains(lower-case(.), lower-case($handlePostFixFromHandle))]]/key)"/>
                     <xsl:text>&quot;</xsl:text>
                     <xsl:value-of select="$columnSeparator"/>
                     
@@ -285,7 +288,7 @@
                     <xsl:value-of select="$columnSeparator"/>
                     
                     <xsl:text>&quot;</xsl:text>
-                    <xsl:value-of select="concat('https://', $registry_address_prod, '/view?key=', $otherDatasourceRifCS/registryObjects/registryObject[(collection|service|party|activity)/identifier[contains(lower-case(.), lower-case($handlePostFixFromKey))]]/key)"/>
+                    <xsl:value-of select="concat('https://', $registry_address_other, '/view?key=', $otherDatasourceRifCS/registryObjects/registryObject[(collection|service|party|activity)/identifier[contains(lower-case(.), lower-case($handlePostFixFromKey))]]/key)"/>
                     <xsl:text>&quot;</xsl:text>
                     <xsl:value-of select="$columnSeparator"/>
                     
@@ -316,7 +319,7 @@
                     
                     <xsl:text>&quot;</xsl:text>
                     <xsl:for-each select="$otherDatasourceRifCS/registryObjects/registryObject[(collection|service|party|activity)/name[lower-case(normalize-space(namePart)) = lower-case(normalize-space($objectNamePart))]]/key">
-                        <xsl:value-of select="concat('https://', $registry_address_prod, '/view?key=', ., ' ')"/>
+                        <xsl:value-of select="concat('https://', $registry_address_other, '/view?key=', ., ' ')"/>
                     </xsl:for-each>
                     <xsl:text>&quot;</xsl:text>
                     <xsl:value-of select="$columnSeparator"/>
