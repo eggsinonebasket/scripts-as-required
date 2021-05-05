@@ -417,9 +417,18 @@
             </address>
 
             <xsl:for-each select="*:geoLocation/*:point">
-                <spatial type="dcmiPoint">
-                    <xsl:value-of select="."/>
-                </spatial>
+                <xsl:variable name="coordsConverted"
+                    select="local:convertCoordinatesLatLongToLongLat(normalize-space(.))" as="xs:string"/>
+                <xsl:if test="$global_debug">
+                    <xsl:message
+                        select="concat('coords swapped to long lat: ', $coordsConverted)"/>
+                </xsl:if>
+                
+                <xsl:if test="string-length($coordsConverted) > 0">
+                    <spatial type="gmlKmlPolyCoords">
+                        <xsl:value-of select="$coordsConverted"/>
+                    </spatial>
+                </xsl:if>
             </xsl:for-each>
 
 
@@ -769,22 +778,22 @@
             />
         </xsl:if>
 
-        <xsl:variable name="coordsAsProvided"
+        <xsl:variable name="coordsConverted"
             select="local:convertCoordinatesLatLongToLongLat(normalize-space(.))" as="xs:string"/>
         <xsl:if test="$global_debug">
             <xsl:message
-                select="concat('processing point coordinates determined: ', $coordsAsProvided)"/>
+                select="concat('coords swapped to long lat: ', $coordsConverted)"/>
         </xsl:if>
 
-        <xsl:if test="string-length($coordsAsProvided) > 0">
+        <xsl:if test="string-length($coordsConverted) > 0">
             <coverage>
                 <spatial type="gmlKmlPolyCoords">
-                    <xsl:value-of select="$coordsAsProvided"/>
+                    <xsl:value-of select="$coordsConverted"/>
                 </spatial>
             </coverage>
             <coverage>
                 <spatial type="text">
-                    <xsl:value-of select="$coordsAsProvided"/>
+                    <xsl:value-of select="$coordsConverted"/>
                 </spatial>
             </coverage>
         </xsl:if>
