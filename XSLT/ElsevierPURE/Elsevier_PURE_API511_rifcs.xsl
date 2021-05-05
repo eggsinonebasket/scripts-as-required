@@ -438,7 +438,7 @@
     <xsl:template match="*:email" mode="registryObject_email">
         <electronic type="email">
             <value>
-                <xsl:value-of select="."/>
+                <xsl:value-of select="value"/>
             </value>
         </electronic>
     </xsl:template>
