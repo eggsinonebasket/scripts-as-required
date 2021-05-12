@@ -204,9 +204,17 @@
                             *:identificationInfo/*/*:citation/*:CI_Citation/*:identifier" 
                             mode="AIMS_registryObject_identifier"/>
     
-                        <xsl:apply-templates
+                        <!--The following is commented out to not
+                            use point of truth as identifier as  
+                            this caused a problem when a child record
+                            had its parent's doi in point of truth. 
+                            Anyway, I don't think we need to have this
+                            here anyway because linking will be 
+                            by uuid (for linking identical metadata
+                            from various catalogues) -->
+                        <!--xsl:apply-templatess
                             select="*:distributionInfo/*:MD_Distribution"
-                            mode="AIMS_registryObject_identifier"/>
+                            mode="AIMS_registryObject_identifier"/-->
                         
                         <xsl:apply-templates
                             select="*:distributionInfo/*:MD_Distribution"

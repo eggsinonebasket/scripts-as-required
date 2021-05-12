@@ -253,7 +253,7 @@
 
     <xsl:template match="*:webAddress" mode="collection_identifier_handle">
         <identifier type="handle">
-            <xsl:value-of select="."/>
+            <xsl:value-of select="value"/>
         </identifier>
     </xsl:template>
 
@@ -688,7 +688,7 @@
         <relatedInfo type="website">
             <xsl:if test="string-length(.) > 0">
                 <identifier type="url">
-                    <xsl:value-of select="."/>
+                    <xsl:value-of select="value"/>
                 </identifier>
             </xsl:if>
             <xsl:if test="string-length(@type) > 0">
