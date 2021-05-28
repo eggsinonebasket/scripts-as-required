@@ -227,7 +227,7 @@
        </xsl:if>
        
        <xsl:apply-templates
-           select="ancestor::gmd:MD_Metadata/gmd:dateStamp/*[contains(local-name(), 'Date')][string-length(.)> 0]"
+           select="."
            mode="registryObject_description_brief">
            <xsl:with-param name="landingPage" select="$landingPage"/>
        </xsl:apply-templates>
@@ -699,10 +699,14 @@
         </description>
     </xsl:template>
     
-    <xsl:template match="*[contains(local-name(), 'Date')]" mode="registryObject_description_brief">
+    <xsl:template match="*" mode="registryObject_description_brief">
         <xsl:param name="landingPage"/>
         <description type="brief">
-            <xsl:value-of select="concat('This record was harvested by RDA at ',  current-dateTime(), ' from &lt;a href=''', $landingPage ,'''&gt;', $landingPage, '&lt;/a&gt; in ', $global_acronym, '''s Data Catalogue where it was last modified at ', . , '')"/>
+            <xsl:value-of select="concat('This record was harvested by RDA at ',  current-dateTime(), ' from &lt;a href=''', $landingPage ,'''&gt;', $landingPage, '&lt;/a&gt; in ', $global_acronym, '''s Data Catalogue')"/>
+            <xsl:if test="count(ancestor::gmd:MD_Metadata/gmd:dateStamp/*[contains(local-name(), 'Date')][string-length(.)> 0]) > 0">
+                <xsl:value-of select="concat(' where it was last modified at ', ancestor::gmd:MD_Metadata/gmd:dateStamp/*[contains(local-name(), 'Date')][string-length(.)> 0][1] , '')"/>
+            </xsl:if>
+            <xsl:text>.</xsl:text>
         </description>
     </xsl:template>
     

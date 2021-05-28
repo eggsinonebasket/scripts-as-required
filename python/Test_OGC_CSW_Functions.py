@@ -128,7 +128,7 @@ def callCSW(cswUrl, conditionDict):
         http = urllib3.PoolManager()
         print("Opening uri %s" % cswUrl)
         print("Query \n %s" % fullQuery)
-        r = http.request('POST', cswUrl, body = fullQuery, headers = {'Content-Type': 'application/xml'})
+        r = http.request('POST', cswUrl, body = fullQuery, headers = {'Content-Type': 'applicationa /xml'})
         result = r.data
     except Exception as e:
         print("Unable to open url %s - exception: %s" % (cswUrl, e))

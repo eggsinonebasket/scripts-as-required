@@ -78,8 +78,6 @@
     
     <xsl:template match="mdb:MD_Metadata" mode="process">
         
-        <xsl:message select="concat('debug : ', $global_debug)"/>
-        
         <xsl:variable name="originatingSource">
             <xsl:choose>
                 <xsl:when test="count(mdb:identificationInfo/*[contains(lower-case(name()),'identification')]/mri:pointOfContact/cit:CI_Responsibility/cit:party/cit:CI_Organisation/cit:name[string-length(.) > 0]) > 0">
@@ -197,11 +195,11 @@
                             contains(lower-case(cit:linkage), 'geoserver/wps') or
                             contains(lower-case(cit:linkage), 'geoserver/wcs') or
                             contains(lower-case(cit:linkage), 'geoserver/wfs'))">
-                            <xsl:message select="concat('cit:protocol for service', cit:protocol)"></xsl:message>
+                            <xsl:if test="$global_debug"><xsl:message select="concat('cit:protocol for service', cit:protocol)"></xsl:message></xsl:if>
                             <xsl:apply-templates select="." mode="registryObject_relatedInfo_service"/>
                         </xsl:when>
                         <xsl:when test="not(contains(lower-case(cit:protocol), 'metadata-URL'))">
-                            <xsl:message select="concat('cit:protocol for non-service', cit:protocol)"></xsl:message>
+                            <xsl:if test="$global_debug"><xsl:message select="concat('cit:protocol for non-service', cit:protocol)"></xsl:message></xsl:if>
                             <xsl:apply-templates select="." mode="registryObject_relatedInfo_nonService"/>
                         </xsl:when>
                         
@@ -1094,10 +1092,9 @@
                     <xsl:variable name="inputTransformed" select="normalize-space(replace(replace(replace($licenceText, 'icence', 'icense', 'i'), '[\d.]+', ''), '-', ''))"/>
                     <xsl:variable name="codeDefinition_sequence" select="$licenseCodelist/gmx:CT_CodelistCatalogue/gmx:codelistItem/gmx:CodeListDictionary[@gml:id='LicenseCodeAustralia' or @gml:id='LicenseCodeInternational']/gmx:codeEntry/gmx:CodeDefinition[normalize-space(replace(replace(gml:name, '\{n\}', ' '), '-', '')) = $inputTransformed]" as="node()*"/>
                     
-                    
-                     <xsl:if test="$global_debug">
+                    <xsl:if test="$global_debug">
                          <xsl:message select="concat('count $codeDefinition_sequence : ', count($codeDefinition_sequence))"/>
-                     </xsl:if>
+                    </xsl:if>
                      
                     <xsl:choose>
                         <xsl:when test="count($codeDefinition_sequence) > 0">

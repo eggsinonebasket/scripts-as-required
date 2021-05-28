@@ -249,8 +249,10 @@
             </xsl:for-each>
         </xsl:variable>
         
-        <xsl:message select="concat('longCoords ', string-join(for $i in $longCoords return $i, ' '))"/>
-        <xsl:message select="concat('latCoords ', string-join(for $i in $latCoords return $i, ' '))"/>
+        <xsl:if test="$global_debug">
+            <xsl:message select="concat('longCoords ', string-join(for $i in $longCoords return $i, ' '))"/>
+            <xsl:message select="concat('latCoords ', string-join(for $i in $latCoords return $i, ' '))"/>
+        </xsl:if>
         
         
         <xsl:variable name="coordinatePair_sequence" as="xs:string*">
@@ -276,7 +278,7 @@
         
         <xsl:choose>    
             <xsl:when test="count($coordinatePair_sequence) > 0"> 
-                <xsl:message select="concat('finalstring ', string-join(for $i in $coordinatePair_sequence return $i, ' '))"/>
+                <xsl:if test="$global_debug"><xsl:message select="concat('finalstring ', string-join(for $i in $coordinatePair_sequence return $i, ' '))"/></xsl:if>
                 <xsl:value-of select="string-join(for $i in $coordinatePair_sequence return $i, ' ')"/>
             </xsl:when>
             <xsl:otherwise>
@@ -365,11 +367,11 @@
                 <xsl:matching-substring>
                     <xsl:choose>
                         <xsl:when test="ends-with(regex-group(0), '.')">
-                            <xsl:message select="concat('Extracted handle: [', substring(regex-group(0), 0, string-length(regex-group(0))), ']')"/>
+                            <xsl:if test="$global_debug"><xsl:message select="concat('Extracted handle: [', substring(regex-group(0), 0, string-length(regex-group(0))), ']')"/></xsl:if>
                             <xsl:value-of select="regex-group(0)"/>
                         </xsl:when>
                         <xsl:otherwise>
-                            <xsl:message select="concat('Extracted handle: [', regex-group(0), ']')"/>
+                            <xsl:if test="$global_debug"><xsl:message select="concat('Extracted handle: [', regex-group(0), ']')"/></xsl:if>
                             <xsl:value-of select="regex-group(0)"/>
                         </xsl:otherwise>
                     </xsl:choose>
