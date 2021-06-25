@@ -12,6 +12,7 @@
     <xsl:param name="global_baseURI" select="'ro.ecu.edu.au'"/>
     <xsl:param name="global_group" select="'Edith Cowan University'"/>
     <xsl:param name="global_publisherName" select="'Edith Cowan University'"/>
+    <xsl:param name="global_debug" select="false()"/>
 
   <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
@@ -59,7 +60,7 @@
 
                 <xsl:attribute name="type"><xsl:value-of select="$type"/></xsl:attribute>
                 
-                <xsl:message select="concat('name: ', name(.))"/>
+                <xsl:if test="$global_debug"><xsl:message select="concat('name: ', name(.))"/></xsl:if>
                 <xsl:apply-templates select="title"/>
                 <xsl:apply-templates select="fields/field[@name='doi']/value"/>
                 <xsl:apply-templates select="fields/field[@name='data_url']/value"/>
@@ -138,7 +139,7 @@
     
     <xsl:template match="document" mode="party">
         
-        <xsl:message select="concat('document name(.): ', name(.))"/>
+        <xsl:if test="$global_debug"><xsl:message select="concat('document name(.): ', name(.))"/></xsl:if>
         
         <xsl:for-each select="authors/author">
             
@@ -169,14 +170,14 @@
                          </xsl:if>
                      </xsl:variable>
                      
-                     <xsl:message select="concat('$htmlFormatted :', $htmlFormatted)"/>
+                     <xsl:if test="$global_debug"><xsl:message select="concat('$htmlFormatted :', $htmlFormatted)"/></xsl:if>
                      
                      
                     <xsl:variable name="identifier_sequence" select="custom:getIdentifiersForName_sequence($nameFormatted, $htmlFormatted)" as="xs:string*"/>
                      <xsl:if test="count($identifier_sequence) > 0">
                          <xsl:for-each select="distinct-values($identifier_sequence)">
                              <xsl:if test="string-length(normalize-space(.)) > 0">
-                                 <xsl:message select="concat('Identifier for ', $nameFormatted, ': ', .)"/>
+                                 <xsl:if test="$global_debug"><xsl:message select="concat('Identifier for ', $nameFormatted, ': ', .)"/></xsl:if>
                                  <identifier type="{custom:identifierType(.)}">
                                      <xsl:value-of select="."/>
                                  </identifier>
@@ -265,7 +266,7 @@
     </xsl:template>
     
     <xsl:template match="field[@name='data_url']/value">
-        <xsl:message select="concat('data_url: ', .)"/>
+        <xsl:if test="$global_debug"><xsl:message select="concat('data_url: ', .)"/></xsl:if>
         <xsl:analyze-string select="." regex="href=&quot;(http.+?)&quot;">
             <xsl:matching-substring>
              <identifier>
@@ -434,7 +435,7 @@
                             <xsl:value-of select="."/>
                         </xsl:attribute>
                         <xsl:if test="contains(., 'creativecommons')">
-                            <xsl:message select="concat('creativecommons: ', .)"/>
+                            <xsl:if test="$global_debug"><xsl:message select="concat('creativecommons: ', .)"/></xsl:if>
                             <xsl:analyze-string select="." regex="(http://creativecommons.org/licenses/)(.*)(/\d)">
                                 <xsl:matching-substring>
                                     <xsl:if test="string-length(regex-group(2)) > 0">
@@ -833,6 +834,7 @@
            </xsl:when>
        </xsl:choose>
    </xsl:function>
+    
     <xsl:function name="custom:getIdentifiersForName_sequence" as="xs:string*">
         <xsl:param name="soughtName" as="xs:string"/>
         <xsl:param name="html" as="xs:string"/>
@@ -844,9 +846,11 @@
                 <xsl:variable name="namePosition_sequence" as="xs:integer*">
                     <xsl:for-each select="$unescapedContent/root/p">
                         <xsl:variable name="personPosition" select="position()" as="xs:integer"/>
-                        <xsl:for-each select="distinct-values(strong)">
-                            <xsl:message select="concat('strong: ', ., ' at pos ', position())"/>
-                        </xsl:for-each>
+                        <xsl:if test="$global_debug">
+                            <xsl:for-each select="distinct-values(strong)">
+                                <xsl:message select="concat('strong: ', ., ' at pos ', position())"/>
+                            </xsl:for-each>
+                        </xsl:if>
                         <!-- logic to follow is an attempt to check that we actually have something like a name -->
                         
                         <xsl:variable name="personName">
@@ -860,7 +864,7 @@
                             </xsl:choose>
                         </xsl:variable>
                         
-                        <xsl:message select="concat('personName: ', $personName)"/>
+                        <xsl:if test="$global_debug"><xsl:message select="concat('personName: ', $personName)"/></xsl:if>
                         <xsl:if test="(string-length(normalize-space($personName)) > 2) and
                             (contains(normalize-space($personName), ' ') or contains(normalize-space($personName), ','))">
                             <xsl:value-of select="$personPosition"/>
@@ -868,9 +872,11 @@
                     </xsl:for-each>
                 </xsl:variable>
                 
-                <xsl:for-each select="$namePosition_sequence">
-                    <xsl:message select="concat('$namePosition_sequence entry: ', ., ' at position: ', position())"/>
+                <xsl:if test="$global_debug">
+                    <xsl:for-each select="$namePosition_sequence">
+                        <xsl:message select="concat('$namePosition_sequence entry: ', ., ' at position: ', position())"/>
                     </xsl:for-each>
+                </xsl:if>
                 
                 <xsl:variable name="currentPersonPositionRange_sequence" as="xs:integer*">
                     <xsl:for-each select="$unescapedContent/root/p">
@@ -881,26 +887,28 @@
                             <xsl:if test="string-length(.)> 0 and (contains(., ' ') or contains(., ','))">
                                 
                                 <xsl:if test="boolean(custom:nameMatch($soughtName, $currentName)) = true()">
-                                    <xsl:message select="concat('Match! - ', $soughtName)"/>
+                                    <xsl:if test="$global_debug"><xsl:message select="concat('Match found - ', $soughtName)"/></xsl:if>
                                     
                                     <!-- Return first index in range -->
                                     <xsl:copy-of select="$currentPPosition"/>
                                     <xsl:for-each select="distinct-values($namePosition_sequence)">
                                         <xsl:variable name="iterPersonPosition" select="." as="xs:integer"/>
                                         <xsl:variable name="posInt" select="position()" as="xs:integer"/>
-                                        <xsl:message select="concat('iterPersonPosition: ', $iterPersonPosition)"/>
-                                        <xsl:message select="concat('count($namePosition_sequence): ', count($namePosition_sequence))"/>
-                                        <xsl:message select="concat('$posInt: ', number($posInt))"/>
+                                        <xsl:if test="$global_debug">
+                                            <xsl:message select="concat('iterPersonPosition: ', $iterPersonPosition)"/>
+                                            <xsl:message select="concat('count($namePosition_sequence): ', count($namePosition_sequence))"/>
+                                            <xsl:message select="concat('$posInt: ', number($posInt))"/>
+                                        </xsl:if>
                                         <xsl:if test="number($iterPersonPosition) = number($currentPPosition)">
                                             <!-- Return last index in range -->
                                             <xsl:choose>
                                                 <!--xsl:when test="$posInt &lt; (count($namePosition_sequence) - 1)"-->
                                                 <xsl:when test="count($namePosition_sequence) > number($posInt)">
-                                                    <xsl:message select="concat('Returning $namePosition_sequence[number($posInt)+1]: ', $namePosition_sequence[number($posInt)+1])"/>
+                                                    <xsl:if test="$global_debug"><xsl:message select="concat('Returning $namePosition_sequence[number($posInt)+1]: ', $namePosition_sequence[number($posInt)+1])"/></xsl:if>
                                                     <xsl:copy-of select="$namePosition_sequence[number($posInt)+1]"/>
                                                 </xsl:when>
                                                 <xsl:otherwise>
-                                                    <xsl:message select="concat('Returning $lastPPosition + 1: ', $lastPPosition + 1)"/>
+                                                    <xsl:if test="$global_debug"><xsl:message select="concat('Returning $lastPPosition + 1: ', $lastPPosition + 1)"/></xsl:if>
                                                     <xsl:copy-of select="$lastPPosition + 1"/>
                                                 </xsl:otherwise>
                                             </xsl:choose>
@@ -913,21 +921,23 @@
                 </xsl:variable>
                 
                 <xsl:if test="count($currentPersonPositionRange_sequence)> 0">
-                    <xsl:message select="concat('count($currentPersonPositionRange_sequence): ', count($currentPersonPositionRange_sequence))"/>
-                    
-                    <xsl:message select="concat('$currentPersonPositionRange_sequence[1]: ', $currentPersonPositionRange_sequence[1])"/>
-                    <xsl:message select="concat('$currentPersonPositionRange_sequence[2]: ', $currentPersonPositionRange_sequence[2])"/>
+                    <xsl:if test="$global_debug">
+                        <xsl:message select="concat('count($currentPersonPositionRange_sequence): ', count($currentPersonPositionRange_sequence))"/>
+                        <xsl:message select="concat('$currentPersonPositionRange_sequence[1]: ', $currentPersonPositionRange_sequence[1])"/>
+                        <xsl:message select="concat('$currentPersonPositionRange_sequence[2]: ', $currentPersonPositionRange_sequence[2])"/>
+                    </xsl:if>
                     
                     <xsl:for-each select="$unescapedContent/root/p">
                         <xsl:variable name="currentPPosition" select="position()"  as="xs:integer"/>
-                        <xsl:message select="concat('$currentPPosition: ', $currentPPosition)"/>
+                        <xsl:if test="$global_debug"><xsl:message select="concat('$currentPPosition: ', $currentPPosition)"/></xsl:if>
                         <xsl:if test="($currentPersonPositionRange_sequence[2]> $currentPPosition) and
                             ($currentPPosition >= $currentPersonPositionRange_sequence[1])">
-                            
-                            <xsl:if test="string-length(normalize-space(a/@href))> 0">
-                                <xsl:message select="concat('a/@href: ', a/@href)"/>
-                                <xsl:value-of select="normalize-space(a/@href)"/>
-                            </xsl:if>
+                            <xsl:for-each select="a/@href">
+                                <xsl:if test="string-length(normalize-space(.))> 0">
+                                    <xsl:if test="$global_debug"><xsl:message select="concat('a/@href: ', .)"/></xsl:if>
+                                    <xsl:value-of select="normalize-space(.)"/>
+                                </xsl:if>
+                            </xsl:for-each>
                         </xsl:if>
                     </xsl:for-each>
                 </xsl:if>
